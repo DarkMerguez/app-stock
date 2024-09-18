@@ -1,15 +1,14 @@
 import { AsyncPipe } from "@angular/common";
 import { Component, inject } from "@angular/core";
-import { Observable } from "rxjs";
 import { ApiService } from "../../../services/api.service";
-import { Products } from "../../../utils/interfaces/product";
 import { ProductsListComponent } from "../../products-list/products-list.component";
+import { ProductDetailsComponent } from "../product-details/product-details.component";
 
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [ProductsListComponent, AsyncPipe],
+  imports: [ProductsListComponent, AsyncPipe, ProductDetailsComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
