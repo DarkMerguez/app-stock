@@ -1,8 +1,8 @@
 import { Component, input } from "@angular/core";
-import { Product, Products } from "../../utils/interfaces/product";
-import { DashboardComponent } from "../components/dashboard/dashboard.component";
+import { Product, Products } from "../../../utils/interfaces/product";
+import { DashboardComponent } from "../dashboard/dashboard.component";
 import {MatCardModule} from '@angular/material/card';
-import { ProductDetailsComponent } from "../components/product-details/product-details.component";
+import { ProductDetailsComponent } from "../product-details/product-details.component";
 import { RouterLink } from "@angular/router";
 
 

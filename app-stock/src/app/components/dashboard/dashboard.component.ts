@@ -1,14 +1,15 @@
 import { AsyncPipe } from "@angular/common";
 import { Component, inject } from "@angular/core";
 import { ApiService } from "../../../services/api.service";
-import { ProductsListComponent } from "../../products-list/products-list.component";
+import { ProductsListComponent } from "../products-list/products-list.component";
 import { ProductDetailsComponent } from "../product-details/product-details.component";
+import { RouterLink } from "@angular/router";
 
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [ProductsListComponent, AsyncPipe, ProductDetailsComponent],
+  imports: [ProductsListComponent, AsyncPipe, ProductDetailsComponent,RouterLink],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
