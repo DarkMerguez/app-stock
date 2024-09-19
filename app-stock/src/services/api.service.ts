@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product, Products } from '../utils/interfaces/product';
 import { Image } from '../utils/interfaces/image';
-import { Observable, switchMap, tap } from 'rxjs';
+import { forkJoin, Observable, switchMap, tap } from 'rxjs';
 import { ProductCategories } from '../utils/interfaces/productCategory';
 
 @Injectable({
@@ -34,6 +34,15 @@ export class ApiService {
   );
 }
 
+// Méthode pour uploader plusieurs images
+public uploadImages(formData: FormData): Observable<{ images: Image[] }> {  // Remplacez 'Image[]' par '{ images: Image[] }'
+  return this.http.post<{ images: Image[] }>("http://localhost:8051/upload", formData).pipe(
+    tap((response) => {
+      console.log('Images upload response:', response);
+    })
+  );
+}
+
 // Méthode pour ajouter un produit
 public addProduct(product: Product): Observable<Product> {
   return this.http.post<Product>("http://localhost:8051/product", product);
@@ -50,15 +59,15 @@ public linkProductToImage(ProductId: number, ImageId: number): Observable<any> {
   return this.http.post<any>("http://localhost:8051/productImages", payload);
 }
 
-// Méthode pour uploader l'image, ajouter le produit, puis associer l'image au produit
-public addProductWithImage(formData: FormData): Observable<any> {
-  return this.uploadImage(formData).pipe(
-    switchMap((response: any) => {
-      // Assurez-vous que les valeurs sont extraites correctement
-      const uploadedImageId = response.imageId;
-      if (!uploadedImageId) {
-        throw new Error("ImageId is missing from the response");
+// Méthode pour uploader l'image, ajouter le produit, puis associer les images au produit
+public addProductWithImages(formData: FormData): Observable<any> {
+  return this.uploadImages(formData).pipe(
+    switchMap((response: { images: Image[] }) => {
+      const uploadedImages = response.images;  // Accédez à la propriété 'images'
+      if (!uploadedImages.length) {
+        throw new Error("No images were uploaded");
       }
+
       const productData: Product = {
         name: formData.get('name') as string,
         price: parseFloat(formData.get('price') as string),
@@ -69,18 +78,22 @@ public addProductWithImage(formData: FormData): Observable<any> {
         isFavorite: false,
         EnterpriseId: 0, // Remplacer par la valeur correcte si nécessaire
       };
+
       return this.addProduct(productData).pipe(
         switchMap((createdProduct: Product) => {
-          // Assurez-vous que `createdProduct.id` et `uploadedImageId` sont définis
-          if (!createdProduct.id || !uploadedImageId) {
-            throw new Error("ProductId or ImageId is missing");
-          }
-          return this.linkProductToImage(createdProduct.id, uploadedImageId);
+          // Associer chaque image au produit
+          const linkImageObservables = uploadedImages.map(image =>
+            this.linkProductToImage(createdProduct.id, image.id)
+          );
+          return forkJoin(linkImageObservables);
         })
       );
     })
   );
 }
+
+// Explication de forkJoin :
+// forkJoin permet d'exécuter plusieurs observables en parallèle et d'attendre que tous soient terminés. Ici, nous l'utilisons pour lier chaque image au produit une fois celui-ci créé.
 
 
 

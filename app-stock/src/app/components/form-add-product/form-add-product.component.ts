@@ -48,25 +48,27 @@ export class FormAddProductComponent {
     if (this.productGroup.valid) {
       const formData = new FormData();
       
-      // Ajouter les valeurs du formulaire au FormData, avec une valeur par défaut vide si la valeur est undefined
+      // Ajouter les valeurs du formulaire au FormData
       formData.append('name', this.productGroup.get('name')?.value ?? '');
       formData.append('price', (this.productGroup.get('price')?.value ?? '').toString());
       formData.append('description', this.productGroup.get('description')?.value ?? '');
       formData.append('stock', (this.productGroup.get('stock')?.value ?? '').toString());
       formData.append('ProductCategoryId', this.productGroup.get('ProductCategoryId')?.value ?? '');
       
-      // Récupérer le fichier sélectionné et l'ajouter au FormData
-      const fileInput = document.getElementById('image') as HTMLInputElement;
-      if (fileInput && fileInput.files && fileInput.files.length > 0) {
-        formData.append('image', fileInput.files[0]);
+      // Récupérer les fichiers sélectionnés et les ajouter au FormData
+      const fileInput = document.getElementById('images') as HTMLInputElement;
+      if (fileInput && fileInput.files) {
+        Array.from(fileInput.files).forEach(file => {
+          formData.append('images', file);
+        });
       }
     
       // Appeler l'API avec FormData
-      this.api.addProductWithImage(formData).subscribe({
-        next: (response) => {
+      this.api.addProductWithImages(formData).subscribe({
+        next: (response: any) => {  // Ajoutez le type 'any' ici
           console.log('Produit ajouté avec succès', response);
         },
-        error: (err) => {
+        error: (err: any) => {  // Ajoutez le type 'any' ici
           console.error('Erreur lors de l\'ajout du produit', err);
         }
       });
