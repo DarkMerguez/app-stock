@@ -1,20 +1,23 @@
 <h1>Ajouter un nouveau produit :</h1>
 
-<form [formGroup]="productGroup" (ngSubmit)="onSubmit()">
+<form [formGroup]="productGroup" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
     <input formControlName="name" placeholder="name">
     <input formControlName="price" placeholder="price">
     <input formControlName="description" placeholder="description">
     <input formControlName="stock" placeholder="stock actuel">
+
     <mat-form-field>
         <mat-label>Category</mat-label>
         <mat-select formControlName="ProductCategoryId">
             <!-- Utilisation de *ngFor pour itérer sur les catégories -->
-            <mat-option *ngFor="let productCategory of productCategories$ | async" 
-                        [value]="productCategory.id">
-              {{ productCategory.title }}
+            <mat-option *ngFor="let productCategory of productCategories$ | async" [value]="productCategory.id">
+                {{ productCategory.title }}
             </mat-option>
-          </mat-select>
-      </mat-form-field>
-  
+        </mat-select>
+    </mat-form-field>
+
+    <!-- Intégration de l'upload de fichier dans le même formulaire -->
+    <input type="file" name="image" id="image">
+
     <button type="submit" [disabled]="!productGroup.valid">Ajouter le produit</button>
-  </form>
+</form>

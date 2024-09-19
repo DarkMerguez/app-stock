@@ -45,16 +45,26 @@ export class FormAddProductComponent {
 
 
   onSubmit() {
-    // Vérifier si le formulaire est valide
     if (this.productGroup.valid) {
-      // Extraire les valeurs du formulaire
-      const product: Product = this.productGroup.value as Product;
+      const formData = new FormData();
       
-      // Appeler l'API et souscrire à l'observable
-      this.api.addProduct(product).subscribe({
+      // Ajouter les valeurs du formulaire au FormData, avec une valeur par défaut vide si la valeur est undefined
+      formData.append('name', this.productGroup.get('name')?.value ?? '');
+      formData.append('price', (this.productGroup.get('price')?.value ?? '').toString());
+      formData.append('description', this.productGroup.get('description')?.value ?? '');
+      formData.append('stock', (this.productGroup.get('stock')?.value ?? '').toString());
+      formData.append('ProductCategoryId', this.productGroup.get('ProductCategoryId')?.value ?? '');
+      
+      // Récupérer le fichier sélectionné et l'ajouter au FormData
+      const fileInput = document.getElementById('image') as HTMLInputElement;
+      if (fileInput && fileInput.files && fileInput.files.length > 0) {
+        formData.append('image', fileInput.files[0]);
+      }
+    
+      // Appeler l'API avec FormData
+      this.api.addProductWithImage(formData).subscribe({
         next: (response) => {
-          console.log(response);
-          // Vous pouvez ajouter ici du code pour rediriger ou montrer un message de succès
+          console.log('Produit ajouté avec succès', response);
         },
         error: (err) => {
           console.error('Erreur lors de l\'ajout du produit', err);
