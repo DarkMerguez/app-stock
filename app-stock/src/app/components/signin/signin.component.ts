@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { SignupComponent } from '../signup/signup.component';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-signin',
   standalone: true,
-  imports: [SignupComponent,RouterLink,FormsModule],
+  imports: [FormsModule,RouterLink],
   templateUrl: './signin.component.html',
   styleUrl: './signin.component.css'
 })
@@ -21,16 +20,16 @@ export class SigninComponent {
   onSubmit() {
     this.authService.login(this.email, this.password).subscribe({
       next: (response) => {
-        // Stockez le token dans le localStorage ou un service d'état
+        // Stockez le token dans le localStorage
         localStorage.setItem('token', response.token);
+        // Mettre à jour le statut de connexion et le rôle
+        this.authService.updateLoginStatus();
         // Redirigez l'utilisateur vers la page souhaitée après la connexion
-        this.router.navigate(['/dashboard']); // Ajustez selon votre besoin
+        this.router.navigate(['/dashboard']);
       },
       error: (error) => {
-        // Gérez l'erreur de connexion (affichez un message, etc.)
         console.error('Login failed', error);
       }
     });
   }
-
 }

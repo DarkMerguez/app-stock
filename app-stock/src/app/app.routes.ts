@@ -9,6 +9,8 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { FormAddProductComponent } from './components/form-add-product/form-add-product.component';
 import { AdminBoardComponent } from './components/admin-board/admin-board.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { AuthGuard } from '../guards/AuthGuard';
+import { AdminGuard } from '../guards/AdminGuard';
 
 export const routes: Routes = [
     {path : "signup",component:SignupComponent},
@@ -17,8 +19,8 @@ export const routes: Routes = [
     {path : "enterprise",component:EnterpriseComponent},
     {path : "add-product",component:FormAddProductComponent},
     {path : "product-details/:id",component : ProductDetailsComponent},
-    {path : "admin-board",component:AdminBoardComponent},
-    {path : "profile",component:ProfileComponent},
+    {path : "admin-board",component:AdminBoardComponent, canActivate: [AdminGuard]},
+    {path : "profile",component:ProfileComponent, canActivate: [AuthGuard]},
     {path : "" || "home",component:HomeComponent},
     {path :"**",component:NotFoundComponent}
 ];

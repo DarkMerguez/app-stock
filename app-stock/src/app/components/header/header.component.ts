@@ -1,23 +1,35 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
-import { SignupComponent } from '../signup/signup.component';
-import { MatFormFieldModule } from '@angular/material/form-field'; 
-import { MatInputModule } from '@angular/material/input'; 
-import { MatIconModule } from '@angular/material/icon';
-import { ProfileComponent } from '../profile/profile.component';
+import { AuthService } from '../../../services/auth.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink,RouterOutlet,SignupComponent,MatFormFieldModule,MatInputModule,MatIconModule,ProfileComponent],
+  imports: [RouterLink],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
 export class HeaderComponent implements OnInit {
 
+  isLoggedIn: boolean = false;
+  isAdmin: boolean = false;
 
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
+    // Abonnement au statut de connexion
+    this.authService.loginStatusChanged.subscribe(status => {
+      this.isLoggedIn = status;
+    });
 
+    // Abonnement au changement de rôle
+    this.authService.userRoleChanged.subscribe(role => {
+      this.isAdmin = role === 'Admin';
+    });
+
+    // Initialisation des valeurs
+    this.isLoggedIn = this.authService.isLoggedIn();
+    this.isAdmin = this.authService.isAdmin();
   }
+
 }
