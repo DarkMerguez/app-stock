@@ -6,15 +6,26 @@
     <input formControlName="description" placeholder="description">
     <input formControlName="stock" placeholder="stock actuel">
 
-    <mat-form-field>
+<!--     <mat-form-field>
         <mat-label>Category</mat-label>
         <mat-select formControlName="ProductCategoryId">
-            <!-- Utilisation de *ngFor pour itérer sur les catégories -->
+            // Utilisation de *ngFor pour itérer sur les catégories
             <mat-option *ngFor="let productCategory of productCategories$ | async" [value]="productCategory.id">
                 {{ productCategory.title }}
             </mat-option>
         </mat-select>
-    </mat-form-field>
+    </mat-form-field> -->
+
+    <div class="form-group">
+        <select id="ProductCategoryId" formControlName="ProductCategoryId" class="form-control">
+            <!-- Option par défaut non sélectionnable -->
+            <option value="" disabled selected>Category</option>
+            <!-- Utilisation de *ngFor pour itérer sur les catégories -->
+            <option *ngFor="let productCategory of productCategories$ | async" [value]="productCategory.id">
+                {{ productCategory.title }}
+            </option>
+        </select>
+    </div>
 
     <!-- Intégration de l'upload de fichier dans le même formulaire -->
     <input type="file" name="images" id="images" multiple>

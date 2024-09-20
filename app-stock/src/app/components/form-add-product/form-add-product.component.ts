@@ -1,14 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ApiService } from '../../../services/api.service';
-import { Product } from '../../../utils/interfaces/product';
-import { ProductCategories } from '../../../utils/interfaces/productCategory';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatOption } from '@angular/material/select';
 import { AsyncPipe } from '@angular/common';
 import { CommonModule } from '@angular/common';
+import { ApiService } from '../../../services/api.service';
 
 @Component({
   selector: 'app-form-add-product',

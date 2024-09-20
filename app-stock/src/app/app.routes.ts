@@ -7,6 +7,7 @@ import { EnterpriseComponent } from './components/enterprise/enterprise.componen
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { FormAddProductComponent } from './components/form-add-product/form-add-product.component';
+import { AdminBoardComponent } from './components/admin-board/admin-board.component';
 
 export const routes: Routes = [
     {path : "signup",component:SignupComponent},
@@ -15,6 +16,7 @@ export const routes: Routes = [
     {path : "enterprise",component:EnterpriseComponent},
     {path : "add-product",component:FormAddProductComponent},
     {path : "product-details/:id",component : ProductDetailsComponent},
+    {path : "admin-board",component:AdminBoardComponent},
     {path : "" || "home",component:HomeComponent},
     {path :"**",component:NotFoundComponent}
 ];
