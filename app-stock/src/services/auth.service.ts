@@ -13,6 +13,15 @@ export class AuthService {
     return this.http.post("http://localhost:8051/login", { email, password });
   }
 
+  logout() {
+    // Supprimer le token stocké
+    localStorage.removeItem('token');
+  }
+
+  isLoggedIn(): boolean {
+    // Vérifiez si un token existe dans le localStorage
+    return !!localStorage.getItem('token');
+  }
 
 
 
