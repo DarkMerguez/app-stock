@@ -1,9 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Product, Products } from '../utils/interfaces/product';
 import { Image } from '../utils/interfaces/image';
 import { forkJoin, Observable, switchMap, tap } from 'rxjs';
 import { ProductCategories } from '../utils/interfaces/productCategory';
+import { AuthService } from './auth.service';
+import { User } from '../utils/interfaces/user';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +13,8 @@ import { ProductCategories } from '../utils/interfaces/productCategory';
 export class ApiService {
 
   constructor(private http: HttpClient) { }
+
+  auth = inject(AuthService);
 
 
   public getProducts(): Observable<Products> {
@@ -96,5 +100,13 @@ public addProductWithImages(formData: FormData): Observable<any> {
 // forkJoin permet d'exécuter plusieurs observables en parallèle et d'attendre que tous soient terminés. Ici, nous l'utilisons pour lier chaque image au produit une fois celui-ci créé.
 
 
+getUser(): Observable <User> {
+  const userId = this.auth.getUserId();
+  return this.http.get<User>("http://localhost:8051/user/" + userId);
+}
+
+getAvatar(imageId: number): Observable<Image> {
+  return this.http.get<Image>("http://localhost:8051/image/" + imageId);
+}
 
 }

@@ -48,9 +48,21 @@ export class AuthService {
   }
 
   // Récupère le rôle de l'utilisateur
-  getRole(): string | null {
+  getRole(): string {
     const payload = this.getPayload();
     return payload ? payload.role : null;
+  }
+
+  // Récupère l'imageId d'un user
+  getAvatarId(): number {
+    const payload = this.getPayload();
+    return payload ? payload.ImageId : null;
+  }
+
+  // Récupère l'id de l'user
+  getUserId(): number {
+    const payload = this.getPayload();
+    return payload ? payload.id : null;
   }
 
   // Vérifier si l'utilisateur a le rôle Admin
