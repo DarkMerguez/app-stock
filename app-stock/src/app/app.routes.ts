@@ -12,6 +12,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { AuthGuard } from '../guards/AuthGuard';
 import { AdminGuard } from '../guards/AdminGuard';
 import { FormAddEnterpriseComponent } from './components/form-add-enterprise/form-add-enterprise.component';
+import { ProductsListComponent } from './components/products-list/products-list.component';
 
 export const routes: Routes = [
     {path : "signup",component:SignupComponent},
@@ -19,6 +20,7 @@ export const routes: Routes = [
     {path : "dashboard",component:DashboardComponent},
     {path : "enterprise",component:EnterpriseComponent},
     {path : "add-product",component:FormAddProductComponent},
+    {path : "products-list",component : ProductsListComponent},
     {path : "product-details/:id",component : ProductDetailsComponent},
     {path : "admin-board",component:AdminBoardComponent, canActivate: [AdminGuard]},
     {path : "profile",component:ProfileComponent, canActivate: [AuthGuard]},

@@ -1,22 +1,35 @@
-import { Component, input } from "@angular/core";
-import { Product, Products } from "../../../utils/interfaces/product";
-import { DashboardComponent } from "../dashboard/dashboard.component";
-import {MatCardModule} from '@angular/material/card';
-import { ProductDetailsComponent } from "../product-details/product-details.component";
-import { RouterLink } from "@angular/router";
-
+import { Component, inject, OnInit } from '@angular/core';
+import { Product, Products } from '../../../utils/interfaces/product';
+import { ApiService } from '../../../services/api.service';
+import { RouterLink } from '@angular/router';
+import { MatCard, MatCardContent, MatCardHeader, MatCardModule, MatCardSubtitle, MatCardTitle, MatCardTitleGroup } from '@angular/material/card';
+import { CommonModule } from '@angular/common';
+import { ProductDetailsComponent } from '../product-details/product-details.component';
 
 @Component({
   selector: 'app-products-list',
   standalone: true,
-  imports: [DashboardComponent, MatCardModule, ProductDetailsComponent,RouterLink],
+  imports: [RouterLink,
+    MatCard, 
+    MatCardContent,
+    MatCardSubtitle,
+    MatCardTitle,
+    MatCardTitleGroup,
+    ProductDetailsComponent,
+    MatCardHeader,
+    MatCardModule,
+    CommonModule],
   templateUrl: './products-list.component.html',
-  styleUrl: './products-list.component.css'
+  styleUrls: ['./products-list.component.css'],
 })
-export class ProductsListComponent {
+export class ProductsListComponent implements OnInit {
+  products: Products = []; // Déclarez un tableau de produits
 
-  product = null
+  private api = inject(ApiService);
 
-  items = input<Products>();
-
+  ngOnInit(): void {
+    this.api.getProducts().subscribe((data: Products) => {
+      this.products = data;
+    });
+  }
 }
