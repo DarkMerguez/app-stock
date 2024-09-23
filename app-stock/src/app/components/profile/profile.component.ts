@@ -28,7 +28,6 @@ avatar: Image = {} as Image;
 ngOnInit(): void {
   this.apiService.getUser().subscribe((user: User) => {
     const imageId = user.ImageId; // Récupère ImageId depuis l'objet user
-    console.log('ImageId:', imageId);
 
     // Ensuite, appelle l'API pour récupérer l'image correspondante
     if (imageId) {

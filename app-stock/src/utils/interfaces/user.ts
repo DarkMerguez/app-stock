@@ -1,12 +1,12 @@
 export interface User {
-    id: number;
+    id?: number;
     firstName: string;
     lastName: string;
-    password: string;
     email: string;
-    role: string;
-    ImageId: number;
-    EnterpriseId: number;
+    password: string;
+    role?: string;
+    ImageId?: number;
+    EnterpriseId?: number;
 }
 
 export type Users = User[];

@@ -109,4 +109,8 @@ getAvatar(imageId: number): Observable<Image> {
   return this.http.get<Image>("http://localhost:8051/image/" + imageId);
 }
 
+signup(user: User): Observable<User> {
+  return this.http.post<User>("http://localhost:8051/user/signup", user);
+}
+
 }
