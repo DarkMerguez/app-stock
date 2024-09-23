@@ -1,4 +1,5 @@
 .example-card {
+    position: relative;
     max-width: 400px;
     margin-bottom: 8px;
   }
@@ -21,4 +22,12 @@
     .container {
       grid-template-columns: 1fr;
     }
+  }
+
+  .icon-container {
+    position: absolute; /* Positionner en absolu par rapport au conteneur parent */
+    top: 10px; /* Ajustez selon vos besoins */
+    right: 10px; /* Ajustez selon vos besoins */
+    display: flex;
+    gap: 8px; /* Espacement entre les icônes */
   }

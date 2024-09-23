@@ -165,4 +165,9 @@ addEnterpriseWithImage(formData: FormData): Observable<any> {
 }
 
 
+// Supprimer un produit :
+public deleteProduct(id: number): Observable<Product> {
+  return this.http.delete<Product>("http://localhost:8051/product/" + id);
+}
+
 }
