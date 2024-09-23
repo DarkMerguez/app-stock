@@ -1,0 +1,23 @@
+<h1>Ajouter mon entreprise :</h1>
+
+<form [formGroup]="enterpriseGroup" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+    <input formControlName="name" placeholder="name">
+    <input formControlName="address" placeholder="address">
+    <input formControlName="siret" placeholder="siret">
+
+    <div class="form-group">
+        <select id="EnterpriseCategoryId" formControlName="EnterpriseCategoryId" class="form-control">
+            <!-- Option par défaut non sélectionnable -->
+            <option value="" disabled selected>Category</option>
+            <!-- Utilisation de *ngFor pour itérer sur les catégories -->
+            <option *ngFor="let enterpriseCategory of enterpriseCategories$ | async" [value]="enterpriseCategory.id">
+                {{ enterpriseCategory.title }}
+            </option>
+        </select>
+    </div>
+
+    <!-- Intégration de l'upload de fichier dans le même formulaire -->
+    <input type="file" name="image" id="image">
+
+    <button type="submit" [disabled]="!enterpriseGroup.valid">Ajouter l'entreprise'</button>
+</form>

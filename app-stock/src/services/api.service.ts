@@ -4,6 +4,7 @@ import { Product, Products } from '../utils/interfaces/product';
 import { Image } from '../utils/interfaces/image';
 import { forkJoin, Observable, switchMap, tap } from 'rxjs';
 import { ProductCategories } from '../utils/interfaces/productCategory';
+import { EnterpriseCategories } from '../utils/interfaces/';
 import { AuthService } from './auth.service';
 import { User } from '../utils/interfaces/user';
 
@@ -27,6 +28,10 @@ export class ApiService {
 
   public getProductCategories(): Observable<ProductCategories> {
     return this.http.get<ProductCategories>("http://localhost:8051/productcategories");
+  }
+
+  public getEnterpriseCategories(): Observable<EnterpriseCategories> {
+    return this.http.get<EnterpriseCategories>("http://localhost:8051/enterprisecategories");
   }
 
  // Méthode pour uploader une image avec FormData

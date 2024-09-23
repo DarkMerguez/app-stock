@@ -1,1 +1,12 @@
-<p>enterprise works!</p>
+<h1>Mon entreprise :</h1>
+
+<div class="cardEnterprise">
+    @if (user.EnterpriseId) {
+        <p>Kikou</p>
+    } @else {
+        <h2>Aucune entreprise renseignée</h2>
+        <button routerLink="/add-enterprise">Ajouter mon entreprise</button>
+    }
+
+    
+</div>
