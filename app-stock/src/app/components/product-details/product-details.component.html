@@ -2,7 +2,7 @@
   <mat-card-header>
     @if(isAdmin) {
     <div class="icon-container">
-      <button mat-icon-button (click)="onEdit(product.id)" aria-label="Modifier">
+      <button mat-icon-button [routerLink]="['/update-product', product.id]" aria-label="Modifier">
         <mat-icon>edit</mat-icon>
       </button>
       <button mat-icon-button (click)="onDelete(product.id)" aria-label="Supprimer">

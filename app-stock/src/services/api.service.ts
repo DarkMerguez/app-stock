@@ -23,8 +23,8 @@ export class ApiService {
     return this.http.get<Products>("http://localhost:8051/products");
   }
 
-  public getProductById(id: number): Observable<Product> {
-    return this.http.get<Product>("http://localhost:8051/product/" + id);
+  public getProductById(productId: number): Observable<Product> {
+    return this.http.get<Product>(`http://localhost:8051/product/${productId}`);
   }
 
   public getProductCategories(): Observable<ProductCategories> {
@@ -168,6 +168,25 @@ addEnterpriseWithImage(formData: FormData): Observable<any> {
 // Supprimer un produit :
 public deleteProduct(id: number): Observable<Product> {
   return this.http.delete<Product>("http://localhost:8051/product/" + id);
+}
+
+public updateProduct(productId: number, formData: FormData): Observable<any> {
+  return this.http.put<any>("http://localhost:8051/product/" + productId, formData);
+}
+
+// Mettre à jour un produit avec des images
+public updateProductWithImages(id: number, formData: FormData): Observable<any> {
+  return this.http.put("http://localhost:8051/product/" + id, formData);
+}
+
+// Récupérer les images d'un produit
+public getProductImages(productId: number): Observable<Image[]> {
+  return this.http.get<Image[]>(`http://localhost:8051/products/${productId}/images`);
+}
+
+// Supprimer une image
+public deleteImage(imageId: number): Observable<any> {
+  return this.http.delete<any>(`http://localhost:8051/image/${imageId}`);
 }
 
 }
