@@ -1,34 +1,40 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ApiService } from '../../../services/api.service';
 import { User } from '../../../utils/interfaces/user';
-import { RouterLink } from '@angular/router';
 import { Enterprise } from '../../../utils/interfaces/enterprise';
-import { EnterpriseDetailsComponent } from '../enterprise-details/enterprise-details.component';
+import { Image } from '../../../utils/interfaces/image';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-enterprise',
+  selector: 'app-enterprise-details',
   standalone: true,
-  imports: [RouterLink,EnterpriseDetailsComponent],
-  templateUrl: './enterprise.component.html',
-  styleUrl: './enterprise.component.css'
+  imports: [RouterLink],
+  templateUrl: './enterprise-details.component.html',
+  styleUrl: './enterprise-details.component.css'
 })
-export class EnterpriseComponent implements OnInit {
+export class EnterpriseDetailsComponent {
 
   private api = inject(ApiService);
 
   user: User = {} as User;
   enterprise: Enterprise = {} as Enterprise;
+  imageEnterprise: Image = {} as Image;
 
   ngOnInit(): void {
     this.api.getUser().subscribe((user: User) => {
       this.user = user;
       console.log(user);
   
-      
+
       if (this.user.EnterpriseId !== undefined) {
         this.api.getEnterpriseById(this.user.EnterpriseId).subscribe((enterprise: Enterprise) => {
-          this.enterprise = enterprise; 
+          this.enterprise = enterprise;
           console.log(enterprise);
+
+          this.api.getImageById(this.enterprise.ImageId).subscribe((imageEnterprise: Image) => {
+            this. imageEnterprise = imageEnterprise;
+            console.log(imageEnterprise);
+          })
         });
       } else {
         console.log("Pas d'entreprise assignée à cet user");

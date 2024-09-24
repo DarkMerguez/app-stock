@@ -189,4 +189,14 @@ public deleteImage(imageId: number): Observable<any> {
   return this.http.delete<any>(`http://localhost:8051/image/${imageId}`);
 }
 
+// Récupérer l'entreprise d'un user
+public getEnterpriseById(EnterpriseId: number): Observable<Enterprise> {
+  return this.http.get<Enterprise>(`http://localhost:8051/enterprise/${EnterpriseId}`);
+}
+
+// Récupérer l'image par son id
+public getImageById(ImageId: number): Observable<Image> {
+  return this.http.get<Image>(`http://localhost:8051/image/${ImageId}`);
+}
+
 }
