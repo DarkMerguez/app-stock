@@ -1,7 +1,7 @@
 img {
     --s: 180px; /* image size */
     --b: 3px; /* border thickness */
-    --c: #01161E; /* border color */
+    --c: #023a50; /* border color */
     --f: 1; /* initial scale */
     
     width: var(--s);
@@ -16,7 +16,7 @@ img {
     background: 
       radial-gradient(
         circle closest-side,
-        #f3f6ea calc(99% - var(--b)),var(--c) calc(100% - var(--b)) 99%,#0000
+        #d5dbc5 calc(99% - var(--b)),var(--c) calc(100% - var(--b)) 99%,#0000
        ) var(--_g);
     -webkit-mask:
       linear-gradient(#000 0 0) no-repeat
@@ -43,7 +43,7 @@ img {
     border-radius: 2vh;
     padding: 1vh;
     background-color: #598392;
-    color: #EFF6E0;
+    color: #e5e8df;
   }
 
   #btnAvatar {
@@ -61,4 +61,12 @@ img {
     position: absolute;
     right: 1vh;
     top: +1vh;
+  }
+
+  button {
+    border-radius: 2vh;
+  }
+
+  p {
+    margin-top: 0vh;
   }

@@ -4,6 +4,7 @@ import { User } from '../../../utils/interfaces/user';
 import { Enterprise } from '../../../utils/interfaces/enterprise';
 import { Image } from '../../../utils/interfaces/image';
 import { RouterLink } from '@angular/router';
+import { EnterpriseCategory } from '../../../utils/interfaces/enterpriseCategory';
 
 @Component({
   selector: 'app-enterprise-details',
@@ -19,6 +20,7 @@ export class EnterpriseDetailsComponent {
   user: User = {} as User;
   enterprise: Enterprise = {} as Enterprise;
   imageEnterprise: Image = {} as Image;
+  enterpriseCategory: EnterpriseCategory = {} as EnterpriseCategory;
 
   ngOnInit(): void {
     this.api.getUser().subscribe((user: User) => {
@@ -32,6 +34,10 @@ export class EnterpriseDetailsComponent {
 
           this.api.getImageById(this.enterprise.ImageId).subscribe((imageEnterprise: Image) => {
             this. imageEnterprise = imageEnterprise;
+          })
+
+          this.api.getEnterpriseCategory(this.enterprise.EnterpriseCategoryId).subscribe((enterpriseCategory: EnterpriseCategory) => {
+            this.enterpriseCategory = enterpriseCategory;
           })
         });
       } else {

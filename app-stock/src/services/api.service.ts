@@ -4,7 +4,7 @@ import { Product, Products } from '../utils/interfaces/product';
 import { Image, Images } from '../utils/interfaces/image';
 import { catchError, forkJoin, Observable, switchMap, tap, throwError } from 'rxjs';
 import { ProductCategories, ProductCategory } from '../utils/interfaces/productCategory';
-import { EnterpriseCategories } from '../utils/interfaces/enterpriseCategory';
+import { EnterpriseCategories, EnterpriseCategory } from '../utils/interfaces/enterpriseCategory';
 import { AuthService } from './auth.service';
 import { User } from '../utils/interfaces/user';
 import { Enterprise } from '../utils/interfaces/enterprise';
@@ -211,6 +211,10 @@ export class ApiService {
   // Récupérer les produits d'une catégorie
   public getProductsByCategory(ProductCategoryId: number): Observable<Products> {
     return this.http.get<Products>(`http://localhost:8051/products/category/${ProductCategoryId}`);
+  }
+
+  public getEnterpriseCategory(EnterpriseCategoryId: number): Observable<EnterpriseCategory> {
+    return this.http.get<EnterpriseCategory>(`http://localhost:8051/enterprisecategory/${EnterpriseCategoryId}`)
   }
 
 }
