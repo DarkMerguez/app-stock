@@ -1,9 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Product, Products } from '../utils/interfaces/product';
-import { Image } from '../utils/interfaces/image';
+import { Image, Images } from '../utils/interfaces/image';
 import { catchError, forkJoin, Observable, switchMap, tap, throwError } from 'rxjs';
-import { ProductCategories } from '../utils/interfaces/productCategory';
+import { ProductCategories, ProductCategory } from '../utils/interfaces/productCategory';
 import { EnterpriseCategories } from '../utils/interfaces/enterpriseCategory';
 import { AuthService } from './auth.service';
 import { User } from '../utils/interfaces/user';
@@ -25,6 +25,10 @@ export class ApiService {
 
   public getProductById(productId: number): Observable<Product> {
     return this.http.get<Product>(`http://localhost:8051/product/${productId}`);
+  }
+
+  public getProductCategoryById(productCategoryId: number): Observable<ProductCategory> {
+    return this.http.get<ProductCategory>(`http://localhost:8051/productcategory/${productCategoryId}`);
   }
 
   public getProductCategories(): Observable<ProductCategories> {
@@ -185,8 +189,8 @@ export class ApiService {
   }
 
   // Récupérer les images d'un produit
-  public getProductImages(productId: number): Observable<Image[]> {
-    return this.http.get<Image[]>(`http://localhost:8051/products/${productId}/images`);
+  public getProductImages(productId: number): Observable<Images> {
+    return this.http.get<Images>(`http://localhost:8051/products/${productId}/images`);
   }
 
   // Supprimer une image
@@ -202,6 +206,11 @@ export class ApiService {
   // Récupérer l'image par son id
   public getImageById(ImageId: number): Observable<Image> {
     return this.http.get<Image>(`http://localhost:8051/image/${ImageId}`);
+  }
+
+  // Récupérer les produits d'une catégorie
+  public getProductsByCategory(ProductCategoryId: number): Observable<Products> {
+    return this.http.get<Products>(`http://localhost:8051/products/category/${ProductCategoryId}`);
   }
 
 }

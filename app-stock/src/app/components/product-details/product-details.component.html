@@ -1,23 +1,35 @@
 <mat-card class="example-card" appearance="outlined" routerLink="/product-details/{{product.id}}">
   <mat-card-header>
-    @if(isAdmin) {
-    <div class="icon-container">
-      <button mat-icon-button [routerLink]="['/update-product', product.id]" aria-label="Modifier">
-        <mat-icon>edit</mat-icon>
-      </button>
-      <button mat-icon-button (click)="onDelete(product.id)" aria-label="Supprimer">
-        <mat-icon>delete</mat-icon>
-      </button>
-    </div>
-    }
+    <ng-container *ngIf="isAdmin || isGestionnaire">
+      <div class="icon-container">
+        <button mat-icon-button [routerLink]="['/update-product', product.id]" aria-label="Modifier">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="onDelete(product.id)" aria-label="Supprimer">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </ng-container>
     <mat-card-title-group>
       <mat-card-title>{{ product.name }}</mat-card-title>
       <mat-card-subtitle>{{ product.price }} €</mat-card-subtitle>
       <mat-card-subtitle>Stock : {{ product.stock }}</mat-card-subtitle>
     </mat-card-title-group>
   </mat-card-header>
-  <img mat-card-lg-image src="https://picsum.photos/400">
+
+  <!-- Carousel d'images -->
+  <div class="carousel-container">
+    <div class="carousel" [style.transform]="'translateX(-' + (currentIndex * 100) + '%)'">
+      <div *ngFor="let image of productImages; let i = index" class="carousel-item">
+        <img [src]="image.url" alt="Product image" class="carousel-image" />
+      </div>
+    </div>
+    <button class="carousel-button left" (click)="prevSlide()">&#10094;</button>
+    <button class="carousel-button right" (click)="nextSlide()">&#10095;</button>
+  </div>
+  
   <mat-card-content>
-    {{ product.description }}
+    <h3>Description du produit :</h3>
+    <p>{{ product.description }}</p>
   </mat-card-content>
 </mat-card>

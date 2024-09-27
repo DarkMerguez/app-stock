@@ -5,11 +5,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { Product } from '../../../utils/interfaces/product';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
+import { Images } from '../../../utils/interfaces/image';
+import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-product-details',
   standalone: true,
-  imports: [MatCardModule,RouterLink,MatIconModule],
+  imports: [MatCardModule,RouterLink,MatIconModule,CarouselModule,CommonModule],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.css'
 })
@@ -18,8 +21,10 @@ export class ProductDetailsComponent implements OnInit {
   authService = inject(AuthService);
 
   isAdmin = this.authService.isAdmin();
+  isGestionnaire = this.authService.isGestionnaire();
 
   product: Product = {} as Product;
+  productImages: Images = [] as Images;
 
   @Input() id: number = 0;
 
@@ -48,9 +53,29 @@ export class ProductDetailsComponent implements OnInit {
     }
   }
 
+  currentIndex: number = 0;
+
+  nextSlide(): void {
+    if (this.productImages.length > 0) {
+      this.currentIndex = (this.currentIndex + 1) % this.productImages.length; // Boucle à la première image
+    }
+  }
+  
+  prevSlide(): void {
+    if (this.productImages.length > 0) {
+      this.currentIndex = (this.currentIndex - 1 + this.productImages.length) % this.productImages.length; // Boucle à la dernière image
+    }
+  }
+
   ngOnInit(): void {
     this.api.getProductById(this.id).subscribe((product: Product) => {
       this.product = product;
+
+      // Récupération des images du produit
+      this.api.getProductImages(this.product.id).subscribe((productImages: Images) => {
+        this.productImages = productImages;
+        console.log(productImages)
+      });
     });
   }
 

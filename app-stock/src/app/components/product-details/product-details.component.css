@@ -1,27 +1,11 @@
+
 .example-card {
     position: relative;
-    max-width: 400px;
-    margin-bottom: 8px;
-  }
-  
-  .container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 2vh;
-    justify-content: center;
-    margin: 2vh;
-  }
-  
-  @media screen and (max-width: 1150px) {
-    .container {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-  
-  @media screen and (max-width: 800px) {
-    .container {
-      grid-template-columns: 1fr;
-    }
+    max-width: 80%;
+    margin-bottom: 2vh;
+    margin-top: 2vh;
+    margin-left: 10%;
+    margin-right: 10%;
   }
 
   .icon-container {
@@ -31,3 +15,53 @@
     display: flex;
     gap: 8px; /* Espacement entre les icônes */
   }
+
+  .carousel-container {
+    position: relative;
+    overflow: hidden;
+    max-width: 100%; /* Ajuste la largeur maximale du carousel */
+    height: 600px; /* Ajuste la hauteur maximale du carousel */
+    display: flex; /* Ajout de flexbox pour centrer les images */
+    align-items: center; /* Centre verticalement */
+}
+
+.carousel {
+    display: flex;
+    transition: transform 1s ease; /* Transition fluide */
+    height: 100%; /* Assure que le carrousel prend toute la hauteur */
+}
+
+.carousel-item {
+    min-width: 100%; /* Chaque image occupe 100% de la largeur */
+    display: flex; /* Ajout de flexbox pour centrer l'image */
+    justify-content: center; /* Centre horizontalement */
+}
+
+.carousel-image {
+    max-height: 100%; /* Limite la hauteur de l'image pour qu'elle ne dépasse pas celle du conteneur */
+    max-width: 100%; /* Limite la largeur de l'image pour qu'elle ne dépasse pas celle du conteneur */
+    height: auto; /* La hauteur s'ajuste automatiquement en fonction de la largeur */
+    width: auto; /* La largeur s'ajuste automatiquement en fonction de la hauteur */
+    object-fit: contain; /* Maintient le ratio d'aspect et s'assure que l'image est entièrement visible */
+}
+  
+  .carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 100%;
+  }
+  
+  .left {
+    left: 10px;
+  }
+  
+  .right {
+    right: 10px;
+  }
+  

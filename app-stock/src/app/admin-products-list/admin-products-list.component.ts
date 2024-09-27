@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Products } from '../../../utils/interfaces/product';
-import { ApiService } from '../../../services/api.service';
-import { User } from '../../../utils/interfaces/user';
+import { Products } from '../../utils/interfaces/product';
+import { ApiService } from '../../services/api.service';
+import { User } from '../../utils/interfaces/user';
 import { MatCard, MatCardModule } from '@angular/material/card';
 import { MatIcon } from '@angular/material/icon';
 import { NgFor } from '@angular/common';
