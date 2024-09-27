@@ -23,7 +23,6 @@ export class EnterpriseDetailsComponent {
   ngOnInit(): void {
     this.api.getUser().subscribe((user: User) => {
       this.user = user;
-      console.log(user);
   
 
       if (this.user.EnterpriseId !== undefined) {
@@ -33,7 +32,6 @@ export class EnterpriseDetailsComponent {
 
           this.api.getImageById(this.enterprise.ImageId).subscribe((imageEnterprise: Image) => {
             this. imageEnterprise = imageEnterprise;
-            console.log(imageEnterprise);
           })
         });
       } else {

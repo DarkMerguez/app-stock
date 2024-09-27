@@ -1,8 +1,18 @@
-<button (click)="logout()">Logout</button>
+<button (click)="logout()" id="btnLogout">Logout</button>
 
 
-<div class="profilePicture">
-    <img [src]="avatar.url" alt="a random avatar picture">
+<div class="profileCard">
+    <div class="profilePicture">
+        <img [src]="avatar.url" alt="a random avatar picture">
+    </div>
+
+    <button id="btnAvatar">Modifier l'avatar</button>
+    <button id="editInfos">Editer mes infos</button>
+
+    <p>Prénom : {{ user.firstName }}</p>
+    <p>Nom : {{ user.lastName }}</p>
+    <p>Email : {{ user.email }}</p>
+    @if (userEnterprise) {
+    <p>Mon entreprise : <span routerLink="/enterprise" style="cursor: pointer;">{{ userEnterprise.name }}</span></p>
+    }
 </div>
-
-<button>Modifier l'avatar</button>

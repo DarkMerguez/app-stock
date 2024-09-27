@@ -1,0 +1,12 @@
+@if (productCategory) {
+    <h1>{{productCategory.title}}</h1>
+    }
+    
+    
+    <div class="container">
+        @for (product of products; track product.id) {
+    
+        <app-product-details routerLink="/product-details/{{product.id}}" [id]="product.id"></app-product-details>
+    
+        }
+    </div>

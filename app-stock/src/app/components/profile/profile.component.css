@@ -1,6 +1,6 @@
 img {
-    --s: 280px; /* image size */
-    --b: 5px; /* border thickness */
+    --s: 180px; /* image size */
+    --b: 3px; /* border thickness */
     --c: #01161E; /* border color */
     --f: 1; /* initial scale */
     
@@ -16,7 +16,7 @@ img {
     background: 
       radial-gradient(
         circle closest-side,
-        #e0edf6 calc(99% - var(--b)),var(--c) calc(100% - var(--b)) 99%,#0000
+        #f3f6ea calc(99% - var(--b)),var(--c) calc(100% - var(--b)) 99%,#0000
        ) var(--_g);
     -webkit-mask:
       linear-gradient(#000 0 0) no-repeat
@@ -26,5 +26,39 @@ img {
     transition: .5s;
   }
   img:hover {
-    --f: 1.35; /* hover scale */
+    --f: 1.15; /* hover scale */
+  }
+
+  .profileCard {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    margin-left: 35%;
+    border: solid 1px;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    border-radius: 2vh;
+    padding: 1vh;
+    background-color: #598392;
+    color: #EFF6E0;
+  }
+
+  #btnAvatar {
+    margin-top: 1.5vh;
+    margin-bottom: 5vh;
+  }
+
+  #editInfos {
+    position: absolute;
+    top: 1vh;
+    right: 1vh;
+  }
+
+  #btnLogout {
+    position: absolute;
+    right: 1vh;
+    top: +1vh;
   }
