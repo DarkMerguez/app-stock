@@ -7,6 +7,7 @@ export interface Product {
     ProductCategoryId: string;
     isFavorite: boolean;
     EnterpriseId?: number;
+    firstImage?: string;
 }
 
 export type Products = Product[];

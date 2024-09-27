@@ -1,7 +1,7 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
-import { ApiService } from '../../services/api.service';
-import { Products } from '../../utils/interfaces/product';
-import { ProductCategory } from '../../utils/interfaces/productCategory';
+import { ApiService } from '../../../services/api.service';
+import { Products } from '../../../utils/interfaces/product';
+import { ProductCategory } from '../../../utils/interfaces/productCategory';
 import { RouterLink } from '@angular/router';
 
 @Component({

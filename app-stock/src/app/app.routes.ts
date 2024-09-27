@@ -16,7 +16,7 @@ import { ProductsListComponent } from './components/products-list/products-list.
 import { FormUpdateProductComponent } from './components/form-update-product/form-update-product.component';
 import { EnterpriseDetailsComponent } from './components/enterprise-details/enterprise-details.component';
 import { AdminProductsListComponent } from './admin-products-list/admin-products-list.component';
-import { ProductCategoriesListComponent } from './product-categories-list/product-categories-list.component';
+import { ProductCategoriesListComponent } from './components/product-categories-list/product-categories-list.component';
 
 export const routes: Routes = [
     {path : "signup",component:SignupComponent},
@@ -25,7 +25,7 @@ export const routes: Routes = [
     {path : "enterprise",component:EnterpriseComponent},
     {path : "add-product",component:FormAddProductComponent},
     {path : "products-list",component : ProductsListComponent},
-    {path : "admin-products-list",component : AdminProductsListComponent},
+    {path : "admin-products-list",component : AdminProductsListComponent, canActivate: [AdminGuard]},
     {path : "product-details/:id",component : ProductDetailsComponent},
     {path : "product-categories",component : ProductCategoriesListComponent},
     {path : "enterprise-details/:id",component : EnterpriseDetailsComponent},

@@ -1,8 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ApiService } from '../../services/api.service';
-import { ProductCategories } from '../../utils/interfaces/productCategory';
+import { ApiService } from '../../../services/api.service';
+import { ProductCategories } from '../../../utils/interfaces/productCategory';
 import { RouterLink } from '@angular/router';
 import { ProductCategoryComponent } from '../product-category/product-category.component';
+
 
 @Component({
   selector: 'app-product-categories-list',
