@@ -1,25 +1,25 @@
 <body>
-    <div class="ring">
-      <i style="--clr:#124559;"></i>
-      <i style="--clr:#598392;"></i>
-      <i style="--clr:#AEC3B0;"></i>
-      <div class="login">
-        <h2>Login</h2>
-        <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
-          <div class="inputBx">
-            <input type="email" placeholder="Email" [(ngModel)]="email" name="email" required>
-          </div>
-          <div class="inputBx">
-            <input type="password" placeholder="Password" [(ngModel)]="password" name="password" required>
-          </div>
-          <div class="inputBx">
-            <input type="submit" value="Sign in" class="valid">
-          </div>
-          <div class="links">
-            <a href="#">Forget Password</a>
-            <a routerLink="/signup">Register</a>
-          </div>
-        </form>
-      </div>
+  <div class="ring">
+    <i style="--clr:#124559;"></i>
+    <i style="--clr:#598392;"></i>
+    <i style="--clr:#AEC3B0;"></i>
+    <div class="login">
+      <h2>Login</h2>
+      <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+        <div class="inputBx">
+          <input type="email" placeholder="Email" [(ngModel)]="email" name="email" required>
+        </div>
+        <div class="inputBx">
+          <input type="password" placeholder="Password" [(ngModel)]="password" name="password" required>
+        </div>
+        <div class="inputBx">
+          <input type="submit" value="Sign in" class="valid">
+        </div>
+        <div class="links">
+          <a href="#">Forget Password</a>
+          <a routerLink="/signup">Register</a>
+        </div>
+      </form>
     </div>
-  </body>
+  </div>
+</body>

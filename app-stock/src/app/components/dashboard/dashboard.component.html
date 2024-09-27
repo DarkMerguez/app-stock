@@ -1,7 +1,15 @@
-@if (products$ | async; as products) {
+<!-- @if (products$ | async; as products) {
 
     <button routerLink="/add-product">Ajouter un nouveau produit</button>
 
-    <!-- <app-products-list [items]="products"/> -->
+} -->
+
+@if (user.EnterpriseId) {
+
+    <button routerLink="/add-product">Ajouter un nouveau produit</button>
+
+    <h1>Les produits de mon entreprise :</h1>
+
+    <app-products-list />
 
 }

@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ApiService } from '../../../services/api.service';
 import { AsyncPipe, CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-add-enterprise',
@@ -28,9 +29,8 @@ export class FormAddEnterpriseComponent {
   });
 
   private api = inject(ApiService);
-
+  private router = inject(Router);
   enterpriseCategories$ = this.api.getEnterpriseCategories();
-
 
   onSubmit() {
     if (this.enterpriseGroup.valid) {
@@ -55,6 +55,7 @@ export class FormAddEnterpriseComponent {
       this.api.addEnterpriseWithImage(formData).subscribe({
         next: (response: any) => {
           console.log('Entreprise ajoutée avec succès', response);
+          this.router.navigate(["/enterprise"]);
         },
         error: (err: any) => {
           console.error('Erreur lors de l\'ajout de l\'entreprise', err);
@@ -66,3 +67,5 @@ export class FormAddEnterpriseComponent {
   }
 
 }
+
+

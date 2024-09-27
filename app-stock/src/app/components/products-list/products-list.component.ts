@@ -5,6 +5,7 @@ import { RouterLink } from '@angular/router';
 import { ApiService } from '../../../services/api.service';
 import { Products } from '../../../utils/interfaces/product';
 import { NgFor } from '@angular/common';
+import { User } from '../../../utils/interfaces/user';
 
 @Component({
   selector: 'app-products-list',
@@ -14,13 +15,17 @@ import { NgFor } from '@angular/common';
   styleUrls: ['./products-list.component.css'],
 })
 export class ProductsListComponent implements OnInit {
-  products: Products = []; // Déclarez un tableau de produits
+  products: Products = [];
 
   private api = inject(ApiService);
+  user: User = {} as User;
 
   ngOnInit(): void {
-    this.api.getProducts().subscribe((data: Products) => {
-      this.products = data;
+    this.api.getProducts().subscribe((products: Products) => {
+      this.products = products;
+    });
+    this.api.getUser().subscribe((user : User) => {
+      this.user = user;
     });
   }
 }
