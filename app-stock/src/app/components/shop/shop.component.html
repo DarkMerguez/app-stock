@@ -1,0 +1,20 @@
+<div class="container">
+
+    @for (product of products; track product.id) {
+    <div class="card">
+        <ng-container>
+            <mat-card class="example-card" [routerLink]="['/product-details', product.id]">
+                <mat-card-header>
+                    <mat-card-title-group>
+                        <mat-card-title>{{ product.name }}</mat-card-title>
+                        <mat-card-subtitle>{{ product.price }} €</mat-card-subtitle>
+                        <mat-card-subtitle>Stock : {{ product.stock }}</mat-card-subtitle>
+                        <img mat-card-lg-image [src]="product.firstImage" alt="Image du produit">
+                    </mat-card-title-group>
+                </mat-card-header>
+            </mat-card>
+        </ng-container>
+    </div>
+    }
+
+</div>

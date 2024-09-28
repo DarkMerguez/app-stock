@@ -33,7 +33,7 @@
     text-decoration: none;
     border-radius: 10px;
     text-align: center;
-    margin-right: 1vh;
+    margin-right: 0.75vh;
   }
   .header li a:hover,
   .header .menu-btn:hover {
@@ -106,7 +106,7 @@
   }
   
   .header .menu-btn:checked ~ .menu {
-    max-height: 240px;
+    max-height: 400px;
   }
   
   .header .menu-btn:checked ~ .menu-icon .navicon {
@@ -125,10 +125,9 @@
   .header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
     top: 0;
   }
+
   
-  /* 48em = 768px */
-  
-  @media (min-width: 48em) {
+  @media (min-width: 600px) {
     .header li {
       float: left;
     }
@@ -146,11 +145,13 @@
   }
   
 #logo {
-    height: 15vh;
+    height: 20vh;
 }
 
 #searchbar {
     width: 100%;
+    border-top-left-radius: 20vh;
+    border-top-right-radius: 20vh;
     background-color: #124559;
     height: 7vh;
     display: flex;
@@ -163,7 +164,7 @@
     padding: 1vh;
     padding-left: 3vh;
     border: none;
-    width: 40vh !important;
+    width: 25vh !important;
     background-color: #e0edf6;
 }
 

@@ -1,31 +1,33 @@
 <button (click)="logout()" id="btnLogout" class="button-89" role="button">Logout</button>
 
+<div class="component">
+    <div class="profileCard">
+        <div class="image-container">
+            <img [src]="avatar.url" alt="a random avatar picture" (click)="triggerFileInput()">
+            <div class="hover-text">Modifier l'avatar</div>
+        </div>
 
-<div class="profileCard">
-    <div class="image-container">
-        <img [src]="avatar.url" alt="a random avatar picture" (click)="triggerFileInput()">
-        <div class="hover-text">Modifier l'avatar</div>
-    </div>
 
 
+        <!-- Champ d'upload de fichier caché -->
+        <input type="file" id="image" accept="image/*" (change)="onFileSelected($event)" style="display: none;">
 
-    <!-- Champ d'upload de fichier caché -->
-    <input type="file" id="image" accept="image/*" (change)="onFileSelected($event)" style="display: none;">
+        <button routerLink="/update-user/{{user.id}}" class="button-82-pushable" role="button" id="editInfos">
+            <span class="button-82-shadow"></span>
+            <span class="button-82-edge"></span>
+            <span class="button-82-front text">
+                Modifier
+            </span>
+        </button>
 
-    <button class="button-82-pushable" role="button" id="editInfos">
-        <span class="button-82-shadow"></span>
-        <span class="button-82-edge"></span>
-        <span class="button-82-front text">
-            Modifier
-        </span>
-    </button>
-
-    <div class="align-left">
-        <p><span class="color">Prénom</span> : {{ user.firstName }}</p>
-        <p><span class="color">Nom</span> : {{ user.lastName }}</p>
-        <p><span class="color">Email</span> : {{ user.email }}</p>
-        @if (userEnterprise) {
-        <p><span class="color">Entreprise</span> : <span routerLink="/enterprise" style="cursor: pointer;">{{ userEnterprise.name }}</span></p>
-        }
+        <div class="align-left">
+            <p><span class="color">Prénom</span> : {{ user.firstName }}</p>
+            <p><span class="color">Nom</span> : {{ user.lastName }}</p>
+            <p><span class="color">Email</span> : {{ user.email }}</p>
+            @if (userEnterprise) {
+            <p><span class="color">Entreprise</span> : <span routerLink="/enterprise" style="cursor: pointer;">{{
+                    userEnterprise.name }}</span></p>
+            }
+        </div>
     </div>
 </div>

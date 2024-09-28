@@ -4,6 +4,7 @@
     <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
     <ul class="menu">
       <li><a routerLink="/home">Home</a></li>
+      <li><a routerLink="/shop">Shop</a></li>
       @if(isLoggedIn) { <li><a routerLink="/dashboard">Dashboard</a></li> }
       @if(isLoggedIn) { <li><a routerLink="/enterprise">My enterprise</a></li> }
       @if(!isLoggedIn) { <li><a routerLink="/signin">Signin</a></li> }

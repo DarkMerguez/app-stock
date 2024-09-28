@@ -45,7 +45,6 @@ img:hover {
   align-items: center;
   width: 30%;
   border: none;
-  margin-left: 35%;
   margin-top: 5vh;
   margin-bottom: 5vh;
   border-radius: 2vh;
@@ -245,4 +244,22 @@ p {
 
 .image-container:hover .hover-text {
   display: block; /* Afficher le texte au survol de l'image */
+}
+
+@media screen and (max-width: 800px) {
+  img {
+    --s: 133px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .profileCard {
+    width: 60%;
+  }
+}
+
+.component {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

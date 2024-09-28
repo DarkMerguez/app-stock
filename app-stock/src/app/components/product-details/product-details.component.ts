@@ -1,6 +1,6 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { ApiService } from '../../../services/api.service';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { Product } from '../../../utils/interfaces/product';
 import { Router, RouterLink } from '@angular/router';
@@ -8,11 +8,12 @@ import { AuthService } from '../../../services/auth.service';
 import { Images } from '../../../utils/interfaces/image';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { CommonModule } from '@angular/common';
+import { User } from '../../../utils/interfaces/user';
 
 @Component({
   selector: 'app-product-details',
   standalone: true,
-  imports: [MatCardModule,RouterLink,MatIconModule,CarouselModule,CommonModule],
+  imports: [MatCardModule, RouterLink, MatIconModule, CarouselModule, CommonModule],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.css'
 })
@@ -25,18 +26,15 @@ export class ProductDetailsComponent implements OnInit {
 
   product: Product = {} as Product;
   productImages: Images = [] as Images;
+  user: User = {} as User;
 
   @Input() id: number = 0;
 
   private api = inject(ApiService);
   private router = inject(Router);
+  private auth = inject(AuthService);
 
-  onEdit(productId: number): void {
-    // Logique pour modifier le produit, par exemple, rediriger vers le formulaire de modification
-    console.log(`Modifier le produit avec l'ID: ${productId}`);
-    // Par exemple, vous pouvez rediriger avec le routeur :
-    // this.router.navigate(['/edit-product', productId]);
-  }
+  isLoggedIn: Boolean = this.auth.isLoggedIn();
 
   onDelete(productId: number) {
     const confirmDelete = confirm("Êtes-vous sûr de vouloir supprimer ce produit ?");
@@ -60,7 +58,7 @@ export class ProductDetailsComponent implements OnInit {
       this.currentIndex = (this.currentIndex + 1) % this.productImages.length; // Boucle à la première image
     }
   }
-  
+
   prevSlide(): void {
     if (this.productImages.length > 0) {
       this.currentIndex = (this.currentIndex - 1 + this.productImages.length) % this.productImages.length; // Boucle à la dernière image
@@ -68,6 +66,11 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.api.getUser().subscribe((user) => {
+      this.user = user;
+    })
+
     this.api.getProductById(this.id).subscribe((product: Product) => {
       this.product = product;
 
