@@ -17,6 +17,7 @@ import { FormUpdateProductComponent } from './components/form-update-product/for
 import { EnterpriseDetailsComponent } from './components/enterprise-details/enterprise-details.component';
 import { AdminProductsListComponent } from './admin-products-list/admin-products-list.component';
 import { ProductCategoriesListComponent } from './components/product-categories-list/product-categories-list.component';
+import { FormUpdateUserComponent } from './components/form-update-user/form-update-user.component';
 
 export const routes: Routes = [
     {path : "signup",component:SignupComponent},
@@ -30,6 +31,7 @@ export const routes: Routes = [
     {path : "product-categories",component : ProductCategoriesListComponent},
     {path : "enterprise-details/:id",component : EnterpriseDetailsComponent},
     {path : "update-product/:id",component : FormUpdateProductComponent},
+    {path : "update-user/:id",component : FormUpdateUserComponent},
     {path : "admin-board",component:AdminBoardComponent, canActivate: [AdminGuard]},
     {path : "profile",component:ProfileComponent, canActivate: [AuthGuard]},
     {path : "add-enterprise",component:FormAddEnterpriseComponent, canActivate: [AuthGuard]},
