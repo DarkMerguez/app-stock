@@ -124,18 +124,18 @@ export class ApiService {
     return localStorage.getItem('token');
   }
 
-  //Méthode pour uploader une seule image :
-  public uploadImage(formData: FormData): Observable<Image> {
-    return this.http.post<Image>("http://localhost:8051/upload-single", formData).pipe(
-      tap((response) => {
-        console.log('Image upload response:', response);
-      }),
-      catchError((error) => {
-        console.error('Image upload failed', error);
-        return throwError(() => new Error('Image upload failed'));
-      })
-    );
-  }
+//Méthode pour uploader une seule image :
+public uploadImage(formData: FormData): Observable<{ image: Image }> {
+  return this.http.post<{ image: Image }>("http://localhost:8051/upload-single", formData).pipe(
+    tap((response) => {
+      console.log('Image upload response:', response);
+    }),
+    catchError((error) => {
+      console.error('Image upload failed', error);
+      return throwError(() => new Error('Image upload failed'));
+    })
+  );
+}
 
 
   // Ajouter une enterprise
@@ -215,6 +215,11 @@ export class ApiService {
 
   public getEnterpriseCategory(EnterpriseCategoryId: number): Observable<EnterpriseCategory> {
     return this.http.get<EnterpriseCategory>(`http://localhost:8051/enterprisecategory/${EnterpriseCategoryId}`)
+  }
+
+  // Méthode pour mettre à jour un utilisateur
+  public updateUser(userId: number, data: Partial<User>): Observable<User> {
+    return this.http.put<User>(`http://localhost:8051/user/${userId}`, data);
   }
 
 }

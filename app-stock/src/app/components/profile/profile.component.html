@@ -3,16 +3,15 @@
 
 <div class="profileCard">
     <div class="image-container">
-        <img [src]="avatar.url" alt="a random avatar picture">
+        <img [src]="avatar.url" alt="a random avatar picture" (click)="triggerFileInput()">
+        <div class="hover-text">Modifier l'avatar</div>
     </div>
 
-    <button class="button-82-pushable" role="button" id="btnAvatar">
-        <span class="button-82-shadow"></span>
-        <span class="button-82-edge"></span>
-        <span class="button-82-front text">
-            📷 Changer
-        </span>
-    </button>
+
+
+    <!-- Champ d'upload de fichier caché -->
+    <input type="file" id="image" accept="image/*" (change)="onFileSelected($event)" style="display: none;">
+
     <button class="button-82-pushable" role="button" id="editInfos">
         <span class="button-82-shadow"></span>
         <span class="button-82-edge"></span>
@@ -20,14 +19,13 @@
             Modifier
         </span>
     </button>
-    <!-- <button id="btnAvatar">📷 Modifier l'avatar</button>
-    <button id="editInfos">Button 56>Editer mes infos</button> -->
+
     <div class="align-left">
-        <p>Prénom : <span>{{ user.firstName }}</span></p>
-        <p>Nom : <span>{{ user.lastName }}</span></p>
-        <p>Email : <span>{{ user.email }}</span></p>
+        <p><span class="color">Prénom</span> : {{ user.firstName }}</p>
+        <p><span class="color">Nom</span> : {{ user.lastName }}</p>
+        <p><span class="color">Email</span> : {{ user.email }}</p>
         @if (userEnterprise) {
-        <p>Mon entreprise : <span routerLink="/enterprise" style="cursor: pointer;">{{ userEnterprise.name }}</span></p>
+        <p><span class="color">Entreprise</span> : <span routerLink="/enterprise" style="cursor: pointer;">{{ userEnterprise.name }}</span></p>
         }
     </div>
 </div>

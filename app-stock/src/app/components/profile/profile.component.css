@@ -1,99 +1,113 @@
 img {
-  --s: 222px; /* image size */
-  --b: 3px; /* border thickness */
-  --c: #023a50; /* border color */
-  --f: 1; /* initial scale */
-  
+  --s: 222px;
+  /* image size */
+  --b: 3px;
+  /* border thickness */
+  --c: #023a50;
+  /* border color */
+  --f: 1;
+  /* initial scale */
+
   width: var(--s);
-  height: var(--s); /* Ajouté pour forcer une taille égale */
+  height: var(--s);
+  /* Ajouté pour forcer une taille égale */
   aspect-ratio: 1;
-  padding-top: 0; /* Ajustement pour éviter des marges inutiles */
+  padding-top: 0;
+  /* Ajustement pour éviter des marges inutiles */
   cursor: pointer;
-  border-radius: 50%; /* Changement à 50% pour un cercle parfait */
+  border-radius: 50%;
+  /* Changement à 50% pour un cercle parfait */
   --_g: 50%/calc(100%/var(--f)) 100% no-repeat content-box;
   --_o: calc((1/var(--f) - 1)*var(--s)/2 - var(--b));
   outline: var(--b) solid var(--c);
   outline-offset: var(--_o);
-  background: 
-    radial-gradient(
-      circle closest-side,
-      #d5dbc5 calc(99% - var(--b)), var(--c) calc(100% - var(--b)) 99%, #0000
-     ) var(--_g);
+  background:
+    radial-gradient(circle closest-side,
+      #d5dbc5 calc(99% - var(--b)), var(--c) calc(100% - var(--b)) 99%, #0000) var(--_g);
   -webkit-mask:
-    linear-gradient(#000 0 0) no-repeat
-     calc(1px - var(--_o)) / calc(100%/var(--f) - 2*var(--b) - 2px) 0%,
+    linear-gradient(#000 0 0) no-repeat calc(1px - var(--_o)) / calc(100%/var(--f) - 2*var(--b) - 2px) 0%,
     radial-gradient(circle closest-side, #000 99%, #0000) var(--_g);
   transform: scale(var(--f));
   transition: .5s;
 }
 
 img:hover {
-  --f: 1.15; /* hover scale */
+  --f: 1.15;
+  /* hover scale */
 }
 
 
-  .profileCard {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 30%;
-    margin-left: 35%;
-    border: solid 1px;
-    margin-top: 5vh;
-    margin-bottom: 5vh;
-    border-radius: 2vh;
-    padding: 1vh;
-    background-color: #437f95;
-    color: #e9eafa;
-    font-size: 133%;
-  }
+.profileCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  border: none;
+  margin-left: 35%;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  border-radius: 2vh;
+  padding: 1vh;
+  background-color: #437f95;
+  color: #e9eafa;
+  font-size: 133%;
+  box-shadow: 0px 0px 5px 3px #023a50;
+  -webkit-box-shadow: 0px 0px 5px 3px #023a50;
+  -moz-box-shadow: 0px 0px 5px 3px #023a50;
+}
 
-  #btnAvatar {
-    margin-top: 0;
-    margin-bottom: 6vh;
-  }
+.color {
+  color: rgb(198, 254, 254);
+  text-decoration: underline;
+}
 
-  #editInfos {
-    position: absolute;
-    top: 1.5vh;
-    right: 1vh;
-  }
+.align-left {
+  margin-top: 7vh;
+}
 
-  #btnLogout {
-    position: absolute;
-    right: 2vh;
-    top: 2vh;
-  }
+#btnAvatar {
+  margin-top: 0.2vh;
+  margin-bottom: 6vh;
+}
 
-  button {
-    border-radius: 2vh;
-    cursor: pointer;
-  }
+#editInfos {
+  position: absolute;
+  top: 1.5vh;
+  right: 1vh;
+}
 
-  p {
-    margin-top: 0vh;
-  }
+#btnLogout {
+  position: absolute;
+  right: 2vh;
+  top: 2vh;
+}
 
-  .image-container {
-    margin-top: 6vh;
-  }
+button {
+  border-radius: 2vh;
+  cursor: pointer;
+}
+
+p {
+  margin-top: 0vh;
+}
 
 
 
 /* CSS bouton logout */
 .button-89 {
-  --b: 3px;   /* border thickness */
-  --s: .45em; /* size of the corner */
+  --b: 3px;
+  /* border thickness */
+  --s: .45em;
+  /* size of the corner */
   --color: rgb(112, 23, 23);
-  
+
   padding: calc(.5em + var(--s)) calc(.9em + var(--s));
   color: #e0e2f6;
   --_p: var(--s);
   background:
-    conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--color) 0)
-    var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+    conic-gradient(from 90deg at var(--b) var(--b), #0000 90deg, var(--color) 0) var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
   transition: .33s linear, color 0s, background-color 0s;
   outline: var(--b) solid #0000;
   outline-offset: .6em;
@@ -107,7 +121,7 @@ img:hover {
 }
 
 .button-89:hover,
-.button-89:focus-visible{
+.button-89:focus-visible {
   --_p: 0px;
   outline-color: var(--color);
   outline-offset: .05em;
@@ -149,9 +163,7 @@ img:hover {
   will-change: transform;
   transform: translateY(2px);
   transition:
-    transform
-    600ms
-    cubic-bezier(.3, .7, .4, 1);
+    transform 600ms cubic-bezier(.3, .7, .4, 1);
 }
 
 .button-82-edge {
@@ -167,8 +179,8 @@ img:hover {
 .button-82-front {
   display: block;
   position: relative;
-  padding-bottom: 0.5vh;
-  padding-top: 0.5vh;
+  padding-bottom: 0.75vh;
+  padding-top: 0.75vh;
   padding-left: 2vh;
   padding-right: 2vh;
   border-radius: 4vh;
@@ -178,9 +190,7 @@ img:hover {
   will-change: transform;
   transform: translateY(-4px);
   transition:
-    transform
-    600ms
-    cubic-bezier(.3, .7, .4, 1);
+    transform 600ms cubic-bezier(.3, .7, .4, 1);
 }
 
 .button-82-pushable:hover {
@@ -191,9 +201,7 @@ img:hover {
 .button-82-pushable:hover .button-82-front {
   transform: translateY(-6px);
   transition:
-    transform
-    250ms
-    cubic-bezier(.3, .7, .4, 1.5);
+    transform 250ms cubic-bezier(.3, .7, .4, 1.5);
 }
 
 .button-82-pushable:active .button-82-front {
@@ -204,9 +212,7 @@ img:hover {
 .button-82-pushable:hover .button-82-shadow {
   transform: translateY(4px);
   transition:
-    transform
-    250ms
-    cubic-bezier(.3, .7, .4, 1.5);
+    transform 250ms cubic-bezier(.3, .7, .4, 1.5);
 }
 
 .button-82-pushable:active .button-82-shadow {
@@ -216,4 +222,27 @@ img:hover {
 
 .button-82-pushable:focus:not(:focus-visible) {
   outline: none;
+}
+
+.image-container {
+  margin-top: 6vh;
+  text-align: center;
+  position: relative;
+}
+
+.hover-text {
+  display: none; /* Masquer le texte par défaut */
+  position: absolute; /* Positionner le texte par rapport à l'image */
+  top: 103%;
+  left: 50%;
+  font-size: 50%;
+  transform: translate(-50%, -50%); /* Ajuster le positionnement */
+  color: white; /* Couleur du texte */
+  background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+  padding: 0.66vh; /* Espacement autour du texte */
+  border-radius: 1vh; /* Coins arrondis pour le texte */
+}
+
+.image-container:hover .hover-text {
+  display: block; /* Afficher le texte au survol de l'image */
 }
