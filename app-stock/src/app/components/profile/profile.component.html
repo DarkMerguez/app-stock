@@ -6,13 +6,28 @@
         <img [src]="avatar.url" alt="a random avatar picture">
     </div>
 
-    <button id="btnAvatar">📷 Modifier l'avatar</button>
-    <button id="editInfos">Editer mes infos</button>
-
-    <p>Prénom : {{ user.firstName }}</p>
-    <p>Nom : {{ user.lastName }}</p>
-    <p>Email : {{ user.email }}</p>
-    @if (userEnterprise) {
-    <p>Mon entreprise : <span routerLink="/enterprise" style="cursor: pointer;">{{ userEnterprise.name }}</span></p>
-    }
+    <button class="button-82-pushable" role="button" id="btnAvatar">
+        <span class="button-82-shadow"></span>
+        <span class="button-82-edge"></span>
+        <span class="button-82-front text">
+            📷 Changer
+        </span>
+    </button>
+    <button class="button-82-pushable" role="button" id="editInfos">
+        <span class="button-82-shadow"></span>
+        <span class="button-82-edge"></span>
+        <span class="button-82-front text">
+            Modifier
+        </span>
+    </button>
+    <!-- <button id="btnAvatar">📷 Modifier l'avatar</button>
+    <button id="editInfos">Button 56>Editer mes infos</button> -->
+    <div class="align-left">
+        <p>Prénom : <span>{{ user.firstName }}</span></p>
+        <p>Nom : <span>{{ user.lastName }}</span></p>
+        <p>Email : <span>{{ user.email }}</span></p>
+        @if (userEnterprise) {
+        <p>Mon entreprise : <span routerLink="/enterprise" style="cursor: pointer;">{{ userEnterprise.name }}</span></p>
+        }
+    </div>
 </div>
