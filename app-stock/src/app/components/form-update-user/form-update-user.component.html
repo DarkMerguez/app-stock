@@ -1,1 +1,36 @@
-<p>form-update-user works!</p>
+<div class="component">
+    <div class="profileCard">
+        <div class="image-container">
+            <img [src]="avatar.url" alt="a random avatar picture" (click)="triggerFileInput()">
+            <div class="hover-text">Modifier l'avatar</div>
+        </div>
+
+        <!-- Champ d'upload de fichier caché -->
+        <input type="file" id="image" accept="image/*" (change)="onFileSelected($event)" style="display: none;">
+
+        <div class="align-left">
+            <form [formGroup]="updateUserForm" (ngSubmit)="onSubmit()">
+                <p><label for="firstName">Prénom : </label>
+                <input type="text" formControlName="firstName" placeholder="Prénom" /></p>
+
+                <p><label for="lastName">Nom : </label>
+                <input type="text" formControlName="lastName" placeholder="Nom" /></p>
+
+                <p><label for="email">Email : </label>
+                <input type="email" formControlName="email" placeholder="Email" /></p>
+
+                <p><label for="password">Mot de passe : </label>
+                <input type="password" formControlName="password" placeholder="Mot de passe" /></p>
+
+                <p style="margin-bottom: 0;"><label for="confirmPassword">Confirmer le mot de passe : </label>
+                <input type="password" formControlName="confirmPassword"/></p>
+
+                <!-- Message d'erreur si les mots de passe ne correspondent pas -->
+                @if(!passwordsMatch) {
+                <div style="color: red; margin-top: 0; padding-top: 0;"> Les mots de passe ne correspondent pas</div>
+                }
+                <p style="margin-top: 4vh;"><button type="submit" [disabled]="!updateUserForm.valid || !passwordsMatch">Mettre à jour</button></p>
+            </form>
+        </div>
+    </div>
+</div>

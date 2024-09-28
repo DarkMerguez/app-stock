@@ -1,0 +1,124 @@
+img {
+    --s: 222px;
+    /* image size */
+    --b: 3px;
+    /* border thickness */
+    --c: #023a50;
+    /* border color */
+    --f: 1;
+    /* initial scale */
+
+    width: var(--s);
+    height: var(--s);
+    /* Ajouté pour forcer une taille égale */
+    aspect-ratio: 1;
+    padding-top: 0;
+    /* Ajustement pour éviter des marges inutiles */
+    cursor: pointer;
+    border-radius: 50%;
+    /* Changement à 50% pour un cercle parfait */
+    --_g: 50%/calc(100%/var(--f)) 100% no-repeat content-box;
+    --_o: calc((1/var(--f) - 1)*var(--s)/2 - var(--b));
+    outline: var(--b) solid var(--c);
+    outline-offset: var(--_o);
+    background:
+        radial-gradient(circle closest-side,
+            #d5dbc5 calc(99% - var(--b)), var(--c) calc(100% - var(--b)) 99%, #0000) var(--_g);
+    -webkit-mask:
+        linear-gradient(#000 0 0) no-repeat calc(1px - var(--_o)) / calc(100%/var(--f) - 2*var(--b) - 2px) 0%,
+        radial-gradient(circle closest-side, #000 99%, #0000) var(--_g);
+    transform: scale(var(--f));
+    transition: .5s;
+}
+
+img:hover {
+    --f: 1.15;
+    /* hover scale */
+}
+
+
+.profileCard {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    border: none;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    border-radius: 2vh;
+    padding: 1vh;
+    background-color: #437f95;
+    color: #e9eafa;
+    font-size: 133%;
+    box-shadow: 0px 0px 5px 3px #023a50;
+    -webkit-box-shadow: 0px 0px 5px 3px #023a50;
+    -moz-box-shadow: 0px 0px 5px 3px #023a50;
+}
+
+.color {
+    color: rgb(198, 254, 254);
+    text-decoration: underline;
+}
+
+.align-left {
+    margin-top: 7vh;
+}
+
+
+button {
+    border-radius: 2vh;
+    cursor: pointer;
+}
+
+p {
+    margin-top: 0vh;
+}
+
+.image-container {
+    margin-top: 6vh;
+    text-align: center;
+    position: relative;
+}
+
+.hover-text {
+    display: none;
+    /* Masquer le texte par défaut */
+    position: absolute;
+    /* Positionner le texte par rapport à l'image */
+    top: 103%;
+    left: 50%;
+    font-size: 50%;
+    transform: translate(-50%, -50%);
+    /* Ajuster le positionnement */
+    color: white;
+    /* Couleur du texte */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Fond semi-transparent */
+    padding: 0.66vh;
+    /* Espacement autour du texte */
+    border-radius: 1vh;
+    /* Coins arrondis pour le texte */
+}
+
+.image-container:hover .hover-text {
+    display: block;
+    /* Afficher le texte au survol de l'image */
+}
+
+@media screen and (max-width: 800px) {
+    img {
+        --s: 133px;
+    }
+
+    .profileCard {
+        width: 60%;
+    }
+}
+
+.component {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

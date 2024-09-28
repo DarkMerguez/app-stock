@@ -6,7 +6,7 @@
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 2vh;
+  gap: 8vh;
   justify-content: center;
   margin: 2vh;
 }
@@ -21,4 +21,9 @@
   .container {
     grid-template-columns: 1fr;
   }
+}
+
+.page {
+  display: flex;
+  justify-content: center;
 }
