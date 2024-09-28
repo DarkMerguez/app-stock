@@ -1,24 +1,25 @@
 import { Routes } from '@angular/router';
-import { SignupComponent } from './components/signup/signup.component';
-import { SigninComponent } from './components/signin/signin.component';
-import { HomeComponent } from './components/home/home.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { EnterpriseComponent } from './components/enterprise/enterprise.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
-import { ProductDetailsComponent } from './components/product-details/product-details.component';
-import { FormAddProductComponent } from './components/form-add-product/form-add-product.component';
-import { AdminBoardComponent } from './components/admin-board/admin-board.component';
-import { ProfileComponent } from './components/profile/profile.component';
-import { AuthGuard } from '../guards/AuthGuard';
 import { AdminGuard } from '../guards/AdminGuard';
-import { FormAddEnterpriseComponent } from './components/form-add-enterprise/form-add-enterprise.component';
-import { ProductsListComponent } from './components/products-list/products-list.component';
-import { FormUpdateProductComponent } from './components/form-update-product/form-update-product.component';
+import { AuthGuard } from '../guards/AuthGuard';
+import { AdminBoardComponent } from './components/admin-board/admin-board.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { EnterpriseDetailsComponent } from './components/enterprise-details/enterprise-details.component';
-import { AdminProductsListComponent } from './admin-products-list/admin-products-list.component';
-import { ProductCategoriesListComponent } from './components/product-categories-list/product-categories-list.component';
+import { EnterpriseComponent } from './components/enterprise/enterprise.component';
+import { FormAddEnterpriseComponent } from './components/form-add-enterprise/form-add-enterprise.component';
+import { FormAddProductComponent } from './components/form-add-product/form-add-product.component';
+import { FormUpdateProductComponent } from './components/form-update-product/form-update-product.component';
 import { FormUpdateUserComponent } from './components/form-update-user/form-update-user.component';
+import { HomeComponent } from './components/home/home.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ProductCategoriesListComponent } from './components/product-categories-list/product-categories-list.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { ProductsListComponent } from './components/products-list/products-list.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { ShopComponent } from './components/shop/shop.component';
+import { SigninComponent } from './components/signin/signin.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { ProductCategoryComponent } from './components/product-category/product-category.component';
+import { CartComponent } from './components/cart/cart.component';
 
 export const routes: Routes = [
     {path : "signup",component:SignupComponent},
@@ -27,8 +28,9 @@ export const routes: Routes = [
     {path : "enterprise",component:EnterpriseComponent},
     {path : "add-product",component:FormAddProductComponent},
     {path : "products-list",component : ProductsListComponent},
-    {path : "admin-products-list",component : AdminProductsListComponent, canActivate: [AdminGuard]},
     {path : "product-details/:id",component : ProductDetailsComponent},
+    {path : "product-category/:id",component : ProductCategoryComponent},
+    {path : "cart",component : CartComponent, canActivate: [AuthGuard]},
     {path : "product-categories",component : ProductCategoriesListComponent},
     {path : "enterprise-details/:id",component : EnterpriseDetailsComponent},
     {path : "update-product/:id",component : FormUpdateProductComponent},

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
@@ -6,11 +6,12 @@ import { ApiService } from '../../../services/api.service';
 import { Products } from '../../../utils/interfaces/product';
 import { NgFor } from '@angular/common';
 import { User } from '../../../utils/interfaces/user';
+import { ProductCategoryComponent } from '../product-category/product-category.component';
 
 @Component({
   selector: 'app-products-list',
   standalone: true,
-  imports: [MatCardModule, RouterLink, MatIconModule, NgFor],
+  imports: [MatCardModule, RouterLink, MatIconModule, NgFor,ProductCategoryComponent],
   templateUrl: './products-list.component.html',
   styleUrls: ['./products-list.component.css'],
 })

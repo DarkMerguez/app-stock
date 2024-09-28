@@ -19,10 +19,13 @@ import { User } from '../../../utils/interfaces/user';
 })
 export class ProductDetailsComponent implements OnInit {
 
-  authService = inject(AuthService);
+  private api = inject(ApiService);
+  private router = inject(Router);
+  private auth = inject(AuthService);
 
-  isAdmin = this.authService.isAdmin();
-  isGestionnaire = this.authService.isGestionnaire();
+  isAdmin = this.auth.isAdmin();
+  isGestionnaire = this.auth.isGestionnaire();
+  isLoggedIn: Boolean = this.auth.isLoggedIn();
 
   product: Product = {} as Product;
   productImages: Images = [] as Images;
@@ -30,11 +33,7 @@ export class ProductDetailsComponent implements OnInit {
 
   @Input() id: number = 0;
 
-  private api = inject(ApiService);
-  private router = inject(Router);
-  private auth = inject(AuthService);
 
-  isLoggedIn: Boolean = this.auth.isLoggedIn();
 
   onDelete(productId: number) {
     const confirmDelete = confirm("Êtes-vous sûr de vouloir supprimer ce produit ?");
@@ -67,9 +66,11 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.api.getUser().subscribe((user) => {
-      this.user = user;
-    })
+    if (this.auth.isLoggedIn()) {
+      this.api.getUser().subscribe((user) => {
+        this.user = user;
+      })
+    }
 
     this.api.getProductById(this.id).subscribe((product: Product) => {
       this.product = product;

@@ -17,7 +17,7 @@ export class ProductCategoryComponent implements OnInit {
 
   products: Products = [];
   productCategory: ProductCategory | null = null;
-  @Input() productCategoryId: number = 0;
+  @Input() productCategoryId: number | any = 0;
 
   ngOnInit(): void {
 
