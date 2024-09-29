@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, Input } from '@angular/core';
 import { ApiService } from '../../../services/api.service';
 import { Products } from '../../../utils/interfaces/product';
 import { Enterprises } from '../../../utils/interfaces/enterprise';
@@ -11,13 +11,14 @@ import { User } from '../../../utils/interfaces/user';
 @Component({
   selector: 'app-search-results',
   standalone: true,
-  imports: [RouterLink,MatCardModule],
+  imports: [RouterLink, MatCardModule],
   templateUrl: './search-results.component.html',
   styleUrl: './search-results.component.css'
 })
 export class SearchResultsComponent {
 
   private api = inject(ApiService);
+  private cdr = inject(ChangeDetectorRef);
 
   @Input() text !: string;
 
@@ -36,23 +37,29 @@ export class SearchResultsComponent {
         this.searchedEnterprises = results.enterprises;
         this.searchedProductCategories = results.productCategories;
         this.searchedEnterpriseCategories = results.enterpriseCategories;
+
+        this.searchedProducts.forEach(product => {
+          this.api.getProductImages(product.id).subscribe(images => {
+            console.log(`Images for product ${product.id}:`, images);
+            // Utilise l'image par défaut si aucune image n'est trouvée
+            if (images && images.length > 0) {
+              product.firstImage = images[0].url;
+            } else {
+              product.firstImage = 'https://maisonsartre.fr/images/com_hikashop/upload/visuel-produit-manquant.png';
+            }
+            this.cdr.detectChanges(); // Forcer la détection des changements si nécessaire
+          });
+        });
       })
     }
 
-      this.api.getProducts().subscribe((products: Products) => {
-        this.products = products;
-  
-        this.products.forEach(product => {
-          this.api.getProductImages(product.id).subscribe(images => {
-            // Stocke la première image si elle existe, sinon utilise l'image par défaut
-            product.firstImage = images.length > 0 ? images[0].url : 'https://maisonsartre.fr/images/com_hikashop/upload/visuel-produit-manquant.png';
-          });
-        });
-  
-      });
-      this.api.getUser().subscribe((user: User) => {
-        this.user = user;
-      });
+    this.api.getProducts().subscribe((products: Products) => {
+      this.products = products;
+    });
+
+    this.api.getUser().subscribe((user: User) => {
+      this.user = user;
+    });
   }
 
 }
