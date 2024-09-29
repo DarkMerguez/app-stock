@@ -127,7 +127,7 @@
   }
 
   
-  @media (min-width: 600px) {
+  @media (min-width: 700px) {
     .header li {
       float: left;
     }
@@ -170,4 +170,15 @@
 
 #loupe {
     margin-right: 1vh;
+}
+
+.header ul li a svg {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  fill: #e0edf6;
+}
+
+.header ul li a:hover svg {
+  fill: #01161E;
 }
