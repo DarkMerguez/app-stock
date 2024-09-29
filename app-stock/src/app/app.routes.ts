@@ -20,6 +20,7 @@ import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { ProductCategoryComponent } from './components/product-category/product-category.component';
 import { CartComponent } from './components/cart/cart.component';
+import { SearchResultsComponent } from './components/search-results/search-results.component';
 
 export const routes: Routes = [
     {path : "signup",component:SignupComponent},
@@ -31,6 +32,7 @@ export const routes: Routes = [
     {path : "product-details/:id",component : ProductDetailsComponent},
     {path : "product-category/:id",component : ProductCategoryComponent},
     {path : "cart",component : CartComponent, canActivate: [AuthGuard]},
+    {path : "search-results/:text",component:SearchResultsComponent},
     {path : "product-categories",component : ProductCategoriesListComponent},
     {path : "enterprise-details/:id",component : EnterpriseDetailsComponent},
     {path : "update-product/:id",component : FormUpdateProductComponent},

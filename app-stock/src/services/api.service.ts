@@ -222,4 +222,9 @@ public uploadImage(formData: FormData): Observable<{ image: Image }> {
     return this.http.put<User>(`http://localhost:8051/user/${userId}`, data);
   }
 
+  // Méthode pour rechercher
+  search(text: string): Observable<any> {
+    return this.http.get(`http://localhost:8051/search/${text}`);
+  }
+
 }
