@@ -8,6 +8,7 @@ import { EnterpriseCategories, EnterpriseCategory } from '../utils/interfaces/en
 import { AuthService } from './auth.service';
 import { User } from '../utils/interfaces/user';
 import { Enterprise } from '../utils/interfaces/enterprise';
+import { Cart } from '../utils/interfaces/cart';
 
 @Injectable({
   providedIn: 'root'
@@ -233,6 +234,11 @@ public uploadImage(formData: FormData): Observable<{ image: Image }> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
   
     return this.http.post(`http://localhost:8051/cart`, { productId, quantity }, { headers });
+  }
+
+  // Méthode pour récupérer un panier selon l'id de l'entreprise
+  getCartByEnterpriseId(enterpriseId: any): Observable<Cart> {
+    return this.http.get<Cart>(`http://localhost:8051/cart/${enterpriseId}`);
   }
 
 }
