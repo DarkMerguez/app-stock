@@ -4,7 +4,7 @@ import { ApiService } from '../../../services/api.service';
 import { Product } from '../../../utils/interfaces/product';
 import { Image } from '../../../utils/interfaces/image';
 import { AsyncPipe, CommonModule } from '@angular/common';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ProductCategories } from '../../../utils/interfaces/productCategory';
 import { Observable } from 'rxjs';
 
@@ -25,6 +25,7 @@ export class FormUpdateProductComponent implements OnInit {
 
   private api = inject(ApiService);
   private route = inject(ActivatedRoute);
+  private router = inject(Router);
 
   constructor() {
     this.productGroup = new FormGroup({
@@ -102,6 +103,7 @@ export class FormUpdateProductComponent implements OnInit {
     next: (response) => {
       console.log('Produit mis à jour avec succès', response);
       this.imagesToDelete = [];  // Réinitialiser la liste des images à supprimer après la soumission
+      this.router.navigate(['/dashboard']);
     },
     error: (err) => {
       console.error('Erreur lors de la mise à jour du produit', err);

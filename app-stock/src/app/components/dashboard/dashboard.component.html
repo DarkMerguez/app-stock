@@ -1,3 +1,10 @@
+@for (product of products; track product.id) {
+    @if (product.EnterpriseId === user.EnterpriseId && product.stock <= 10) {
+        <div class="alertStock">❗️Attention,  <a routerLink="/product-details/{{product.id}}">{{product.name}}</a> a un stock faible ! ({{product.stock}}) ❗️</div>
+    } 
+}
+
+
 @if (user.EnterpriseId) {
 
     <button routerLink="/add-product">Ajouter un nouveau produit</button>
