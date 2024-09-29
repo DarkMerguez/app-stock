@@ -14,8 +14,17 @@
     } @else {
       <ng-container>
         <div class="icon-container">
-          @if(!isLoggedIn) { <button routerLink="/signin">Add to cart</button> }
-          @else { <button routerLink="/cart">Add to cart</button> }
+          @if(!isLoggedIn) { 
+            <input type="number" min="1" placeholder="Quantity" />
+            <button routerLink="/signin">Add to cart</button> 
+            <div *ngIf="confirmationMessage" class="alert alert-success">
+              {{ confirmationMessage }}
+            </div>
+          }
+          @else { 
+            <input type="number" [(ngModel)]="quantity" min="1" placeholder="Quantity" />
+            <button (click)="addToCart()" routerLink="/cart">Add to cart</button> 
+          }
         </div>
       </ng-container>
     }

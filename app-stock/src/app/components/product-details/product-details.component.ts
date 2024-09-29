@@ -9,11 +9,13 @@ import { Images } from '../../../utils/interfaces/image';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { CommonModule } from '@angular/common';
 import { User } from '../../../utils/interfaces/user';
+import { FormsModule } from '@angular/forms';
+import { Enterprise } from '../../../utils/interfaces/enterprise';
 
 @Component({
   selector: 'app-product-details',
   standalone: true,
-  imports: [MatCardModule, RouterLink, MatIconModule, CarouselModule, CommonModule],
+  imports: [MatCardModule, RouterLink, MatIconModule, CarouselModule, CommonModule,FormsModule],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.css'
 })
@@ -30,6 +32,9 @@ export class ProductDetailsComponent implements OnInit {
   product: Product = {} as Product;
   productImages: Images = [] as Images;
   user: User = {} as User;
+  enterprise: Enterprise = {} as Enterprise;
+  quantity: number = 1;
+  confirmationMessage: string | null = null;
 
   @Input() id: number = 0;
 
@@ -41,7 +46,7 @@ export class ProductDetailsComponent implements OnInit {
       this.api.deleteProduct(productId).subscribe(
         () => {
           console.log("Produit supprimé");
-          this.router.navigate(["/admin-board"]);
+          this.router.navigate(["/dashboard"]);
         },
         (error) => {
           console.error("Erreur lors de la suppression du produit", error);
@@ -80,6 +85,26 @@ export class ProductDetailsComponent implements OnInit {
         this.productImages = productImages;
         console.log(productImages)
       });
+      if (this.product.EnterpriseId) {
+      this.api.getEnterpriseById(this.product.EnterpriseId).subscribe((enterprise) => {
+        this.enterprise = enterprise;
+      })
+    }
+    });
+
+  }
+
+  addToCart() {
+    this.api.addToCart(this.product.id, this.quantity).subscribe({
+      next: () => {
+        this.confirmationMessage = 'Product added to cart successfully!';
+        setTimeout(() => {
+          this.confirmationMessage = null;
+        }, 3000);
+      },
+      error: (error) => {
+        console.error('Error adding product to cart:', error);
+      }
     });
   }
 

@@ -227,4 +227,12 @@ public uploadImage(formData: FormData): Observable<{ image: Image }> {
     return this.http.get(`http://localhost:8051/search/${text}`);
   }
 
+  // Méthode pour ajouter un produit au panier
+  addToCart(productId: number, quantity: number) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  
+    return this.http.post(`http://localhost:8051/cart`, { productId, quantity }, { headers });
+  }
+
 }
