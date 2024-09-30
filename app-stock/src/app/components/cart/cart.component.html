@@ -12,11 +12,17 @@
         <div class="item-details">
           <h3>{{ item.product.name }}</h3>
           <p>Prix : {{ item.product.price | currency:'EUR' }}</p>
-  
+          
+          
           <!-- Sélecteur de quantité, limité au stock disponible -->
           <label for="quantity">Quantité :</label>
           <input type="number" [(ngModel)]="item.quantity" (change)="updateCart(item)" [max]="item.product.stock" [min]="1">
-  
+          
+          <!-- Icône pour supprimer le produit du panier -->
+          <button (click)="removeFromCart(item)" class="remove-icon" aria-label="Supprimer">
+            <i class="fas fa-trash" style="color: rgb(183, 16, 16);"></i> <!-- Utilise Font Awesome ou une autre bibliothèque d'icônes -->
+          </button>
+
           <p>Stock disponible : {{ item.product.stock }}</p>
         </div>
         <div class="item-total">
@@ -34,5 +40,6 @@
         Procéder au paiement
       </button>
     </div>
-  </div>
+</div>
+
   

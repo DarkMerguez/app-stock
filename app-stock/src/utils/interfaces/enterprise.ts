@@ -3,6 +3,7 @@ export interface Enterprise {
     name: string;
     address: string;
     siret: number;
+    iban?: number;
     ImageId: number;
     EnterpriseCategoryId: number;
 }

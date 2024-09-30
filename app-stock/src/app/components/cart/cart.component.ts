@@ -9,12 +9,13 @@ import { Enterprise } from '../../../utils/interfaces/enterprise';
 import { ApiService } from '../../../services/api.service';
 import { AuthService } from '../../../services/auth.service';
 import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [RouterLink, CommonModule,FormsModule],
+  imports: [RouterLink, CommonModule,FormsModule,MatIconModule],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css'
 })
@@ -67,6 +68,17 @@ export class CartComponent {
     }, 0);
 
   }
+
+  // Méthode pour supprimer un produit du panier
+removeFromCart(item: any): void {
+  // Retirer l'élément du tableau cartItems
+  this.cartItems = this.cartItems.filter(cartItem => cartItem !== item);
+
+  // Recalculer le total après la suppression
+  this.totalPrice = this.cartItems.reduce((acc, currentItem) => {
+      return acc + currentItem.product.price * currentItem.quantity;
+  }, 0);
+}
 
   // Déclenche le paiement Stripe
   async checkout() {
