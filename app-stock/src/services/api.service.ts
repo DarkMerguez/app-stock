@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Product, Products } from '../utils/interfaces/product';
 import { Image, Images } from '../utils/interfaces/image';
-import { catchError, forkJoin, Observable, switchMap, tap, throwError } from 'rxjs';
+import { catchError, forkJoin, map, Observable, switchMap, tap, throwError } from 'rxjs';
 import { ProductCategories, ProductCategory } from '../utils/interfaces/productCategory';
 import { EnterpriseCategories, EnterpriseCategory } from '../utils/interfaces/enterpriseCategory';
 import { AuthService } from './auth.service';
@@ -38,6 +38,13 @@ export class ApiService {
 
   public getEnterpriseCategories(): Observable<EnterpriseCategories> {
     return this.http.get<EnterpriseCategories>("http://localhost:8051/enterprisecategories");
+  }
+
+  // Méthode pour récupérer le nom d'une entreprise par son id
+  public getEnterpriseNameById(enterpriseId: number): Observable<string> {
+    return this.http.get<Enterprise>(`http://localhost:8051/enterprise/${enterpriseId}`).pipe(
+      map((enterprise) => enterprise.name)  // Retourne uniquement le nom de l'entreprise
+    );
   }
 
 
@@ -125,18 +132,18 @@ export class ApiService {
     return localStorage.getItem('token');
   }
 
-//Méthode pour uploader une seule image :
-public uploadImage(formData: FormData): Observable<{ image: Image }> {
-  return this.http.post<{ image: Image }>("http://localhost:8051/upload-single", formData).pipe(
-    tap((response) => {
-      console.log('Image upload response:', response);
-    }),
-    catchError((error) => {
-      console.error('Image upload failed', error);
-      return throwError(() => new Error('Image upload failed'));
-    })
-  );
-}
+  //Méthode pour uploader une seule image :
+  public uploadImage(formData: FormData): Observable<{ image: Image }> {
+    return this.http.post<{ image: Image }>("http://localhost:8051/upload-single", formData).pipe(
+      tap((response) => {
+        console.log('Image upload response:', response);
+      }),
+      catchError((error) => {
+        console.error('Image upload failed', error);
+        return throwError(() => new Error('Image upload failed'));
+      })
+    );
+  }
 
 
   // Ajouter une enterprise
@@ -232,7 +239,7 @@ public uploadImage(formData: FormData): Observable<{ image: Image }> {
   addToCart(productId: number, quantity: number) {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-  
+
     return this.http.post(`http://localhost:8051/cart`, { productId, quantity }, { headers });
   }
 

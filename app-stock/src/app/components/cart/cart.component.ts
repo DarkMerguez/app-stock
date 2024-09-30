@@ -100,5 +100,7 @@ removeFromCart(item: any): void {
     });
   }
 
+  isGestionnaire = this.auth.isGestionnaire();
+
 }
 

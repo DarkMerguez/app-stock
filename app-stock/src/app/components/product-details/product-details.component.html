@@ -1,6 +1,6 @@
 <mat-card class="example-card" appearance="outlined" routerLink="/product-details/{{product.id}}">
   <mat-card-header>
-    @if((isAdmin) || (isGestionnaire && (user.EnterpriseId === product.EnterpriseId))) {
+    @if((isAdmin) || ((user.EnterpriseId === product.EnterpriseId))) {
     <ng-container>
       <div class="icon-container">
         <button mat-icon-button [routerLink]="['/update-product', product.id]" aria-label="Modifier">

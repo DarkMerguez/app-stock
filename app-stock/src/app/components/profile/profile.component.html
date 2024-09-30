@@ -27,6 +27,7 @@
             @if (userEnterprise) {
             <p><span class="color">Entreprise</span> : <span routerLink="/enterprise" style="cursor: pointer;">{{
                     userEnterprise.name }}</span></p>
+            <p><span class="color">Votre rôle</span> : {{ user.role }}</p>
             }
         </div>
     </div>

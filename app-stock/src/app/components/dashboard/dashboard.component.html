@@ -4,6 +4,22 @@
     } 
 }
 
+<div>
+    <h2>Historique des commandes</h2>
+    <ul>
+      <li *ngFor="let order of orders">
+        <div>
+          <strong>Date :</strong> {{ order.createdAt | date:'short' }}<br>
+          <strong>Nom de l'entreprise :</strong> {{ order.enterpriseName || 'Chargement...' }}<br> 
+          <strong>Montant total :</strong> {{ order.totalPrice | currency }}<br>
+          <strong>Statut :</strong> {{ order.status }}<br>
+          <button>Valider</button>
+          <button>Expédier</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+
 
 @if (user.EnterpriseId) {
 
