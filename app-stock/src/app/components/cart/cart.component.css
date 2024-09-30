@@ -1,0 +1,32 @@
+.cart-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .cart-total {
+    text-align: right;
+    margin-top: 20px;
+    font-size: 1.2em;
+  }
+  
+  .empty-cart {
+    text-align: center;
+    font-size: 1.2em;
+    color: #999;
+  }
+  
+  .btn {
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    padding: 10px;
+  }
+  

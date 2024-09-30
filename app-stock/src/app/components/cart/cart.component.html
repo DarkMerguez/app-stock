@@ -1,1 +1,38 @@
-<p>cart works!</p>
+<div class="cart-container">
+    <h2>Mon Panier</h2>
+  
+    <!-- Vérifie si le panier est vide -->
+    <div *ngIf="cartItems.length === 0" class="empty-cart">
+      <p>Votre panier est vide.</p>
+    </div>
+  
+    <!-- Affichage des produits dans le panier -->
+    <div *ngIf="cartItems.length > 0" class="cart-items">
+      <div *ngFor="let item of cartItems" class="cart-item">
+        <div class="item-details">
+          <h3>{{ item.product.name }}</h3>
+          <p>Prix : {{ item.product.price | currency:'EUR' }}</p>
+  
+          <!-- Sélecteur de quantité, limité au stock disponible -->
+          <label for="quantity">Quantité :</label>
+          <input type="number" [(ngModel)]="item.quantity" (change)="updateCart(item)" [max]="item.product.stock" [min]="1">
+  
+          <p>Stock disponible : {{ item.product.stock }}</p>
+        </div>
+        <div class="item-total">
+          <p>Total : {{ item.product.price * item.quantity | currency:'EUR' }}</p>
+        </div>
+      </div>
+  
+      <!-- Affichage du prix total -->
+      <div class="cart-total">
+        <h3>Total du panier : {{ totalPrice | currency:'EUR' }}</h3>
+      </div>
+  
+      <!-- Bouton pour procéder au paiement -->
+      <button class="btn btn-primary" (click)="checkout()">
+        Procéder au paiement
+      </button>
+    </div>
+  </div>
+  

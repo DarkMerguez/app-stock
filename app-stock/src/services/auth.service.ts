@@ -65,6 +65,12 @@ export class AuthService {
     return payload ? payload.id : null;
   }
 
+  // Récupère l'enterpriseId de l'user
+  getUserEnterpriseId(): number {
+    const payload = this.getPayload();
+    return payload.EnterpriseId ? payload.EnterpriseId : null;
+  }
+
   // Vérifier si l'utilisateur a le rôle Admin
   isAdmin(): boolean {
     return this.getRole() === 'Admin';

@@ -21,6 +21,8 @@ import { SignupComponent } from './components/signup/signup.component';
 import { ProductCategoryComponent } from './components/product-category/product-category.component';
 import { CartComponent } from './components/cart/cart.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
+import { PaymentSuccessComponent } from './components/payment-success/payment-success.component';
+import { PaymentCancelComponent } from './components/payment-cancel/payment-cancel.component';
 
 export const routes: Routes = [
     {path : "signup",component:SignupComponent},
@@ -38,6 +40,8 @@ export const routes: Routes = [
     {path : "update-product/:id",component : FormUpdateProductComponent},
     {path : "update-user/:id",component : FormUpdateUserComponent},
     {path : "shop",component : ShopComponent},
+    { path: 'success', component: PaymentSuccessComponent },
+    { path: 'cancel', component: PaymentCancelComponent },
     {path : "admin-board",component:AdminBoardComponent, canActivate: [AdminGuard]},
     {path : "profile",component:ProfileComponent, canActivate: [AuthGuard]},
     {path : "add-enterprise",component:FormAddEnterpriseComponent, canActivate: [AuthGuard]},

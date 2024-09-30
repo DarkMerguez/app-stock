@@ -15,7 +15,7 @@
       <ng-container>
         <div class="icon-container">
           @if(!isLoggedIn) { 
-            <input type="number" min="1" placeholder="Quantity" />
+            <input type="number" min="1" max="{{product.stock}}" placeholder="Quantity" />
             <button routerLink="/signin">Add to cart</button> 
           }
           @else { 
