@@ -1,34 +1,104 @@
-button {
-    margin: 5vh;
-    height: 5vh;
+
+/* Encapsuler les styles Bootstrap dans la classe bootstrap-enabled */
+.bootstrap-enabled .containerOrders {
+
+    margin: 2vh;
+    
+    
+   
+    text-align: center;
+   
+    
+
+    border: 8px outset #01161e;
+        box-shadow: 10px 10px 5px -4px rgba(0,0,0,0.54);
+        -webkit-box-shadow: 10px 10px 5px -4px rgba(0,0,0,0.54);
+        -moz-box-shadow: 10px 10px 5px -4px rgba(0,0,0,0.54);
+        padding: 2vh;
+    
+  }
+
+/* Alertes de stock */
+.custom-alertStock {
+    color: red;
+    padding: 10px;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
 }
 
-.example-card {
-    max-width: 400px;
-    margin-bottom: 8px;
-  }
-  
-  .container {
+/* Bouton pour ajouter un produit */
+#custom-btnAddProduct {
+    margin: 5vh;
+    height: 10vh;
+    font-size: larger;
+    background-color: #1c7f33;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    width: 33%;
+}
+
+#custom-btnAddProduct:hover {
+    transition: 0.75s;
+    letter-spacing: 0.2vh;
+}
+
+/* Conteneur principal de la page */
+.custom-page {
+    display: flex;
+    justify-content: center;
+}
+
+/* Conteneur des cartes de produits */
+.custom-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 8vh;
     justify-content: center;
     margin: 2vh;
-  }
-  
-  @media screen and (max-width: 1150px) {
-    .container {
-      grid-template-columns: 1fr 1fr;
+}
+
+@media screen and (max-width: 1150px) {
+    .custom-container {
+        grid-template-columns: 1fr 1fr;
     }
-  }
-  
-  @media screen and (max-width: 800px) {
-    .container {
-      grid-template-columns: 1fr;
+}
+
+@media screen and (max-width: 800px) {
+    .custom-container {
+        grid-template-columns: 1fr;
     }
-  }
-  
-  .page {
-    display: flex;
-    justify-content: center;
-  }
+}
+
+/* Cartes de produits */
+.custom-card {
+    border: 1px solid #e9ecef;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #f8f9fa;
+    padding: 10px;
+}
+
+.custom-card:hover {
+    background-color: #e9ecef;
+}
+
+/* Cartes d'exemple */
+.custom-example-card {
+    max-width: 400px;
+    margin-bottom: 8px;
+}
+
+/* Titres */
+h1 {
+    color: #343a40;
+    margin-bottom: 15px;
+}
+
+.btnAddNewProduct {
+    width: 100%;
+    text-align: center;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+}

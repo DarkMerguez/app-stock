@@ -2,10 +2,9 @@ body {
   margin-left: 2em;
   margin-right: 2em;
   padding: 0;
-  background: url("http://digital.bnint.com/filelib/s9/photos/white_wood_4500x3000_lo_res.jpg");
 }
 
-.carousel {
+.custom-carousel {
   position: relative;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
@@ -14,35 +13,35 @@ body {
   margin: 50px auto;
 }
 
-.carousel-inner {
+.custom-carousel-inner {
   position: relative;
   overflow: hidden;
   width: 100%;
 }
 
-.carousel-item {
+.custom-carousel-item {
   position: absolute;
   opacity: 0;
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.carousel-item img {
+.custom-carousel-item img {
   display: block;
   height: auto;
   max-width: 100%;
   transition: transform 0.5s ease;
 }
 
-.carousel-item:hover img {
+.custom-carousel-item:hover img {
   transform: scale(1.05);
 }
 
-.carousel-open:checked + .carousel-item {
+.custom-carousel-open:checked + .custom-carousel-item {
   position: static;
   opacity: 1;
 }
 
-.carousel-control {
+.custom-carousel-control {
   background: rgba(0, 0, 0, 0.4);
   border-radius: 50%;
   color: #fff;
@@ -60,25 +59,25 @@ body {
   transition: background 0.3s ease;
 }
 
-.carousel-control:hover {
+.custom-carousel-control:hover {
   background: rgba(0, 0, 0, 0.7);
 }
 
-.carousel-control.prev {
+.custom-prev {
   left: 5%;
 }
 
-.carousel-control.next {
+.custom-next {
   right: 5%;
 }
 
-#carousel-1:checked ~ .control-1,
-#carousel-2:checked ~ .control-2,
-#carousel-3:checked ~ .control-3 {
+#custom-carousel-1:checked ~ .custom-control-1,
+#custom-carousel-2:checked ~ .custom-control-2,
+#custom-carousel-3:checked ~ .custom-control-3 {
   display: block;
 }
 
-.carousel-indicators {
+.custom-carousel-indicators {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -90,25 +89,25 @@ body {
   z-index: 10;
 }
 
-.carousel-indicators li {
+.custom-carousel-indicators li {
   display: inline-block;
   margin: 0 5px;
 }
 
-.carousel-bullet {
+.custom-carousel-bullet {
   color: rgba(255, 255, 255, 0.5);
   font-size: 20px;
   cursor: pointer;
   transition: color 0.3s ease;
 }
 
-.carousel-bullet:hover,
-.carousel-bullet-active {
+.custom-carousel-bullet:hover,
+.custom-carousel-bullet-active {
   color: #428bca;
 }
 
-#carousel-1:checked ~ .control-1 ~ .carousel-indicators li:nth-child(1) .carousel-bullet,
-#carousel-2:checked ~ .control-2 ~ .carousel-indicators li:nth-child(2) .carousel-bullet,
-#carousel-3:checked ~ .control-3 ~ .carousel-indicators li:nth-child(3) .carousel-bullet {
+#custom-carousel-1:checked ~ .custom-control-1 ~ .custom-carousel-indicators li:nth-child(1) .custom-carousel-bullet,
+#custom-carousel-2:checked ~ .custom-control-2 ~ .custom-carousel-indicators li:nth-child(2) .custom-carousel-bullet,
+#custom-carousel-3:checked ~ .custom-control-3 ~ .custom-carousel-indicators li:nth-child(3) .custom-carousel-bullet {
   color: #428bca;
 }

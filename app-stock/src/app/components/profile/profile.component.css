@@ -45,8 +45,8 @@ img:hover {
   align-items: center;
   width: 30%;
   border: none;
-  margin-top: 5vh;
-  margin-bottom: 5vh;
+  margin-top: 8vh;
+  margin-bottom: 10vh;
   border-radius: 2vh;
   padding: 1vh;
   background-color: #437f95;
@@ -100,7 +100,7 @@ p {
   /* border thickness */
   --s: .45em;
   /* size of the corner */
-  --color: rgb(112, 23, 23);
+  --color: rgb(139, 30, 30);
 
   padding: calc(.5em + var(--s)) calc(.9em + var(--s));
   color: #e0e2f6;
