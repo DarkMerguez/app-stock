@@ -6,29 +6,48 @@
     }
 
     <div>
-        <h2>Historique des commandes</h2>
+        <h2>Commandes reçues</h2>
         <ul>
-            <li *ngFor="let order of orders">
-                <div>
-                    <strong>Date :</strong> {{ order.createdAt | date:'dd/MM/yyyy' }}<br>
-                    <strong>Nom de l'entreprise :</strong> {{ order.enterpriseName || 'Chargement...' }}<br>
-                    <strong>Montant total :</strong> {{ order.totalPrice | currency:'EUR':'symbol':'1.2-2':'fr' }}<br>
-                    @if(order.status == "WaitingForValidation") { <strong>Statut :</strong><span
-                        style="color: orangered; font-weight: bold;"> {{ order.status }} </span><br> }
-                    @else { <strong>Statut :</strong><span style="color: green; font-weight: bold;"> {{ order.status }}
-                    </span><br> }
+          <li *ngFor="let order of receivedOrders">
 
-                    <button>Valider</button>
-                    <button>Expédier</button>
-                    @if(order.status == 'Validated' || order.status == 'Shipped' || order.status == 'Finished') {
-                    <button (click)="generateBill(order.id)">
-                        Générer la facture
-                    </button>
-                    }
-                </div>
-            </li>
+            <div>
+              <strong>Date : </strong> {{ order.createdAt | date:'dd/MM/yyyy' }}<br>
+              <strong>Montant total : </strong> {{ order.totalPrice | currency:'EUR':'symbol':'1.2-2':'fr' }}<br>
+              <strong>Statut : </strong><span [ngStyle]="{'color': getColor(order.status)}"> {{ order.status }}</span><br>
+      
+              <!-- Bouton Valider pour le vendeur -->
+              <button *ngIf="order.status === 'WaitingForValidation'" (click)="validateOrder(order.id)">Valider la commande</button>
+      
+              <!-- Bouton Expédier pour le vendeur -->
+              <button *ngIf="order.status === 'Validated'" (click)="shipOrder(order.id)">Confirmer expédition</button>
+      
+              <!-- Bouton Voir la facture si le statut est Validated, Shipped ou Finished -->
+              <button *ngIf="['Validated', 'Shipped', 'Finished'].includes(order.status)" (click)="generateBill(order.id)">Voir la facture</button>
+            </div>
+          </li>
         </ul>
-    </div>
+      </div>
+      
+      <div>
+        <h2>Commandes émises</h2>
+        <ul>
+          <li *ngFor="let order of sentOrders">
+            
+            <div>
+              <strong>Date :</strong> {{ order.createdAt | date:'dd/MM/yyyy' }}<br>
+              <strong>Montant total :</strong> {{ order.totalPrice | currency:'EUR':'symbol':'1.2-2':'fr' }}<br>
+              <strong>Statut : </strong><span [ngStyle]="{'color': getColor(order.status)}" style="font-weight: bolder;">{{ order.status }}</span><br>
+      
+              <!-- Bouton Confirmer réception pour l'acheteur -->
+              <button *ngIf="order.status === 'Shipped'" (click)="confirmReceipt(order.id)">Confirmer réception et terminer commande</button>
+      
+              <!-- Bouton Voir la facture si le statut est Validated, Shipped ou Finished -->
+              <button *ngIf="['Validated', 'Shipped', 'Finished'].includes(order.status)" (click)="generateBill(order.id)">Voir la facture</button>
+            </div>
+          </li>
+        </ul>
+      </div>
+      
 
 
     @if (user.EnterpriseId) {

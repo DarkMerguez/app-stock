@@ -11,8 +11,13 @@ export class OrderService {
 
   constructor(private http: HttpClient) {}
 
-  getOrders(buyerId: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/orders/${buyerId}`);
+  getOrders(enterpriseId: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/orders/${enterpriseId}`);
+  }
+
+  // Changer statut d'une commande
+  updateOrderStatus(orderId: number, newStatus: string) {
+    return this.http.put(`${this.apiUrl}/orders/${orderId}/status`, { status: newStatus });
   }
 
 }

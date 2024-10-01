@@ -30,6 +30,8 @@ export class DashboardComponent implements OnInit {
   products: Products = [] as Products;
   orders: any[] = [];
   buyerId: number = 0;
+  receivedOrders: any[] = [];
+sentOrders: any[] = [];
 
   ngOnInit(): void {
     this.api.getUser().subscribe((user: User) => {
@@ -60,16 +62,41 @@ export class DashboardComponent implements OnInit {
     if (this.buyerId) {
       this.orderService.getOrders(this.buyerId).subscribe(orders => {
         this.orders = orders;
-        console.log(orders);
   
-        // Pour chaque commande, récupérer le nom de l'entreprise
-        this.orders.forEach(order => {
+        this.receivedOrders = this.orders.filter(order => order.sellerId === this.user.EnterpriseId);
+        this.sentOrders = this.orders.filter(order => order.buyerId === this.user.EnterpriseId);
+  
+        this.receivedOrders.forEach(order => {
           this.api.getEnterpriseNameById(order.sellerId).subscribe(name => {
-            order.enterpriseName = name; // Ajoutez le nom de l'entreprise à chaque commande
+            order.enterpriseName = name; // Récupère le nom de l'entreprise vendeuse
+          });
+        });
+        
+        this.sentOrders.forEach(order => {
+          this.api.getEnterpriseNameById(order.buyerId).subscribe(name => {
+            order.enterpriseName = name; // Récupère le nom de l'entreprise acheteuse
           });
         });
       });
     }
+  }
+
+  validateOrder(orderId: number): void {
+    this.orderService.updateOrderStatus(orderId, 'Validated').subscribe(() => {
+      this.loadOrders(); // Recharger les commandes après la mise à jour du statut
+    });
+  }
+  
+  shipOrder(orderId: number): void {
+    this.orderService.updateOrderStatus(orderId, 'Shipped').subscribe(() => {
+      this.loadOrders();
+    });
+  }
+  
+  confirmReceipt(orderId: number): void {
+    this.orderService.updateOrderStatus(orderId, 'Finished').subscribe(() => {
+      this.loadOrders();
+    });
   }
 
   generateBill(orderId: number) {
@@ -83,18 +110,20 @@ export class DashboardComponent implements OnInit {
       }
     });
   }
-
-/*   generateBill(orderId: number) {
-    this.billService.generateBill(orderId).subscribe((response) => {
-      const blob = new Blob([response], { type: 'application/pdf' });
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `Facture_${orderId}.pdf`;
-      a.click();
-      window.URL.revokeObjectURL(url);
-  });
-  } */
+  getColor(status: string): string {
+    switch (status) {
+      case 'WaitingForValidation':
+        return 'orangered';
+      case 'Validated':
+        return 'green';
+      case 'Shipped':
+        return 'blue';
+      case 'Finished':
+        return 'gray';
+      default:
+        return 'black';
+    }
+  }
 
 
 
