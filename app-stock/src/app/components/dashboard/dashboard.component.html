@@ -23,6 +23,7 @@
       
               <!-- Bouton Voir la facture si le statut est Validated, Shipped ou Finished -->
               <button *ngIf="['Validated', 'Shipped', 'Finished'].includes(order.status)" (click)="generateBill(order.id)">Voir la facture</button>
+              <br>
             </div>
           </li>
         </ul>
