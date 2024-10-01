@@ -8,6 +8,7 @@ import { AsyncPipe } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../../../services/api.service';
 import { User } from '../../../utils/interfaces/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-add-product',
@@ -20,7 +21,8 @@ export class FormAddProductComponent implements OnInit {
 
   private api = inject(ApiService);
   user: User = {} as User;
-
+  private router = inject(Router);
+  
   ngOnInit(): void {
     this.api.getUser().subscribe((user: User) => {
       this.user = user;
@@ -81,6 +83,7 @@ export class FormAddProductComponent implements OnInit {
       this.api.addProductWithImages(formData).subscribe({
         next: (response: any) => {  
           console.log('Produit ajouté avec succès', response);
+          this.router.navigate(['/dashboard']);
         },
         error: (err: any) => {  
           console.error('Erreur lors de l\'ajout du produit', err);
