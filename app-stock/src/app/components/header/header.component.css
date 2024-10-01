@@ -156,6 +156,8 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
 }
 
 .search-form {
