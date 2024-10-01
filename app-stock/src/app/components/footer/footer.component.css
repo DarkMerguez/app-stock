@@ -9,15 +9,16 @@
 
 .footer-container {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column; /* Changer l'orientation en colonne pour les petits écrans */
+  align-items: center; /* Centrer le contenu */
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
 .footer-section {
-  flex: 1;
   padding: 10px;
+  text-align: center; /* Centrer le texte dans chaque section */
 }
 
 .footer-section h4 {
@@ -39,6 +40,13 @@
   color: #e0e2f6;
   text-decoration: none;
   transition: color 0.3s ease;
+  display: flex;
+  justify-content: center; /* Centrer les liens */
+  align-items: center; /* Aligner les icônes et le texte */
+}
+
+.footer-section ul li a i {
+  margin-right: 8px;
 }
 
 .footer-section ul li a:hover {
@@ -48,13 +56,22 @@
 .footer-bottom {
   text-align: center;
   padding: 10px 0;
-  border-top: 1px solid #01161E;
+  border-top: 1px solid #e0e2f6;
   margin-top: 20px;
+  display: flex; /* Utiliser flexbox pour le logo et le texte */
+  flex-direction: column; /* Aligner le logo et le texte en colonne */
+  align-items: center; /* Centrer le contenu */
+}
+
+.footer-logo {
+  height: 30px; /* Ajustez la taille du logo si nécessaire */
+  margin-bottom: 10px; /* Espacement entre le logo et le texte */
 }
 
 .social-media {
   display: flex;
-  gap: 10px;
+  justify-content: center; /* Centrer les icônes de réseaux sociaux */
+  gap: 20px; /* Espacement entre les icônes */
 }
 
 .social-media li a {
@@ -66,4 +83,17 @@
 
 .social-media li a:hover {
   color: #598392;
+}
+
+/* Media Query pour les écrans plus petits */
+@media (min-width: 888px) {
+  .footer-container {
+    flex-direction: row; /* Revenir à une disposition en ligne sur les écrans plus larges */
+    justify-content: space-around; /* Espacer les sections */
+  }
+
+  .footer-section {
+    flex: 1; /* Permettre aux sections de se développer également */
+    padding: 20px; /* Ajouter un peu d'espace */
+  }
 }
