@@ -1,8 +1,35 @@
-<div id="description"><h1>Stock'EZ, l'application de gestion de stock destinée aux entreprises</h1></div>
-
+<div id="description">
+    <h1>Stock'EZ, l'application de gestion de stock destinée aux entreprises</h1>
+    <p>Découvrez comment notre solution facilite la gestion de vos stocks et l'édition de vos factures tout en vous
+        permettant de suivre vos commandes efficacement.</p>
+</div>
 <app-carousel></app-carousel>
+
+<div class="features">
+    <div class="feature-item">
+        <h2>Gestion des Stocks</h2>
+        <p>Optimisez la gestion de votre inventaire avec une interface intuitive qui vous permet de suivre vos produits
+            en temps réel.</p>
+    </div>
+    <div class="feature-item">
+        <h2>Édition des Factures</h2>
+        <p>Générez des factures professionnelles en quelques clics, simplifiant ainsi votre processus de vente et de
+            comptabilité.</p>
+    </div>
+    <div class="feature-item">
+        <h2>Suivi des Commandes</h2>
+        <p>Restez informé sur l'état de vos commandes grâce à un système de suivi intégré qui vous notifie à chaque
+            étape.</p>
+    </div>
+</div>
 
 
 @if (!isLoggedIn) {
-    <button routerLink="/signup">N'attendez plus, inscrivez-vous !</button>
+<div class="cta-section">
+    <h2>Rejoignez-nous dès aujourd'hui !</h2>
+    <p>Créez un compte pour profiter de toutes les fonctionnalités de Stock'EZ et améliorer la gestion de votre
+        entreprise.</p>
+    <p>Déjà inscrit ? Connectez-vous pour accéder à votre tableau de bord.</p>
+    <button class="signup-button" routerLink="/signup">N'attendez plus, connectez-vous !</button>
+</div>
 }

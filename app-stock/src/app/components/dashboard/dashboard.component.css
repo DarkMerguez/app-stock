@@ -4,13 +4,10 @@
 
     margin: 2vh;
     
-    
-   
     text-align: center;
-   
-    
 
-    border: 8px outset #01161e;
+    border: 5px outset #01161e;
+    
         box-shadow: 10px 10px 5px -4px rgba(0,0,0,0.54);
         -webkit-box-shadow: 10px 10px 5px -4px rgba(0,0,0,0.54);
         -moz-box-shadow: 10px 10px 5px -4px rgba(0,0,0,0.54);
@@ -30,7 +27,7 @@
 /* Bouton pour ajouter un produit */
 #custom-btnAddProduct {
     margin: 5vh;
-    height: 10vh;
+    height: 8vh;
     font-size: larger;
     background-color: #1c7f33;
     color: white;

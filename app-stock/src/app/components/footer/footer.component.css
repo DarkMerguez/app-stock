@@ -64,14 +64,15 @@
 }
 
 .footer-logo {
-  height: 30px; /* Ajustez la taille du logo si nécessaire */
-  margin-bottom: 10px; /* Espacement entre le logo et le texte */
+  height: 69px; 
+  margin-bottom: 5px;
+  margin-top: 5px;
 }
 
 .social-media {
   display: flex;
-  justify-content: center; /* Centrer les icônes de réseaux sociaux */
-  gap: 20px; /* Espacement entre les icônes */
+  justify-content: center;
+  gap: 20px; 
 }
 
 .social-media li a {
@@ -89,11 +90,11 @@
 @media (min-width: 888px) {
   .footer-container {
     flex-direction: row; /* Revenir à une disposition en ligne sur les écrans plus larges */
-    justify-content: space-around; /* Espacer les sections */
+    justify-content: space-around; 
   }
 
   .footer-section {
-    flex: 1; /* Permettre aux sections de se développer également */
-    padding: 20px; /* Ajouter un peu d'espace */
+    flex: 1; 
+    padding: 20px; 
   }
 }

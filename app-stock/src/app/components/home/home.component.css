@@ -1,9 +1,78 @@
 #description {
     display: flex;
-    font-style: italic;
-    font-size: 80%;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
     width: 100%;
+    margin: 3vh 0;
+    font-style: italic;
+    font-size: 1rem;
+    /* Augmenté pour une meilleure lisibilité */
+    color: #01161E;
+    /* Couleur d'accent */
+}
+
+.features {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    /* Permet d'être responsive */
+    max-width: 90%;
     margin: 3vh;
+    margin-bottom: 4vh;
+    padding: 20px;
+}
+
+.feature-item {
+    background-color: #e0e2f6;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 10px;
+    flex: 1 1 30%;
+    /* Permet un bon espacement et un comportement responsive */
+    min-width: 250px;
+    /* Largeur minimale pour les petits écrans */
+}
+
+.feature-item:hover {
+    filter: drop-shadow(6px 6px 10px rgb(119, 136, 197)) invert(0%) contrast(150%);
+}
+
+.feature-item h2 {
+    color: #01161E;
+    /* Couleur d'accent */
+    margin-bottom: 10px;
+}
+
+.cta-section {
+    text-align: center;
+    margin: 3vh 0 5vh 0;
+    padding: 20px;
+    background-color: #f8f9fa;
+    /* Couleur de fond douce */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cta-section:hover {
+    transition: 1.5s;
+    border-radius: 50%;
+    filter: contrast(300%);
+}
+
+.signup-button {
+    background-color: #01161E;
+    /* Couleur d'accent */
+    color: #e0e2f6;
+    /* Couleur de texte */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.signup-button:hover {
+    background-color: #598392;
 }
