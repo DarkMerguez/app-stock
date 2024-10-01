@@ -1,58 +1,68 @@
 @for (product of products; track product.id) {
-    @if (product.EnterpriseId === user.EnterpriseId && product.stock <= 10) {
-        <div class="alertStock">❗️Attention, votre produit  <a routerLink="/product-details/{{product.id}}">{{product.name}}</a> a un stock faible ! ({{product.stock}}) ❗️</div>
-    } 
-}
+@if (product.EnterpriseId === user.EnterpriseId && product.stock <= 10) { <div class="alertStock">❗️Attention, votre
+    produit <a routerLink="/product-details/{{product.id}}">{{product.name}}</a> a un stock faible ! ({{product.stock}})
+    ❗️</div>
+    }
+    }
 
-<div>
-    <h2>Historique des commandes</h2>
-    <ul>
-      <li *ngFor="let order of orders">
-        <div>
-          <strong>Date :</strong> {{ order.createdAt | date:'short' }}<br>
-          <strong>Nom de l'entreprise :</strong> {{ order.enterpriseName || 'Chargement...' }}<br> 
-          <strong>Montant total :</strong> {{ order.totalPrice | currency }}<br>
-          <strong>Statut :</strong> {{ order.status }}<br>
-          <button>Valider</button>
-          <button>Expédier</button>
-        </div>
-      </li>
-    </ul>
-  </div>
+    <div>
+        <h2>Historique des commandes</h2>
+        <ul>
+            <li *ngFor="let order of orders">
+                <div>
+                    <strong>Date :</strong> {{ order.createdAt | date:'dd/MM/yyyy' }}<br>
+                    <strong>Nom de l'entreprise :</strong> {{ order.enterpriseName || 'Chargement...' }}<br>
+                    <strong>Montant total :</strong> {{ order.totalPrice | currency:'EUR':'symbol':'1.2-2':'fr' }}<br>
+                    @if(order.status == "WaitingForValidation") { <strong>Statut :</strong><span
+                        style="color: orangered; font-weight: bold;"> {{ order.status }} </span><br> }
+                    @else { <strong>Statut :</strong><span style="color: green; font-weight: bold;"> {{ order.status }}
+                    </span><br> }
+
+                    <button>Valider</button>
+                    <button>Expédier</button>
+                    @if(order.status == 'Validated' || order.status == 'Shipped' || order.status == 'Finished') {
+                    <button (click)="generateBill(order.id)">
+                        Générer la facture
+                    </button>
+                    }
+                </div>
+            </li>
+        </ul>
+    </div>
 
 
-@if (user.EnterpriseId) {
+    @if (user.EnterpriseId) {
 
     <button routerLink="/add-product">Ajouter un nouveau produit</button>
 
     <h1>Les produits de mon entreprise :</h1>
-    
-    <div class="page">
-        
-        <div class="container">
-          <div *ngFor="let product of products" class="card">
-            @if (product.EnterpriseId === user.EnterpriseId) {
-            <ng-container>
-              <mat-card class="example-card" [routerLink]="['/product-details', product.id]">
-                <mat-card-header>
-                  <mat-card-title-group>
-                    <mat-card-title>{{ product.name }}</mat-card-title>
-                    <mat-card-subtitle>{{ product.price }} €</mat-card-subtitle>
-                    <mat-card-subtitle>Stock : {{ product.stock }}</mat-card-subtitle>
-                    <img mat-card-lg-image [src]="product.firstImage" alt="Image du produit">
-                  </mat-card-title-group>
-                </mat-card-header>
-              </mat-card>
-            </ng-container>
-            }
-          </div>
-        </div>
-      
-      </div>
 
-} @else {
+    <div class="page">
+
+        <div class="container">
+            <div *ngFor="let product of products" class="card">
+                @if (product.EnterpriseId === user.EnterpriseId) {
+                <ng-container>
+                    <mat-card class="example-card" [routerLink]="['/product-details', product.id]">
+                        <mat-card-header>
+                            <mat-card-title-group>
+                                <mat-card-title>{{ product.name }}</mat-card-title>
+                                <mat-card-subtitle>{{ product.price }} €</mat-card-subtitle>
+                                <mat-card-subtitle>Stock : {{ product.stock }}</mat-card-subtitle>
+                                <img mat-card-lg-image [src]="product.firstImage" alt="Image du produit">
+                            </mat-card-title-group>
+                        </mat-card-header>
+                    </mat-card>
+                </ng-container>
+                }
+            </div>
+        </div>
+
+    </div>
+
+    } @else {
 
     <h1>Pas d'entreprise renseignée</h1>
     <p><a routerLink="/enterprise">Renseigner votre entreprise pour avoir accès au dashboard</a></p>
 
-}
+    }

@@ -9,6 +9,7 @@ import { MatCardModule } from "@angular/material/card";
 import { Products } from "../../../utils/interfaces/product";
 import { OrderService } from "../../../services/order.service";
 import { AuthService } from "../../../services/auth.service";
+import { BillService } from "../../../services/bill.service";
 
 
 @Component({
@@ -23,6 +24,7 @@ export class DashboardComponent implements OnInit {
   private api = inject(ApiService);
   private orderService = inject(OrderService);
   private auth = inject(AuthService);
+  private billService = inject(BillService);
 
   user: User = {} as User;
   products: Products = [] as Products;
@@ -69,6 +71,30 @@ export class DashboardComponent implements OnInit {
       });
     }
   }
+
+  generateBill(orderId: number) {
+    this.billService.generateBill(orderId).subscribe({
+      next: (blob) => {
+        const url = window.URL.createObjectURL(blob);
+        window.open(url, '_blank');
+      },
+      error: (error) => {
+        console.error('Error generating bill:', error);
+      }
+    });
+  }
+
+/*   generateBill(orderId: number) {
+    this.billService.generateBill(orderId).subscribe((response) => {
+      const blob = new Blob([response], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `Facture_${orderId}.pdf`;
+      a.click();
+      window.URL.revokeObjectURL(url);
+  });
+  } */
 
 
 
