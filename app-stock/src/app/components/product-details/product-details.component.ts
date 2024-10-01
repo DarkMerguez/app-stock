@@ -103,7 +103,7 @@ export class ProductDetailsComponent implements OnInit {
   addToCart() {
     this.api.addToCart(this.product.id, this.quantity).subscribe({
       next: () => {
-        this.confirmationMessage = 'Product added to cart successfully!';
+        this.confirmationMessage = 'Produit ajouté au panier!';
         setTimeout(() => {
           if (!this.isNavigatingAway) {
             this.router.navigate(['/shop']);

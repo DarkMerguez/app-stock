@@ -176,7 +176,7 @@ a {
   border-radius: 20px;
   padding: 1vh 1.5vh 1vh 6vh;
   border: none;
-  width: 100%;
+  width: calc(100% - 7.2vh); 
   background-color: #e0edf6;
 }
 

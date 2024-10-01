@@ -1,85 +1,79 @@
 @for (product of products; track product.id) {
-@if (product.EnterpriseId === user.EnterpriseId && product.stock <= 10) { <div class="custom-alertStock">❗️Attention,
-    votre produit
-    <a routerLink="/product-details/{{product.id}}">{{product.name}}</a> a un stock faible ! ({{product.stock}}) ❗️
-    </div>
+    @if (product.EnterpriseId === user.EnterpriseId && product.stock <= 10) {
+        <div class="custom-alertStock">❗️Attention, votre produit
+            <a routerLink="/product-details/{{product.id}}">{{product.name}}</a> a un stock faible ! ({{product.stock}}) ❗️
+        </div>
     }
     }
-
-    <!-- Section utilisant Bootstrap -->
-    <div class="bootstrap-container">
-        <div class="containerOrders mt-5">
-            <div class="row" id="blocs">
-                <div class="col-md-6">
-                    <h2>Commandes reçues :</h2>
-                    <ul class="list-group">
-                        <li *ngFor="let order of receivedOrders.slice(0, displayedReceivedOrders)"
-                            class="list-group-item">
-                            <div class="order-details">
-                                <strong>Date : </strong> {{ order.createdAt | date:'dd/MM/yyyy' }}<br>
-                                <strong>Montant total : </strong> {{ order.totalPrice |
+    
+    <!-- Section sans Bootstrap -->
+    <div class="container-orders mt-5">
+        <div class="orders-section" id="blocs">
+            <div class="column">
+                <h2>Commandes reçues :</h2>
+                <ul class="order-list">
+                    <li *ngFor="let order of receivedOrders.slice(0, displayedReceivedOrders)" class="order-item">
+                        <div class="order-details">
+                            <strong>Date : </strong> {{ order.createdAt | date:'dd/MM/yyyy' }}<br>
+                            <strong>Montant total : </strong> {{ order.totalPrice |
                                 currency:'EUR':'symbol':'1.2-2':'fr' }}<br>
-                                <strong>Statut : </strong>
-                                <span [ngStyle]="{'color': getColor(order.status)}">{{ order.status }}</span><br>
-
-                                <div class="button-group">
-                                    <button *ngIf="order.status === 'WaitingForValidation'" class="btn btn-primary"
-                                        (click)="validateOrder(order.id)">Valider la commande</button>
-
-                                    <button *ngIf="order.status === 'Validated'" class="btn btn-success"
-                                        (click)="shipOrder(order.id)">Confirmer expédition</button>
-
-                                    <button *ngIf="['Validated', 'Shipped', 'Finished'].includes(order.status)"
-                                        class="btn btn-info" (click)="generateBill(order.id)">Voir la facture</button>
-                                </div>
+                            <strong>Statut : </strong>
+                            <span [ngStyle]="{'color': getColor(order.status)}">{{ order.status }}</span><br>
+    
+                            <div class="button-group">
+                                <button *ngIf="order.status === 'WaitingForValidation'" class="btn"
+                                    (click)="validateOrder(order.id)">Valider la commande</button>
+    
+                                <button *ngIf="order.status === 'Validated'" class="btn"
+                                    (click)="shipOrder(order.id)">Confirmer expédition</button>
+    
+                                <button *ngIf="['Validated', 'Shipped', 'Finished'].includes(order.status)" class="btn"
+                                    (click)="generateBill(order.id)">Voir la facture</button>
                             </div>
-                        </li>
-                    </ul>
-                    <button *ngIf="receivedOrders.length > displayedReceivedOrders" class="btn btn-secondary mt-3"
-                        (click)="loadMoreReceived()">Voir plus</button>
-                </div>
-
-                <div class="col-md-6">
-                    <h2>Commandes émises :</h2>
-                    <ul class="list-group">
-                        <li *ngFor="let order of sentOrders.slice(0, displayedSentOrders)" class="list-group-item">
-                            <div class="order-details">
-                                <strong>Date :</strong> {{ order.createdAt | date:'dd/MM/yyyy' }}<br>
-                                <strong>Montant total :</strong> {{ order.totalPrice |
+                        </div>
+                    </li>
+                </ul>
+                <button *ngIf="receivedOrders.length > displayedReceivedOrders" class="btn mt-3"
+                    (click)="loadMoreReceived()">Voir plus</button>
+            </div>
+    
+            <div class="column">
+                <h2>Commandes émises :</h2>
+                <ul class="order-list">
+                    <li *ngFor="let order of sentOrders.slice(0, displayedSentOrders)" class="order-item">
+                        <div class="order-details">
+                            <strong>Date :</strong> {{ order.createdAt | date:'dd/MM/yyyy' }}<br>
+                            <strong>Montant total :</strong> {{ order.totalPrice |
                                 currency:'EUR':'symbol':'1.2-2':'fr' }}<br>
-                                <strong>Statut : </strong>
-                                <span [ngStyle]="{'color': getColor(order.status)}" style="font-weight: bolder;">{{
-                                    order.status }}</span><br>
-
-                                <div class="button-group">
-                                    <button *ngIf="order.status === 'Shipped'" class="btn btn-warning"
-                                        (click)="confirmReceipt(order.id)">Confirmer réception et terminer
-                                        commande</button>
-
-                                    <button *ngIf="['Validated', 'Shipped', 'Finished'].includes(order.status)"
-                                        class="btn btn-info" (click)="generateBill(order.id)">Voir la facture</button>
-                                </div>
+                            <strong>Statut : </strong>
+                            <span [ngStyle]="{'color': getColor(order.status)}" class="status">{{ order.status }}</span><br>
+    
+                            <div class="button-group">
+                                <button *ngIf="order.status === 'Shipped'" class="btn"
+                                    (click)="confirmReceipt(order.id)">Confirmer réception et terminer
+                                    commande</button>
+    
+                                <button *ngIf="['Validated', 'Shipped', 'Finished'].includes(order.status)" class="btn"
+                                    (click)="generateBill(order.id)">Voir la facture</button>
                             </div>
-                        </li>
-                    </ul>
-                    <button *ngIf="sentOrders.length > displayedSentOrders" class="btn btn-secondary mt-3"
-                        (click)="loadMoreSent()">Voir plus</button>
-                </div>
+                        </div>
+                    </li>
+                </ul>
+                <button *ngIf="sentOrders.length > displayedSentOrders" class="btn mt-3"
+                    (click)="loadMoreSent()">Voir plus</button>
             </div>
         </div>
     </div>
-
-    <!-- Section sans Bootstrap -->
-    @if (user.EnterpriseId) {
-
-    <div class="btnAddNewProduct"><button routerLink="/add-product" id="custom-btnAddProduct">Ajouter un nouveau produit</button></div>
-
+    
+    <div class="btnAddNewProduct">
+        <button routerLink="/add-product" id="custom-btnAddProduct">Ajouter un nouveau produit</button>
+    </div>
+    
     <h1>Les produits de mon entreprise :</h1>
-
+    
     <div class="custom-page">
         <div class="custom-container">
-            <div *ngFor="let product of products" class="custom-card">
-                @if (product.EnterpriseId === user.EnterpriseId) {
+            <div *ngFor="let product of productsOfCurrentUserEnterprise" class="custom-card">
                 <ng-container>
                     <mat-card class="custom-example-card" [routerLink]="['/product-details', product.id]">
                         <mat-card-header>
@@ -92,14 +86,10 @@
                         </mat-card-header>
                     </mat-card>
                 </ng-container>
-                }
             </div>
         </div>
     </div>
-
-    } @else {
-
-    <h1>Pas d'entreprise renseignée</h1>
-    <p><a routerLink="/enterprise">Renseigner votre entreprise pour avoir accès au dashboard</a></p>
-
-    }
+    
+    <h1 *ngIf="!user.EnterpriseId">Pas d'entreprise renseignée</h1>
+    <p *ngIf="!user.EnterpriseId"><a routerLink="/enterprise">Renseigner votre entreprise pour avoir accès au dashboard</a></p>
+    

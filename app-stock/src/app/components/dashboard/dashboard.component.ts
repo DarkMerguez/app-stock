@@ -1,15 +1,15 @@
 import { AsyncPipe, CommonModule } from "@angular/common";
 import { Component, inject, OnDestroy, OnInit, Renderer2 } from "@angular/core";
-import { ApiService } from "../../../services/api.service";
-import { ProductsListComponent } from "../products-list/products-list.component";
-import { ProductDetailsComponent } from "../product-details/product-details.component";
-import { RouterLink } from "@angular/router";
-import { User } from "../../../utils/interfaces/user";
 import { MatCardModule } from "@angular/material/card";
-import { Products } from "../../../utils/interfaces/product";
-import { OrderService } from "../../../services/order.service";
+import { RouterLink } from "@angular/router";
+import { ApiService } from "../../../services/api.service";
 import { AuthService } from "../../../services/auth.service";
 import { BillService } from "../../../services/bill.service";
+import { OrderService } from "../../../services/order.service";
+import { Products } from "../../../utils/interfaces/product";
+import { User } from "../../../utils/interfaces/user";
+import { ProductDetailsComponent } from "../product-details/product-details.component";
+import { ProductsListComponent } from "../products-list/products-list.component";
 
 
 @Component({
@@ -17,9 +17,9 @@ import { BillService } from "../../../services/bill.service";
   standalone: true,
   imports: [ProductsListComponent, AsyncPipe, ProductDetailsComponent, RouterLink, MatCardModule, CommonModule],
   templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.css'
+  styleUrl: './dashboard.component.css',
 })
-export class DashboardComponent implements OnInit,OnDestroy {
+export class DashboardComponent implements OnInit {
 
   private api = inject(ApiService);
   private orderService = inject(OrderService);
@@ -35,6 +35,7 @@ export class DashboardComponent implements OnInit,OnDestroy {
   sentOrders: any[] = [];
   displayedReceivedOrders = 3;
   displayedSentOrders = 3;
+  productsOfCurrentUserEnterprise: Products = [] as Products;
 
   private bootstrapLinkElement: HTMLLinkElement | null = null;
 
@@ -46,7 +47,6 @@ export class DashboardComponent implements OnInit,OnDestroy {
     });
 
     this.buyerId = this.auth.getUserEnterpriseId();
-    console.log(this.buyerId);
 
     this.api.getProducts().subscribe((products) => {
       this.products = products;
@@ -57,35 +57,15 @@ export class DashboardComponent implements OnInit,OnDestroy {
           product.firstImage = images.length > 0 ? images[0].url : 'https://maisonsartre.fr/images/com_hikashop/upload/visuel-produit-manquant.png';
         });
       });
+      this.products.forEach(product => {
+        if(product.EnterpriseId === this.user.EnterpriseId) {
+          this.productsOfCurrentUserEnterprise.push(product);
+        }
+      })
     });
 
+
     this.loadOrders();
-
-    // Ajouter la feuille de style Bootstrap dynamiquement à la classe bootstrap-container uniquement
-    this.bootstrapLinkElement = document.createElement('link');
-    this.bootstrapLinkElement.rel = 'stylesheet';
-    this.bootstrapLinkElement.href = 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css';
-    document.head.appendChild(this.bootstrapLinkElement);
-
-    // Ajouter la classe bootstrap-container à l'élément root du composant
-    const rootElement = document.querySelector('.bootstrap-container');
-    if (rootElement) {
-      this.renderer.addClass(rootElement, 'bootstrap-enabled');
-    }
-  }
-
-  ngOnDestroy(): void {
-    // Retirer la feuille de style Bootstrap lorsque le composant est détruit
-    if (this.bootstrapLinkElement) {
-      document.head.removeChild(this.bootstrapLinkElement);
-      this.bootstrapLinkElement = null;
-    }
-
-    // Retirer la classe bootstrap-container
-    const rootElement = document.querySelector('.bootstrap-container');
-    if (rootElement) {
-      this.renderer.removeClass(rootElement, 'bootstrap-enabled');
-    }
   }
 
   products$ = this.api.getProducts();

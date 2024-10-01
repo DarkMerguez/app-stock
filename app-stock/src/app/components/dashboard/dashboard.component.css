@@ -1,21 +1,53 @@
-
-/* Encapsuler les styles Bootstrap dans la classe bootstrap-enabled */
-.bootstrap-enabled .containerOrders {
-
+.container-orders {
     margin: 2vh;
-    
     text-align: center;
-
     border: 5px outset #01161e;
-    
-        box-shadow: 10px 10px 5px -4px rgba(0,0,0,0.54);
-        -webkit-box-shadow: 10px 10px 5px -4px rgba(0,0,0,0.54);
-        -moz-box-shadow: 10px 10px 5px -4px rgba(0,0,0,0.54);
-        padding: 2vh;
-    
-  }
+    box-shadow: 10px 10px 5px -4px rgba(0, 0, 0, 0.54);
+    padding: 2vh;
+    background-color: #fff;
+}
 
-/* Alertes de stock */
+.orders-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.column {
+    width: 48%;
+}
+
+.order-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.order-item {
+    background-color: #f8f9fa;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn {
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #1c7f33;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #155e24;
+}
+
+.status {
+    font-weight: bold;
+}
+
 .custom-alertStock {
     color: red;
     padding: 10px;
@@ -24,78 +56,64 @@
     border-radius: 5px;
 }
 
-/* Bouton pour ajouter un produit */
+.btnAddNewProduct {
+    width: 100%;
+    text-align: center;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+}
+
 #custom-btnAddProduct {
-    margin: 5vh;
-    height: 8vh;
-    font-size: larger;
+    padding: 1vh 2vh;
+    font-size: 120%;
+    width: 30%;
+    height: 7vh;
     background-color: #1c7f33;
     color: white;
     border: none;
     border-radius: 50px;
-    width: 33%;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 #custom-btnAddProduct:hover {
-    transition: 0.75s;
+    background-color: #155e24;
     letter-spacing: 0.2vh;
+    transition: 0.5s;
 }
 
-/* Conteneur principal de la page */
 .custom-page {
     display: flex;
     justify-content: center;
+    margin-top: 20px;
 }
 
-/* Conteneur des cartes de produits */
 .custom-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 8vh;
-    justify-content: center;
-    margin: 2vh;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
 }
 
-@media screen and (max-width: 1150px) {
-    .custom-container {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-@media screen and (max-width: 800px) {
-    .custom-container {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Cartes de produits */
 .custom-card {
     border: 1px solid #e9ecef;
     border-radius: 5px;
-    margin-bottom: 10px;
-    background-color: #f8f9fa;
-    padding: 10px;
+    padding: 15px;
+    text-align: center;
+    transition: background-color 0.3s ease;
 }
 
 .custom-card:hover {
     background-color: #e9ecef;
 }
 
-/* Cartes d'exemple */
-.custom-example-card {
-    max-width: 400px;
-    margin-bottom: 8px;
+@media (max-width: 1150px) {
+    .custom-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-/* Titres */
-h1 {
-    color: #343a40;
-    margin-bottom: 15px;
-}
-
-.btnAddNewProduct {
-    width: 100%;
-    text-align: center;
-    margin-top: 10vh;
-    margin-bottom: 10vh;
+@media (max-width: 800px) {
+    .custom-container {
+        grid-template-columns: 1fr;
+    }
 }
