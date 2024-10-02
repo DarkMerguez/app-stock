@@ -12,19 +12,19 @@
         <div class="align-left">
             <form *ngIf="enterprise && enterpriseCategories.length > 0" [formGroup]="updateEnterpriseForm" (ngSubmit)="onSubmit()">
                 <div>
-                    <label for="name">Nom</label>
+                    <label for="name">Nom : </label>
                     <input id="name" formControlName="name" type="text">
                 </div>
                 <div>
-                    <label for="siret">SIRET</label>
+                    <label for="siret">SIRET : </label>
                     <input id="siret" formControlName="siret" type="text">
                 </div>
                 <div>
-                    <label for="address">Adresse</label>
+                    <label for="address">Adresse : </label>
                     <input id="address" formControlName="address" type="text">
                 </div>
                 <div>
-                    <label for="enterpriseCategory">Catégorie d'entreprise</label>
+                    <label for="enterpriseCategory">Catégorie d'entreprise : </label>
                     <select id="enterpriseCategory" formControlName="enterpriseCategory">
                         <option *ngFor="let category of enterpriseCategories" [value]="category.id">
                             {{ category.title }}
@@ -32,7 +32,7 @@
                     </select>
                 </div>
                 <div>
-                    <label for="iban">IBAN</label>
+                    <label for="iban">IBAN : </label>
                     <input id="iban" formControlName="iban" type="text">
                 </div>
                 <button type="submit">Mettre à jour</button>

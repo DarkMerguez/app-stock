@@ -108,12 +108,15 @@ p {
 }
 
 @media screen and (max-width: 800px) {
-    img {
-        --s: 133px;
-    }
 
     .profileCard {
         width: 60%;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    img {
+        --s: 133px;
     }
 }
 

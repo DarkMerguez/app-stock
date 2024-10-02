@@ -145,3 +145,12 @@ img:hover {
     justify-content: center;
     align-items: center;
 }
+
+@media screen and (max-width: 650px) {
+    img {
+        --s: 133px;
+    }
+    .profileCard {
+        width: 90%;
+    }
+}
