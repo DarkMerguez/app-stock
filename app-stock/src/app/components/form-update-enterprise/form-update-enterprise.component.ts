@@ -103,7 +103,10 @@ export class FormUpdateEnterpriseComponent implements OnInit {
 
   onSubmit() {
     if (this.updateEnterpriseForm.valid) {
-      const updatedEnterprise: Partial<Enterprise> = this.updateEnterpriseForm.value;
+      const updatedEnterprise: Partial<Enterprise> = {
+        ...this.updateEnterpriseForm.value,
+        EnterpriseCategoryId: this.updateEnterpriseForm.value.enterpriseCategory
+      };
       if (this.enterprise.id) {
         this.api.updateEnterprise(this.enterprise.id, updatedEnterprise).subscribe({
           next: () => {
@@ -116,4 +119,5 @@ export class FormUpdateEnterpriseComponent implements OnInit {
       }
     }
   }
+  
 }
