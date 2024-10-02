@@ -34,7 +34,6 @@ export class EnterpriseDetailsComponent {
       if (this.user.EnterpriseId !== undefined) {
         this.api.getEnterpriseById(this.user.EnterpriseId).subscribe((enterprise: Enterprise) => {
           this.enterprise = enterprise;
-          console.log(enterprise);
 
           this.api.getImageById(this.enterprise.ImageId).subscribe((imageEnterprise: Image) => {
             this. imageEnterprise = imageEnterprise;
