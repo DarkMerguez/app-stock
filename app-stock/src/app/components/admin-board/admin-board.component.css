@@ -1,0 +1,43 @@
+.admin-board {
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .admin-board-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: left;
+    border-bottom: 2px solid #01161E;
+    padding-bottom: 10px;
+  }
+  
+  .admin-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 18px;
+    color: #fff;
+    background-color: #01161E;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .admin-button:hover {
+    background-color: #124559;
+  }
+  
+  .admin-button:focus {
+    outline: none;
+    box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5);
+  }
+  
