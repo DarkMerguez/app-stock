@@ -1,9 +1,14 @@
-<h1>Mon entreprise :</h1>
-
-
-@if (user.EnterpriseId) {
-<app-enterprise-details />
-} @else {
-<h2>Vous n'avez pas encore renseigné votre entreprise</h2>
-<button routerLink="/add-enterprise">Ajouter mon entreprise</button>
-}
+<div class="enterprise-container">
+    <h1>Mon entreprise :</h1>
+  
+    <ng-container *ngIf="user.EnterpriseId; else noEnterprise">
+      <app-enterprise-details></app-enterprise-details>
+    </ng-container>
+  
+    <ng-template #noEnterprise>
+      <div class="no-enterprise">
+        <h2>Vous n'avez pas encore renseigné votre entreprise</h2>
+        <button routerLink="/add-enterprise" class="btn-add-enterprise">Ajouter mon entreprise</button>
+      </div>
+    </ng-template>
+  </div>

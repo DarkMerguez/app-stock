@@ -5,11 +5,12 @@ import { RouterLink } from '@angular/router';
 import { Enterprise } from '../../../utils/interfaces/enterprise';
 import { Image } from '../../../utils/interfaces/image';
 import { EnterpriseDetailsComponent } from '../enterprise-details/enterprise-details.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-enterprise',
   standalone: true,
-  imports: [RouterLink,EnterpriseDetailsComponent],
+  imports: [RouterLink,EnterpriseDetailsComponent,CommonModule],
   templateUrl: './enterprise.component.html',
   styleUrl: './enterprise.component.css'
 })

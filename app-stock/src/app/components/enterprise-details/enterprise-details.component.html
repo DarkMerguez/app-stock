@@ -1,10 +1,24 @@
-<div class="cardEnterprise">
-    <h1>{{ enterprise.name }}</h1>
-    <img src="{{ imageEnterprise.url }}" alt="Image de l'entreprise">
-    <p>Numéro de siret : {{ enterprise.siret }}</p>
-    <p>Adresse : {{ enterprise.address }}</p>
-    <p>Domaine d'activité : {{ enterpriseCategory.title }}</p>
-    <p>IBAN : {{ enterprise.iban }}</p>
+<div class="component">
+    <div class="profileCard">
+        <div class="image-container">
+            <img [src]="imageEnterprise.url" alt="Image de l'entreprise">
+            <div class="hover-text">Modifier l'image</div>
+        </div>
 
+        <button routerLink="/update-enterprise/{{enterprise.id}}" class="button-82-pushable" role="button" id="editInfos">
+            <span class="button-82-shadow"></span>
+            <span class="button-82-edge"></span>
+            <span class="button-82-front text">
+                Modifier
+            </span>
+        </button>
+
+        <div class="align-left">
+            <p><span class="color">Nom de l'entreprise</span> : {{ enterprise.name }}</p>
+            <p><span class="color">Numéro de siret</span> : {{ enterprise.siret }}</p>
+            <p><span class="color">Adresse</span> : {{ enterprise.address }}</p>
+            <p><span class="color">Domaine d'activité</span> : {{ enterpriseCategory.title }}</p>
+            <p><span class="color">IBAN</span> : {{ enterprise.iban }}</p>
+        </div>
+    </div>
 </div>
-
