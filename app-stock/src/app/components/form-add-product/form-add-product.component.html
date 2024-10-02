@@ -1,24 +1,37 @@
-<h1>Ajouter un nouveau produit :</h1>
+<div class="add-product-container">
+    <h1>Ajouter un nouveau produit</h1>
 
-<form [formGroup]="productGroup" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
-    <input formControlName="name" placeholder="name">
-    <input formControlName="price" placeholder="price">
-    <input formControlName="description" placeholder="description">
-    <input formControlName="stock" placeholder="stock actuel">
+    <form [formGroup]="productGroup" (ngSubmit)="onSubmit()" enctype="multipart/form-data" class="product-form">
+        <div class="form-field">
+            <input formControlName="name" placeholder="Nom du produit" class="form-input" />
+        </div>
 
-    <div class="form-group">
-        <select id="ProductCategoryId" formControlName="ProductCategoryId" class="form-control">
-            <!-- Option par défaut non sélectionnable -->
-            <option value="" disabled selected>Category</option>
-            <!-- Utilisation de *ngFor pour itérer sur les catégories -->
-            <option *ngFor="let productCategory of productCategories$ | async" [value]="productCategory.id">
-                {{ productCategory.title }}
-            </option>
-        </select>
-    </div>
+        <div class="form-field">
+            <input formControlName="price" type="number" placeholder="Prix" class="form-input" />
+        </div>
 
-    <!-- Intégration de l'upload de fichier dans le même formulaire -->
-    <input type="file" name="images" id="images" multiple>
+        <div class="form-field">
+            <textarea formControlName="description" placeholder="Description" class="form-textarea"></textarea>
+        </div>
 
-    <button type="submit" [disabled]="!productGroup.valid">Ajouter le produit</button>
-</form>
+        <div class="form-field">
+            <input formControlName="stock" type="number" placeholder="Stock actuel" class="form-input" />
+        </div>
+
+        <div class="form-field">
+            <select id="ProductCategoryId" formControlName="ProductCategoryId" class="form-select">
+                <option value="" disabled selected>Catégorie</option>
+                <option *ngFor="let productCategory of productCategories$ | async" [value]="productCategory.id">
+                    {{ productCategory.title }}
+                </option>
+            </select>
+        </div>
+
+        <div class="form-field">
+            <label for="images" class="upload-label">Ajouter des images</label>
+            <input type="file" name="images" id="images" multiple class="form-file" />
+        </div>
+
+        <button type="submit" [disabled]="!productGroup.valid" class="submit-btn">Ajouter le produit</button>
+    </form>
+</div>

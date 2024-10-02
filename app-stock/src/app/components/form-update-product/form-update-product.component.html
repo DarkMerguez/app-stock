@@ -1,27 +1,46 @@
-<h1>Modifier le produit :</h1>
+<div class="update-product-container">
+  <h1>Modifier le produit</h1>
 
-<form [formGroup]="productGroup" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
-  <input formControlName="name" placeholder="Nom du produit">
-  <input formControlName="price" placeholder="Prix">
-  <input formControlName="description" placeholder="Description">
-  <input formControlName="stock" placeholder="Stock actuel">
-  
-  <div class="form-group">
-    <select id="ProductCategoryId" formControlName="ProductCategoryId" class="form-control">
-      <option value="" disabled>Catégorie</option>
-      <option *ngFor="let productCategory of productCategories$ | async" [value]="productCategory.id">
-        {{ productCategory.title }}
-      </option>
-    </select>
-  </div>
-  
-  <!-- Intégration de l'upload de fichier dans le même formulaire -->
-  <input type="file" name="images" id="images" multiple>
+  <form [formGroup]="productGroup" (ngSubmit)="onSubmit()" enctype="multipart/form-data" class="product-form">
+      <div class="form-field">
+          <input formControlName="name" placeholder="Nom du produit" class="form-input" />
+      </div>
 
-  <div *ngFor="let image of existingImages">
-    <img [src]="image.url" alt="Image actuelle" />
-    <button type="button" (click)="removeImage(image.id)">Supprimer cette image</button>
-  </div>
-  
-  <button type="submit" [disabled]="!productGroup.valid">Modifier le produit</button>
-</form>
+      <div class="form-field">
+          <input formControlName="price" placeholder="Prix" class="form-input" />
+      </div>
+
+      <div class="form-field">
+          <input formControlName="description" placeholder="Description" class="form-input" />
+      </div>
+
+      <div class="form-field">
+          <input formControlName="stock" placeholder="Stock actuel" class="form-input" />
+      </div>
+
+      <div class="form-field">
+          <select id="ProductCategoryId" formControlName="ProductCategoryId" class="form-select">
+              <option value="" disabled>Catégorie</option>
+              <option *ngFor="let productCategory of productCategories$ | async" [value]="productCategory.id">
+                  {{ productCategory.title }}
+              </option>
+          </select>
+      </div>
+
+      <div class="form-field">
+          <label for="images" class="upload-label">Télécharger de nouvelles images</label>
+          <input type="file" name="images" id="images" multiple class="upload-input" />
+      </div>
+
+      <div class="existing-images-container">
+          <div *ngFor="let image of existingImages" class="image-preview">
+              <img [src]="image.url" alt="Image actuelle" class="product-image" />
+              <button type="button" (click)="removeImage(image.id)" class="remove-button" aria-label="Supprimer cette image">
+                  &times;
+              </button>
+          </div>
+      </div>
+
+      <button type="submit" [disabled]="!productGroup.valid" class="submit-button">Modifier le produit</button>
+  </form>
+</div>

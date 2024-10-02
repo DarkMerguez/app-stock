@@ -1,0 +1,92 @@
+.update-product-container {
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.product-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-input, .form-select, .upload-input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.upload-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.existing-images-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.image-preview {
+    position: relative;
+    display: inline-block;
+}
+
+.product-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.remove-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    font-size: 16px; /* Pour augmenter la taille du symbole */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.remove-button:hover {
+    background-color: darkred; /* Pour un effet au survol */
+}
+
+.submit-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.submit-button:disabled {
+    background-color: #ccc;
+}
