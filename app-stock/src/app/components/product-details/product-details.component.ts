@@ -108,7 +108,7 @@ export class ProductDetailsComponent implements OnInit {
           if (!this.isNavigatingAway) {
             this.router.navigate(['/shop']);
           }
-          this.confirmationMessage = null;
+          this.confirmationMessage = null; // Cache le message après 2 secondes
         }, 2000);
       },
       error: (error) => {

@@ -1,67 +1,114 @@
-
 .example-card {
-    position: relative;
-    max-width: 80%;
-    margin-bottom: 2vh;
-    margin-top: 2vh;
-    margin-left: 10%;
-    margin-right: 10%;
-  }
+margin: 10vh;
+}
 
-  .icon-container {
-    position: absolute; /* Positionner en absolu par rapport au conteneur parent */
-    top: 10px; /* Ajustez selon vos besoins */
-    right: 10px; /* Ajustez selon vos besoins */
-    display: flex;
-    gap: 8px; /* Espacement entre les icônes */
-  }
+#headerCard {
+  justify-content: center;
+  margin: 4vh;
+}
 
-  .carousel-container {
-    position: relative;
-    overflow: hidden;
-    max-width: 100%; /* Ajuste la largeur maximale du carousel */
-    height: 600px; /* Ajuste la hauteur maximale du carousel */
-    display: flex; /* Ajout de flexbox pour centrer les images */
-    align-items: center; /* Centre verticalement */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Aligne les éléments verticalement */
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+}
+
+.quantity-input {
+  border-radius: 5px;
+  padding: 0.5rem;
+  border: 1px solid #e0edf6;
+  width: 60px;
+  margin-right: 1rem;
+  background-color: #ffffff;
+}
+
+.add-to-cart-btn {
+  background-color: #01161E; /* Couleur du bouton */
+  color: #e0edf6; /* Couleur du texte */
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #2671a7; /* Couleur de fond au survol */
+  color: #01161E; /* Couleur du texte au survol */
+  transform: scale(1.05); /* Agrandir légèrement au survol */
+}
+
+.alert {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background-color: #28a745;
+  color: #ffffff;
+  border-radius: 5px;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in {
+  opacity: 1;
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.carousel-container {
+  position: relative;
+  max-width: 800px; /* Limite la largeur du carousel */
+  margin: 0 auto; /* Centre le carousel horizontalement */
+  overflow: hidden; /* Cache les débordements */
 }
 
 .carousel {
-    display: flex;
-    transition: transform 1s ease; /* Transition fluide */
-    height: 100%; /* Assure que le carrousel prend toute la hauteur */
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%; /* S'assure que le carousel utilise la largeur maximale */
 }
 
 .carousel-item {
-    min-width: 100%; /* Chaque image occupe 100% de la largeur */
-    display: flex; /* Ajout de flexbox pour centrer l'image */
-    justify-content: center; /* Centre horizontalement */
+  min-width: 100%; /* Chaque item du carousel prend toute la largeur */
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center; /* Centre les images */
 }
 
 .carousel-image {
-    max-height: 100%; /* Limite la hauteur de l'image pour qu'elle ne dépasse pas celle du conteneur */
-    max-width: 100%; /* Limite la largeur de l'image pour qu'elle ne dépasse pas celle du conteneur */
-    height: auto; /* La hauteur s'ajuste automatiquement en fonction de la largeur */
-    width: auto; /* La largeur s'ajuste automatiquement en fonction de la hauteur */
-    object-fit: contain; /* Maintient le ratio d'aspect et s'assure que l'image est entièrement visible */
+  max-width: 100%; /* Limite la largeur des images */
+  height: auto; /* Garde les proportions */
+  max-height: 300px; /* Limite la hauteur des images */
+  object-fit: contain; /* Adapte l'image à son conteneur */
 }
-  
-  .carousel-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.7);
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    z-index: 10;
-    border-radius: 100%;
-  }
-  
-  .left {
-    left: 10px;
-  }
-  
-  .right {
-    right: 10px;
-  }
-  
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+  z-index: 1; /* Assure que les boutons sont au-dessus des images */
+}
+
+.carousel-button.left {
+  left: 1rem; /* Positionne la flèche à gauche */
+}
+
+.carousel-button.right {
+  right: 1rem; /* Positionne la flèche à droite */
+}

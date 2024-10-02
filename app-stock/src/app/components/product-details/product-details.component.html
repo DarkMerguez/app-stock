@@ -1,40 +1,39 @@
 <mat-card class="example-card" appearance="outlined" routerLink="/product-details/{{product.id}}">
-  <mat-card-header>
-    @if((isAdmin) || ((user.EnterpriseId === product.EnterpriseId))) {
-    <ng-container>
+  <mat-card-header id="headerCard">
+    <div class="header-container">
+      <mat-card-title-group>
+        <mat-card-title>{{ product.name }}</mat-card-title>
+        <mat-card-subtitle>{{ product.price | currency:'EUR' }}</mat-card-subtitle>
+        <mat-card-subtitle>Stock : {{ product.stock }}</mat-card-subtitle>
+        <mat-card-subtitle>Vendeur : {{ enterprise.name }}</mat-card-subtitle>
+      </mat-card-title-group>
+
       <div class="icon-container">
-        <button mat-icon-button [routerLink]="['/update-product', product.id]" aria-label="Modifier">
-          <mat-icon>edit</mat-icon>
-        </button>
-        <button mat-icon-button (click)="onDelete(product.id)" aria-label="Supprimer">
-          <mat-icon>delete</mat-icon>
-        </button>
-      </div>
-    </ng-container>
-    } @else {
-      <ng-container>
-        <div class="icon-container">
-          @if(!isLoggedIn) { 
-            <input type="number" min="1" max="{{product.stock}}" placeholder="Quantity" />
-            <button routerLink="/signin">Ajouter au panier</button> 
-          }
-          @else { 
-            <input type="number" [(ngModel)]="quantity" min="1" placeholder="Quantity" />
-            <button (click)="addToCart()" >Ajouter au panier</button> 
-            <div *ngIf="confirmationMessage" class="alert alert-success">
+        <ng-container *ngIf="isAdmin || (user.EnterpriseId === product.EnterpriseId)">
+          <button mat-icon-button [routerLink]="['/update-product', product.id]" aria-label="Modifier">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button (click)="onDelete(product.id)" aria-label="Supprimer">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </ng-container>
+
+        <ng-container *ngIf="!isAdmin && (user.EnterpriseId !== product.EnterpriseId)">
+          <ng-container *ngIf="!isLoggedIn"> 
+            <input type="number" min="1" max="{{product.stock}}" placeholder="Quantité" class="quantity-input"/>
+            <button class="add-to-cart-btn" routerLink="/signin">Ajouter au panier</button> 
+          </ng-container>
+
+          <ng-container *ngIf="isLoggedIn"> 
+            <input type="number" [(ngModel)]="quantity" min="1" max="{{product.stock}}" placeholder="Quantité" class="quantity-input" />
+            <button class="add-to-cart-btn" (click)="addToCart()">Ajouter au panier</button> 
+            <div *ngIf="confirmationMessage" class="alert alert-success fade-in">
               {{ confirmationMessage }}
             </div>
-          }
-        </div>
-      </ng-container>
-    }
-
-    <mat-card-title-group>
-      <mat-card-title>{{ product.name }}</mat-card-title>
-      <mat-card-subtitle>{{ product.price }} €</mat-card-subtitle>
-      <mat-card-subtitle>Stock : {{ product.stock }}</mat-card-subtitle>
-      <mat-card-subtitle>Vendeur : {{ enterprise.name }}</mat-card-subtitle>
-    </mat-card-title-group>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
   </mat-card-header>
 
   <!-- Carousel d'images -->

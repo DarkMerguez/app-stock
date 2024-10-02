@@ -36,7 +36,7 @@
 }
 
 .feature-item:hover {
-    filter: drop-shadow(6px 6px 10px rgb(119, 136, 197)) invert(0%) contrast(150%);
+    filter: drop-shadow(6px 6px 10px rgb(119, 136, 197)) invert(0%) contrast(120%);
 }
 
 .feature-item h2 {

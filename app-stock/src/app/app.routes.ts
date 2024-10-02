@@ -27,7 +27,7 @@ import { PaymentCancelComponent } from './components/payment-cancel/payment-canc
 export const routes: Routes = [
     {path : "signup",component:SignupComponent},
     {path : "signin",component:SigninComponent},
-    {path : "dashboard",component:DashboardComponent},
+    {path : "dashboard",component:DashboardComponent, canActivate: [AuthGuard]},
     {path : "enterprise",component:EnterpriseComponent},
     {path : "add-product",component:FormAddProductComponent},
     {path : "products-list",component : ProductsListComponent},

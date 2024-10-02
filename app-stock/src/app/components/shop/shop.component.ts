@@ -25,35 +25,42 @@ export class ShopComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.auth.isLoggedIn()) {
-      console.log('L’utilisateur est connecté. Récupération des informations de l’utilisateur...');
-      
-      this.api.getUser().subscribe(
-        (user) => {
-          console.log('Utilisateur récupéré :', user);
+      this.api.getUser().subscribe({
+        next: (user) => {
           if (user && user.EnterpriseId) {
             this.user = user;
   
-            this.api.getProducts().subscribe((allProducts) => {
-              this.products = allProducts.filter(product => product.EnterpriseId !== user.EnterpriseId);
-              this.loadProductImages();
+            this.api.getProducts().subscribe({
+              next: (allProducts) => {
+                this.products = allProducts.filter(product => product.EnterpriseId !== user.EnterpriseId);
+                this.loadProductImages();
+              },
+              error: (error) => {
+                console.error('Erreur lors de la récupération des produits :', error);
+              }
             });
           } else {
             console.log('L’utilisateur n’a pas d’EnterpriseId.');
           }
         },
-        (error) => {
+        error: (error) => {
           // Gérer l'erreur, par exemple en affichant un message ou en redirigeant
           console.error('Erreur lors de la récupération de l’utilisateur :', error);
         }
-      );
+      });
     } else {
-      console.log('Aucun utilisateur connecté, récupération de tous les produits.');
-      this.api.getProducts().subscribe((allProducts) => {
-        this.products = allProducts;
-        this.loadProductImages();
+      this.api.getProducts().subscribe({
+        next: (allProducts) => {
+          this.products = allProducts;
+          this.loadProductImages();
+        },
+        error: (error) => {
+          console.error('Erreur lors de la récupération des produits :', error);
+        }
       });
     }
   }
+  
   
   private loadProductImages(): void {
     this.products.forEach(product => {

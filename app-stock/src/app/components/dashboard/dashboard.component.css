@@ -1,7 +1,7 @@
 .container-orders {
     margin: 2vh;
     text-align: center;
-    border: 5px outset #01161e;
+    border: 3px outset #4887a1;
     box-shadow: 10px 10px 5px -4px rgba(0, 0, 0, 0.54);
     padding: 2vh;
     background-color: #fff;
@@ -79,7 +79,7 @@
 #custom-btnAddProduct:hover {
     background-color: #155e24;
     letter-spacing: 0.2vh;
-    transition: 0.5s;
+    transition: 0.69s;
 }
 
 .custom-page {
@@ -116,4 +116,18 @@
     .custom-container {
         grid-template-columns: 1fr;
     }
+}
+
+#btnFacture {
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #114257;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#btnFacture:hover {
+    background-color: #05222e;
 }

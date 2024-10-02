@@ -4,29 +4,29 @@
     <i style="--clr:#598392;" class="i2"></i>
     <i style="--clr:#AEC3B0;" class="i2"></i>
     <div class="login">
-      <h2>Register</h2>
+      <h2>S'enregistrer</h2>
       <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
         <div class="inputBx">
-          <input formControlName="firstName" type="text" placeholder="Firstname">
+          <input formControlName="firstName" type="text" placeholder="Prénom">
         </div>
         <div class="inputBx">
-          <input formControlName="lastName" type="text" placeholder="Lastname">
+          <input formControlName="lastName" type="text" placeholder="Nom">
         </div>
         <div class="inputBx">
           <input formControlName="email" type="email" placeholder="Email">
         </div>
         <div class="inputBx">
-          <input formControlName="password" type="password" placeholder="Password">
+          <input formControlName="password" type="password" placeholder="Mot de passe">
         </div>
         <div class="inputBx">
-          <input formControlName="confirmPassword" type="password" placeholder="Confirm password">
+          <input formControlName="confirmPassword" type="password" placeholder="Confirmer le mdp">
         </div>
         <div class="inputBx">
-          <input type="submit" value="Register" class="valid">
+          <input type="submit" value="S'enregistrer" class="valid">
         </div>
       </form>
       <div class="links">
-        Already have an account ? <a routerLink="/signin">Sign in</a>
+        Déja inscrit ?<a routerLink="/signin">Se connecter</a>
       </div>
     </div>
   </div>

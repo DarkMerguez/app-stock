@@ -27,7 +27,7 @@
                                 <button *ngIf="order.status === 'Validated'" class="btn"
                                     (click)="shipOrder(order.id)">Confirmer expédition</button>
     
-                                <button *ngIf="['Validated', 'Shipped', 'Finished'].includes(order.status)" class="btn"
+                                <button *ngIf="['Validated', 'Shipped', 'Finished'].includes(order.status)" id="btnFacture"
                                     (click)="generateBill(order.id)">Voir la facture</button>
                             </div>
                         </div>
