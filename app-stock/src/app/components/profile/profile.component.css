@@ -246,12 +246,15 @@ p {
   display: block; /* Afficher le texte au survol de l'image */
 }
 
-@media screen and (max-width: 800px) {
-  img {
-    --s: 133px;
-  }
+@media screen and (max-width: 950px) {
   .profileCard {
     width: 60%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  img {
+    --s: 133px;
   }
 }
 

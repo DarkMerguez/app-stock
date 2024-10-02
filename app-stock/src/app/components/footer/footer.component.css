@@ -98,3 +98,13 @@
     padding: 20px; 
   }
 }
+
+#CGU {
+  text-decoration: none;
+  color: #e0e2f6;
+}
+
+#CGU:hover {
+  color: #598392;
+  transition: 0.5s;
+}
