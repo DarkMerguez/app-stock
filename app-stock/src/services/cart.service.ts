@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class CartService {
 
-  private baseUrl = 'http://localhost:8051';  // URL de ton backend
+  private baseUrl = 'http://localhost:8051';
 
   constructor(private http: HttpClient) {}
 
@@ -27,3 +27,4 @@ export class CartService {
   }
 
 }
+

@@ -38,7 +38,7 @@ export class CartComponent {
     this.api.getEnterpriseById(this.enterpriseId).subscribe((enterprise) => {
       this.enterprise = enterprise;
 
-      // Appeler la nouvelle méthode pour obtenir les détails du panier
+      // Appeler la méthode pour obtenir les détails du panier
       this.cartService.getCartDetails(this.enterpriseId).subscribe((cart) => {
         this.cartId = cart.cartId;
         // Adapter les données pour les faire correspondre à l'interface CartItem
