@@ -1,0 +1,43 @@
+<div class="component">
+    <div class="profileCard">
+        <div class="image-container">
+            <img [src]="imageEnterprise.url" alt="Image de l'entreprise" (click)="triggerFileInput()">
+            <div class="hover-text">Modifier l'image</div>
+        </div>
+
+        <!-- Champ d'upload de fichier caché -->
+        <input type="file" id="imageEnterprise" accept="image/*" (change)="onFileSelected($event)"
+            style="display: none;">
+
+        <div class="align-left">
+            <form *ngIf="enterprise && enterpriseCategories.length > 0" [formGroup]="updateEnterpriseForm" (ngSubmit)="onSubmit()">
+                <div>
+                    <label for="name">Nom</label>
+                    <input id="name" formControlName="name" type="text">
+                </div>
+                <div>
+                    <label for="siret">SIRET</label>
+                    <input id="siret" formControlName="siret" type="text">
+                </div>
+                <div>
+                    <label for="address">Adresse</label>
+                    <input id="address" formControlName="address" type="text">
+                </div>
+                <div>
+                    <label for="enterpriseCategory">Catégorie d'entreprise</label>
+                    <select id="enterpriseCategory" formControlName="enterpriseCategory">
+                        <option *ngFor="let category of enterpriseCategories" [value]="category.id">
+                            {{ category.title }}
+                        </option>
+                    </select>
+                </div>
+                <div>
+                    <label for="iban">IBAN</label>
+                    <input id="iban" formControlName="iban" type="text">
+                </div>
+                <button type="submit">Mettre à jour</button>
+            </form>
+
+        </div>
+    </div>
+</div>

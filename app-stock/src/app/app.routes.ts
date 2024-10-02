@@ -23,7 +23,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 import { PaymentSuccessComponent } from './components/payment-success/payment-success.component';
 import { PaymentCancelComponent } from './components/payment-cancel/payment-cancel.component';
-import { FormUpdateEnterpriseComponent } from './form-update-enterprise/form-update-enterprise.component';
+import { FormUpdateEnterpriseComponent } from './components/form-update-enterprise/form-update-enterprise.component';
 
 export const routes: Routes = [
     {path : "signup",component:SignupComponent},
