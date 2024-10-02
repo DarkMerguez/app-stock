@@ -230,6 +230,11 @@ export class ApiService {
     return this.http.put<User>(`http://localhost:8051/user/${userId}`, data);
   }
 
+    // Méthode pour mettre à jour une entreprise
+    public updateEnterprise(enterpriseId: number, data: Partial<Enterprise>): Observable<Enterprise> {
+      return this.http.put<Enterprise>(`http://localhost:8051/enterprise/${enterpriseId}`, data);
+    }
+
   // Méthode pour rechercher
   search(text: string): Observable<any> {
     return this.http.get(`http://localhost:8051/search/${text}`);

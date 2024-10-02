@@ -23,6 +23,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 import { PaymentSuccessComponent } from './components/payment-success/payment-success.component';
 import { PaymentCancelComponent } from './components/payment-cancel/payment-cancel.component';
+import { FormUpdateEnterpriseComponent } from './form-update-enterprise/form-update-enterprise.component';
 
 export const routes: Routes = [
     {path : "signup",component:SignupComponent},
@@ -37,11 +38,12 @@ export const routes: Routes = [
     {path : "search-results/:text",component:SearchResultsComponent},
     {path : "product-categories",component : ProductCategoriesListComponent},
     {path : "enterprise-details/:id",component : EnterpriseDetailsComponent},
+    {path : "update-enterprise/:id",component : FormUpdateEnterpriseComponent},
     {path : "update-product/:id",component : FormUpdateProductComponent},
     {path : "update-user/:id",component : FormUpdateUserComponent},
     {path : "shop",component : ShopComponent},
-    { path: 'success', component: PaymentSuccessComponent },
-    { path: 'cancel', component: PaymentCancelComponent },
+    {path: 'success', component: PaymentSuccessComponent },
+    {path: 'cancel', component: PaymentCancelComponent },
     {path : "admin-board",component:AdminBoardComponent, canActivate: [AdminGuard]},
     {path : "profile",component:ProfileComponent, canActivate: [AuthGuard]},
     {path : "add-enterprise",component:FormAddEnterpriseComponent, canActivate: [AuthGuard]},

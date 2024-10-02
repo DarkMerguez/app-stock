@@ -1,17 +1,22 @@
 <div class="component">
     <div class="profileCard">
         <div class="image-container">
-            <img [src]="imageEnterprise.url" alt="Image de l'entreprise">
+            <input type="file" id="imageEnterprise" (change)="onFileSelected($event)" style="display: none;" />
+            <img [src]="imageEnterprise.url" alt="Image de l'entreprise" (click)="triggerFileInput()">
             <div class="hover-text">Modifier l'image</div>
         </div>
 
-        <button routerLink="/update-enterprise/{{enterprise.id}}" class="button-82-pushable" role="button" id="editInfos">
+
+        @if(isGestionnaire) {
+        <button routerLink="/update-enterprise/{{enterprise.id}}" class="button-82-pushable" role="button"
+            id="editInfos">
             <span class="button-82-shadow"></span>
             <span class="button-82-edge"></span>
             <span class="button-82-front text">
                 Modifier
             </span>
         </button>
+        }
 
         <div class="align-left">
             <p><span class="color">Nom de l'entreprise</span> : {{ enterprise.name }}</p>

@@ -1,5 +1,5 @@
 import { AsyncPipe, CommonModule } from "@angular/common";
-import { Component, inject, OnDestroy, OnInit, Renderer2 } from "@angular/core";
+import { Component, inject, OnInit, Renderer2 } from "@angular/core";
 import { MatCardModule } from "@angular/material/card";
 import { RouterLink } from "@angular/router";
 import { ApiService } from "../../../services/api.service";
@@ -36,8 +36,6 @@ export class DashboardComponent implements OnInit {
   displayedReceivedOrders = 3;
   displayedSentOrders = 3;
   productsOfCurrentUserEnterprise: Products = [] as Products;
-
-  private bootstrapLinkElement: HTMLLinkElement | null = null;
 
 
 
