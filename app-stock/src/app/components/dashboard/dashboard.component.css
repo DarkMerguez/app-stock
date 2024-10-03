@@ -1,10 +1,12 @@
 .container-orders {
     margin: 2vh;
+    margin-top: 6vh;
     text-align: center;
     border: 3px outset #4887a1;
     box-shadow: 10px 10px 5px -4px rgba(0, 0, 0, 0.54);
     padding: 2vh;
     background-color: #fff;
+    border-radius: 1vh;
 }
 
 
