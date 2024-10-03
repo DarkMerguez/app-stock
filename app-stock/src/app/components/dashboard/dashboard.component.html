@@ -20,6 +20,7 @@
             <ul class="order-list">
                 <li *ngFor="let order of receivedOrders.slice(0, displayedReceivedOrders)" class="order-item">
                     <div class="order-details">
+                        <strong>Numéro de commande : </strong> {{ order.id }}<br>
                         <strong>Date : </strong> {{ order.createdAt | date:'dd/MM/yyyy' }}<br>
                         <strong>Montant total : </strong> {{ order.totalPrice |
                         currency:'EUR':'symbol':'1.2-2':'fr' }}<br>
@@ -48,6 +49,7 @@
             <ul class="order-list">
                 <li *ngFor="let order of sentOrders.slice(0, displayedSentOrders)" class="order-item">
                     <div class="order-details">
+                        <strong>Numéro de commande : </strong> {{ order.id }}<br>
                         <strong>Date :</strong> {{ order.createdAt | date:'dd/MM/yyyy' }}<br>
                         <strong>Montant total :</strong> {{ order.totalPrice |
                         currency:'EUR':'symbol':'1.2-2':'fr' }}<br>
@@ -80,6 +82,10 @@
 
 <h1>Les produits de mon entreprise :</h1>
 
+<h1 *ngIf="!user.EnterpriseId">Pas d'entreprise renseignée</h1>
+<p *ngIf="!user.EnterpriseId"><a routerLink="/enterprise">Renseigner votre entreprise pour avoir accès au
+        dashboard</a></p>
+
 <div class="custom-page">
     <div class="custom-container">
         <div *ngFor="let product of productsOfCurrentUserEnterprise" class="custom-card">
@@ -98,7 +104,3 @@
         </div>
     </div>
 </div>
-
-<h1 *ngIf="!user.EnterpriseId">Pas d'entreprise renseignée</h1>
-<p *ngIf="!user.EnterpriseId"><a routerLink="/enterprise">Renseigner votre entreprise pour avoir accès au
-        dashboard</a></p>

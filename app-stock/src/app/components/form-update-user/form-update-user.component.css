@@ -67,9 +67,20 @@ img:hover {
 }
 
 
-button {
-    border-radius: 2vh;
+button.update-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #023a50;
+    color: #e9eafa;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button.update-btn:hover {
+    background-color: #025a6d;
 }
 
 p {
