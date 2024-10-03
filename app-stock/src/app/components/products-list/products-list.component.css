@@ -27,3 +27,13 @@
   display: flex;
   justify-content: center;
 }
+
+.mat-mdc-card-header {
+  display: flex;
+  padding: 16px;
+  text-align: left;
+}
+
+.mat-mdc-card-header img {
+  border-radius: 50%;
+}

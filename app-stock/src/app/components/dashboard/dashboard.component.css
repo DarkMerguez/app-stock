@@ -39,22 +39,16 @@
     filter: drop-shadow(6px 6px 10px rgb(73, 85, 130)) invert(0%) contrast(115%);
 }
 
-.btn {
-    padding: 10px 20px;
-    margin-top: 10px;
-    background-color: #1c7f33;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.btn:hover {
-    background-color: #155e24;
-}
 
 .status {
     font-weight: bold;
+}
+
+.alertes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2vh;
 }
 
 .custom-alertStock {
@@ -62,14 +56,18 @@
     padding: 10px;
     background-color: #f8d7da;
     border: 1px solid #f5c6cb;
-    border-radius: 5px;
+    border-radius: 50vh;
+    text-align: center;
+    width: 80%;
 }
 
 .btnAddNewProduct {
+    height: max-content;
     width: 100%;
     text-align: center;
     margin-top: 10vh;
     margin-bottom: 10vh;
+    text-wrap: wrap;
 }
 
 #custom-btnAddProduct {
@@ -115,6 +113,16 @@
     background-color: #e9ecef;
 }
 
+.mat-mdc-card-header {
+    display: flex;
+    padding: 16px;
+    text-align: left;
+}
+
+.mat-mdc-card-header img {
+    border-radius: 50%;
+}
+
 @media (max-width: 1150px) {
     .custom-container {
         grid-template-columns: repeat(2, 1fr);
@@ -127,7 +135,22 @@
     }
 }
 
-#btnFacture {
+.btn {
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #1c7f33;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 2vh;
+}
+
+.btn:hover {
+    background-color: #155e24;
+}
+
+.btnBlue {
     padding: 10px 20px;
     margin-top: 10px;
     background-color: #114257;
@@ -137,6 +160,6 @@
     cursor: pointer;
 }
 
-#btnFacture:hover {
+.btnBlue:hover {
     background-color: #05222e;
 }

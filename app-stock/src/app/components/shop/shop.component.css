@@ -35,3 +35,13 @@
 #categoryTitle {
   margin-top: 6vh;
 }
+
+.mat-mdc-card-header {
+  display: flex;
+  padding: 16px;
+  text-align: left;
+}
+
+.mat-mdc-card-header img {
+  border-radius: 50%;
+}

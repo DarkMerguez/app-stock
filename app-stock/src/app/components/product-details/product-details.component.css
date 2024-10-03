@@ -1,5 +1,5 @@
 .example-card {
-margin: 10vh;
+  margin: 10vh;
 }
 
 #headerCard {
@@ -10,12 +10,18 @@ margin: 10vh;
 .header-container {
   display: flex;
   justify-content: space-between;
-  align-items: center; /* Aligne les éléments verticalement */
+  align-items: center;
+  /* Aligne les éléments verticalement */
 }
 
 .icon-container {
   display: flex;
   align-items: center;
+  margin-left: 10vh;
+}
+
+.icon-container button {
+  margin-left: 2vh;
 }
 
 .quantity-input {
@@ -28,8 +34,10 @@ margin: 10vh;
 }
 
 .add-to-cart-btn {
-  background-color: #01161E; /* Couleur du bouton */
-  color: #e0edf6; /* Couleur du texte */
+  background-color: #01161E;
+  /* Couleur du bouton */
+  color: #e0edf6;
+  /* Couleur du texte */
   border: none;
   border-radius: 5px;
   padding: 0.5rem 1rem;
@@ -38,9 +46,12 @@ margin: 10vh;
 }
 
 .add-to-cart-btn:hover {
-  background-color: #2671a7; /* Couleur de fond au survol */
-  color: #01161E; /* Couleur du texte au survol */
-  transform: scale(1.05); /* Agrandir légèrement au survol */
+  background-color: #2671a7;
+  /* Couleur de fond au survol */
+  color: #01161E;
+  /* Couleur du texte au survol */
+  transform: scale(1.05);
+  /* Agrandir légèrement au survol */
 }
 
 .alert {
@@ -61,6 +72,7 @@ margin: 10vh;
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -68,29 +80,39 @@ margin: 10vh;
 
 .carousel-container {
   position: relative;
-  max-width: 800px; /* Limite la largeur du carousel */
-  margin: 0 auto; /* Centre le carousel horizontalement */
-  overflow: hidden; /* Cache les débordements */
+  max-width: 800px;
+  /* Limite la largeur du carousel */
+  margin: 0 auto;
+  /* Centre le carousel horizontalement */
+  overflow: hidden;
+  /* Cache les débordements */
 }
 
 .carousel {
   display: flex;
   transition: transform 0.5s ease-in-out;
-  width: 100%; /* S'assure que le carousel utilise la largeur maximale */
+  width: 100%;
+  /* S'assure que le carousel utilise la largeur maximale */
 }
 
 .carousel-item {
-  min-width: 100%; /* Chaque item du carousel prend toute la largeur */
+  min-width: 100%;
+  /* Chaque item du carousel prend toute la largeur */
   box-sizing: border-box;
   display: flex;
-  justify-content: center; /* Centre les images */
+  justify-content: center;
+  /* Centre les images */
 }
 
 .carousel-image {
-  max-width: 100%; /* Limite la largeur des images */
-  height: auto; /* Garde les proportions */
-  max-height: 300px; /* Limite la hauteur des images */
-  object-fit: contain; /* Adapte l'image à son conteneur */
+  max-width: 100%;
+  /* Limite la largeur des images */
+  height: auto;
+  /* Garde les proportions */
+  max-height: 300px;
+  /* Limite la hauteur des images */
+  object-fit: contain;
+  /* Adapte l'image à son conteneur */
 }
 
 .carousel-button {
@@ -102,13 +124,16 @@ margin: 10vh;
   border: none;
   padding: 1rem;
   cursor: pointer;
-  z-index: 1; /* Assure que les boutons sont au-dessus des images */
+  z-index: 1;
+  /* Assure que les boutons sont au-dessus des images */
 }
 
 .carousel-button.left {
-  left: 1rem; /* Positionne la flèche à gauche */
+  left: 1rem;
+  /* Positionne la flèche à gauche */
 }
 
 .carousel-button.right {
-  right: 1rem; /* Positionne la flèche à droite */
+  right: 1rem;
+  /* Positionne la flèche à droite */
 }

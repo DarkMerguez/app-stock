@@ -13,9 +13,8 @@ export class PaymentSuccessComponent implements OnInit {
   private router = inject(Router);
 
   ngOnInit() {
-    // Vider le panier local ou rediriger l'utilisateur vers une page différente
     console.log('Paiement réussi, panier vidé');
-    // Exemple : rediriger l'utilisateur après quelques secondes
+    // rediriger l'utilisateur après 3 secondes
     setTimeout(() => {
       this.router.navigate(['/dashboard']);
     }, 3000);
