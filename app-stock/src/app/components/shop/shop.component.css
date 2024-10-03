@@ -45,3 +45,7 @@
 .mat-mdc-card-header img {
   border-radius: 50%;
 }
+
+img {
+scale: 75%;
+}

@@ -3,18 +3,22 @@
 
   <form [formGroup]="productGroup" (ngSubmit)="onSubmit()" enctype="multipart/form-data" class="product-form">
       <div class="form-field">
+        <label for="name">Nom du produit :</label>
           <input formControlName="name" placeholder="Nom du produit" class="form-input" />
       </div>
 
       <div class="form-field">
+          <label for="price">Prix :</label>
           <input formControlName="price" placeholder="Prix" class="form-input" />
       </div>
 
       <div class="form-field">
+        <label for="description">Description :</label>
           <input formControlName="description" placeholder="Description" class="form-input" />
       </div>
 
       <div class="form-field">
+        <label for="stock">Quantité en stock :</label>
           <input formControlName="stock" placeholder="Stock actuel" class="form-input" />
       </div>
 

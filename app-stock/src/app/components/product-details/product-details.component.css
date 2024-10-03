@@ -31,6 +31,7 @@
   width: 60px;
   margin-right: 1rem;
   background-color: #ffffff;
+  text-align: center;
 }
 
 .add-to-cart-btn {
@@ -46,9 +47,9 @@
 }
 
 .add-to-cart-btn:hover {
-  background-color: #2671a7;
+  background-color: #025a6d;
   /* Couleur de fond au survol */
-  color: #01161E;
+  color: #000000;
   /* Couleur du texte au survol */
   transform: scale(1.05);
   /* Agrandir légèrement au survol */
@@ -61,6 +62,7 @@
   color: #ffffff;
   border-radius: 5px;
   transition: opacity 0.5s ease-in-out;
+  margin-left: 5vh;
 }
 
 .fade-in {
