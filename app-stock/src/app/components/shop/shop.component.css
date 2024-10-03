@@ -8,7 +8,9 @@
   grid-template-columns: 1fr 1fr 1fr;
   gap: 8vh;
   justify-content: center;
-  margin: 2vh;
+  margin: 3vh;
+  margin-top: 8vh;
+  margin-bottom: 8vh;
 }
 
 @media screen and (max-width: 1150px) {
@@ -25,5 +27,11 @@
 
 .page {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#categoryTitle {
+  margin-top: 6vh;
 }

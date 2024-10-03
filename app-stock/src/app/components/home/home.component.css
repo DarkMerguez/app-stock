@@ -7,9 +7,7 @@
     margin: 3vh 0;
     font-style: italic;
     font-size: 1rem;
-    /* Augmenté pour une meilleure lisibilité */
     color: #01161E;
-    /* Couleur d'accent */
 }
 
 .features {
@@ -32,7 +30,6 @@
     flex: 1 1 30%;
     /* Permet un bon espacement et un comportement responsive */
     min-width: 250px;
-    /* Largeur minimale pour les petits écrans */
 }
 
 .feature-item:hover {
@@ -41,7 +38,6 @@
 
 .feature-item h2 {
     color: #01161E;
-    /* Couleur d'accent */
     margin-bottom: 10px;
 }
 
@@ -50,29 +46,28 @@
     margin: 3vh 0 5vh 0;
     padding: 20px;
     background-color: #f8f9fa;
-    /* Couleur de fond douce */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: 1s;
 }
 
 .cta-section:hover {
-    transition: 1.5s;
+    transition: 1s;
     border-radius: 50%;
     filter: contrast(300%);
 }
 
 .signup-button {
     background-color: #01161E;
-    /* Couleur d'accent */
     color: #e0e2f6;
-    /* Couleur de texte */
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 1.2s;
 }
 
 .signup-button:hover {
     background-color: #598392;
+    transition: 0.33s;
 }

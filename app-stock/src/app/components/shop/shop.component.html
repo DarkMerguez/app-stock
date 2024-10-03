@@ -1,8 +1,13 @@
 <div class="page">
 
-    <div class="container">
+    @for (productCategory of productCategories; track productCategory.id) {
 
-        @for (product of products; track product.id) {
+        <div><h1 id="categoryTitle" routerLink="/product-category/{{productCategory.id}}">{{productCategory.title}}</h1><br></div>
+        <div class="container">
+            
+            
+            @for (product of products; track product.id) {
+                @if(product.ProductCategoryId == productCategory.id.toString()) {
         <div class="card">
             <ng-container>
                 <mat-card class="example-card" [routerLink]="['/product-details', product.id]">
@@ -17,8 +22,10 @@
                 </mat-card>
             </ng-container>
         </div>
+    }
         }
 
     </div>
+    }
 
 </div>

@@ -1,17 +1,19 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ApiService } from '../../../services/api.service';
-import { Products } from '../../../utils/interfaces/product';
-import { User } from '../../../utils/interfaces/user';
-import { ProductDetailsComponent } from '../product-details/product-details.component';
-import { ProductsListComponent } from '../products-list/products-list.component';
 import { MatCardModule } from '@angular/material/card';
 import { RouterLink } from '@angular/router';
+import { ApiService } from '../../../services/api.service';
 import { AuthService } from '../../../services/auth.service';
+import { Products } from '../../../utils/interfaces/product';
+import { ProductCategories } from '../../../utils/interfaces/productCategory';
+import { User } from '../../../utils/interfaces/user';
+import { ProductDetailsComponent } from '../product-details/product-details.component';
+import { CommonModule } from '@angular/common';
+import { ProductCategoryComponent } from '../product-category/product-category.component';
 
 @Component({
   selector: 'app-shop',
   standalone: true,
-  imports: [ProductDetailsComponent, MatCardModule, RouterLink],
+  imports: [ProductDetailsComponent, MatCardModule, RouterLink,CommonModule,ProductCategoryComponent],
   templateUrl: './shop.component.html',
   styleUrl: './shop.component.css'
 })
@@ -21,6 +23,7 @@ export class ShopComponent implements OnInit {
   auth = inject(AuthService);
   products: Products = [] as Products;
   user: User = {} as User;
+  productCategories: ProductCategories = [] as ProductCategories;
 
 
   ngOnInit(): void {
@@ -29,7 +32,7 @@ export class ShopComponent implements OnInit {
         next: (user) => {
           if (user && user.EnterpriseId) {
             this.user = user;
-  
+
             this.api.getProducts().subscribe({
               next: (allProducts) => {
                 this.products = allProducts.filter(product => product.EnterpriseId !== user.EnterpriseId);
@@ -59,9 +62,13 @@ export class ShopComponent implements OnInit {
         }
       });
     }
+
+    this.api.getProductCategories().subscribe((productCategories) => {
+      this.productCategories = productCategories;
+    })
   }
-  
-  
+
+
   private loadProductImages(): void {
     this.products.forEach(product => {
       this.api.getProductImages(product.id).subscribe(images => {
@@ -69,7 +76,7 @@ export class ShopComponent implements OnInit {
       });
     });
   }
-  
+
 
 
 }

@@ -14,11 +14,11 @@ img {
     outline: var(--b) solid var(--c);
     outline-offset: var(--_o);
     background:
-      radial-gradient(circle closest-side,
-        #d5dbc5 calc(99% - var(--b)), var(--c) calc(100% - var(--b)) 99%, #0000) var(--_g);
+        radial-gradient(circle closest-side,
+            #d5dbc5 calc(99% - var(--b)), var(--c) calc(100% - var(--b)) 99%, #0000) var(--_g);
     -webkit-mask:
-      linear-gradient(#000 0 0) no-repeat calc(1px - var(--_o)) / calc(100%/var(--f) - 2*var(--b) - 2px) 0%,
-      radial-gradient(circle closest-side, #000 99%, #0000) var(--_g);
+        linear-gradient(#000 0 0) no-repeat calc(1px - var(--_o)) / calc(100%/var(--f) - 2*var(--b) - 2px) 0%,
+        radial-gradient(circle closest-side, #000 99%, #0000) var(--_g);
     transform: scale(var(--f));
     transition: .5s;
 }
@@ -27,13 +27,23 @@ img:hover {
     --f: 1.15;
 }
 
+.image-container {
+    margin-top: 6vh;
+    text-align: center;
+    position: relative;
+}
+
+.image-container:hover .hover-text {
+    display: block;
+}
+
 .profileCard {
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 40%;
     border: none;
     margin-top: 8vh;
     margin-bottom: 10vh;
@@ -117,11 +127,6 @@ img:hover {
     transform: translateY(-6px);
 }
 
-.image-container {
-    margin-top: 6vh;
-    text-align: center;
-    position: relative;
-}
 
 .hover-text {
     display: none;
@@ -136,9 +141,6 @@ img:hover {
     border-radius: 1vh;
 }
 
-.image-container:hover .hover-text {
-    display: block;
-}
 
 .component {
     display: flex;
@@ -150,6 +152,7 @@ img:hover {
     img {
         --s: 133px;
     }
+
     .profileCard {
         width: 90%;
     }
