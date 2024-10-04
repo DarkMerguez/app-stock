@@ -164,3 +164,7 @@
 .btnBlue:hover {
     background-color: #05222e;
 }
+
+img {
+    scale: 75%;
+    }

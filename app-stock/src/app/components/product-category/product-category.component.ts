@@ -5,6 +5,8 @@ import { ProductCategory } from '../../../utils/interfaces/productCategory';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ProductsListComponent } from '../products-list/products-list.component';
 import { MatCardModule } from '@angular/material/card';
+import { AuthService } from '../../../services/auth.service';
+import { User } from '../../../utils/interfaces/user';
 
 @Component({
   selector: 'app-product-category',
@@ -16,13 +18,20 @@ import { MatCardModule } from '@angular/material/card';
 export class ProductCategoryComponent implements OnInit {
 
   private api = inject(ApiService);
-  private route = inject(ActivatedRoute)
+  private route = inject(ActivatedRoute);
+  private authService = inject(AuthService);
 
   products: Products = [];
   productCategory: ProductCategory | null = null;
   productCategoryId: number = 0;
+  user: User = {} as User;
 
   ngOnInit(): void {
+
+    this.api.getUser().subscribe((user) => {
+      this.user = user;
+    });
+
 
     // Récupérer l'ID du produit depuis les paramètres de la route
     this.route.paramMap.subscribe(params => {
