@@ -110,7 +110,7 @@ p {
   transition: .33s linear, color 0s, background-color 0s;
   outline: var(--b) solid #0000;
   outline-offset: .6em;
-  font-size: 16px;
+  font-size: 1.8vh;
 
   border: 0;
 
@@ -124,7 +124,6 @@ p {
   --_p: 0px;
   outline-color: var(--color);
   outline-offset: .05em;
-  letter-spacing: 0.1vh;
 
 }
 
@@ -256,6 +255,33 @@ p {
   img {
     --s: 133px;
   }
+}
+
+@media screen and (max-width: 500px) {
+
+  .button-89 {
+    font-size: 1.2vh;
+    padding: 1.5vh;
+  }
+
+}
+
+@media screen and (max-width: 400px) {
+
+  .button-89 {
+    font-size: 1vh;
+    padding: 1.5vh;
+  }
+
+}
+
+@media screen and (max-width: 330px) {
+
+  .button-89 {
+    font-size: 0.66vh;
+    padding: 1.2vh;
+  }
+
 }
 
 

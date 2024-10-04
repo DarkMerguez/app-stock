@@ -49,3 +49,14 @@
 img {
 scale: 75%;
 }
+
+.card {
+  border-radius: 5px;
+  padding: 15px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.card:hover {
+  filter: drop-shadow(6px 6px 10px rgb(73, 85, 130)) invert(0%) contrast(115%);
+}

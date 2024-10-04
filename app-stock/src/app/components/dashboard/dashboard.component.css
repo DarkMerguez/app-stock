@@ -103,7 +103,6 @@
 }
 
 .custom-card {
-    border: 1px solid #e9ecef;
     border-radius: 5px;
     padding: 15px;
     text-align: center;
@@ -111,7 +110,7 @@
 }
 
 .custom-card:hover {
-    background-color: #e9ecef;
+    filter: drop-shadow(6px 6px 10px rgb(73, 85, 130)) invert(0%) contrast(115%);
 }
 
 .mat-mdc-card-header {
