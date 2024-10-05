@@ -1,5 +1,5 @@
 .container-orders {
-    margin: 2vh;
+    margin: 5vh;
     margin-top: 6vh;
     text-align: center;
     border: 3px outset #4887a1;
@@ -85,7 +85,7 @@
 
 #custom-btnAddProduct:hover {
     background-color: #124559;
-    letter-spacing: 0.2vh;
+    letter-spacing: 0.1vh;
     transition: 0.69s;
 }
 
@@ -106,11 +106,12 @@
     border-radius: 5px;
     padding: 15px;
     text-align: center;
-    transition: background-color 0.3s ease;
+    transition: 0.3s;
 }
 
 .custom-card:hover {
     filter: drop-shadow(6px 6px 10px rgb(73, 85, 130)) invert(0%) contrast(115%);
+    transition: 0.3s;
 }
 
 .mat-mdc-card-header {
@@ -166,4 +167,97 @@
 
 img {
     scale: 75%;
+}
+
+
+/* Section des produits favoris */
+.favorite-products-section {
+    margin: 10vh;
+    padding: 2vh;
+    border: 2px solid #4887a1;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    text-align: center;
+    box-shadow: 10px 10px 5px -4px rgba(0, 0, 0, 0.54);
+}
+
+.favorite-products-section h2 {
+    font-size: 180%;
+    font-weight: bold;
+    color: #114257;
+    margin-bottom: 6vh;
+}
+
+.favorite-products-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: stretch; /* Assure que les cartes aient la même hauteur */
+    padding-bottom: 3vh;
+}
+
+.favorite-product-card {
+    flex: 1 1 30%;
+    max-width: 30%;
+    display: flex; /* Permet à l'intérieur de la carte de s'étirer */
+    flex-direction: column; /* Permet de disposer les éléments en colonne */
+}
+
+.favorite-product-mat-card {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column; /* Aligne correctement les éléments à l'intérieur */
+    flex: 1; /* Fait en sorte que chaque carte prenne toute la hauteur disponible */
+    justify-content: space-between; /* Équilibre l'espace entre les éléments, poussant le contenu vers le bas */
+}
+
+.mat-card-content {
+    display: flex; /* Assure un bon alignement */
+    justify-content: center; /* Centre le texte horizontalement */
+    margin: 0; /* Retire toute marge */
+}
+
+.mat-card-content p {
+    font-size: 100%;
+    font-weight: normal;
+    margin: 0; /* Retire toute marge */
+    color: #333;
+}
+
+.favorite-product-mat-card:hover {
+    transform: translateY(-10px);
+}
+
+.mat-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mat-card-image {
+    max-height: 150px;
+    object-fit: cover;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Responsive design */
+@media (max-width: 1150px) {
+    .favorite-product-card {
+        flex: 1 1 45%;
+        max-width: 45%;
     }
+}
+
+@media (max-width: 800px) {
+    .favorite-product-card {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+}
+
+

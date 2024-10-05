@@ -13,7 +13,7 @@
 
 <!-- Section sans Bootstrap -->
 <div class="container-orders mt-5">
-    <p style="font-weight: 900; font-size: 200%;">Commandes de mon entreprise</p>
+    <p style="font-weight: 900; font-size: 200%; color: #114257;">Commandes de mon entreprise</p>
     <div class="orders-section" id="blocs">
         <div class="column">
             <h2>Ventes :</h2>
@@ -73,6 +73,26 @@
         </div>
     </div>
 </div>
+
+<!-- Section des produits favoris -->
+<div *ngIf="favoriteProducts.length > 0" class="favorite-products-section">
+    <h2>Produits favoris</h2>
+    <div class="favorite-products-container">
+        <div *ngFor="let product of favoriteProducts" class="favorite-product-card">
+            <mat-card routerLink="/product-details/{{product.id}}" class="favorite-product-mat-card">
+                <mat-card-header>
+                    <mat-card-title>{{ product.name }}</mat-card-title>
+                    <mat-card-subtitle>{{ product.price }} €</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image [src]="product.firstImage" alt="Image du produit">
+                <mat-card-content>
+                    <p>Quantité achetée : {{ product.quantityBought }}</p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>
+
 
 @if (user.EnterpriseId) {
 <div class="btnAddNewProduct">

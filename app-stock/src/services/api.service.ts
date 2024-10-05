@@ -201,6 +201,11 @@ export class ApiService {
     return this.http.get<Images>(`http://localhost:8051/products/${productId}/images`);
   }
 
+  // Récupérer les 3 produits préférés
+  getFavoriteProducts(enterpriseId: number): Observable<any> {
+    return this.http.get<any>(`http://localhost:8051/${enterpriseId}/favorites`);
+  }
+
   // Supprimer une image
   public deleteImage(imageId: number): Observable<any> {
     return this.http.delete<any>(`http://localhost:8051/image/${imageId}`);

@@ -23,6 +23,7 @@
       </div>
 
       <div class="form-field">
+        <label for="productCategory">Catégorie du produit :</label>
           <select id="ProductCategoryId" formControlName="ProductCategoryId" class="form-select">
               <option value="" disabled>Catégorie</option>
               <option *ngFor="let productCategory of productCategories$ | async" [value]="productCategory.id">

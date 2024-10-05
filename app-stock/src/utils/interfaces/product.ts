@@ -8,6 +8,7 @@ export interface Product {
     isFavorite: boolean;
     EnterpriseId?: number;
     firstImage?: string;
+    quantityBought?: number
 }
 
 export type Products = Product[];

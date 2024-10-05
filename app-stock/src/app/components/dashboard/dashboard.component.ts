@@ -36,12 +36,26 @@ export class DashboardComponent implements OnInit {
   displayedReceivedOrders = 3;
   displayedSentOrders = 3;
   productsOfCurrentUserEnterprise: Products = [] as Products;
+  favoriteProducts: Products = [] as Products;
 
 
 
   ngOnInit(): void {
     this.api.getUser().subscribe((user: User) => {
       this.user = user;
+      if (user.EnterpriseId) {
+        this.api.getFavoriteProducts(user.EnterpriseId).subscribe((favoriteProducts) => {
+          this.favoriteProducts = favoriteProducts;
+          console.log(favoriteProducts);
+
+          this.favoriteProducts.forEach(product => {
+            this.api.getProductImages(product.id).subscribe(images => {
+              // Stocker la première image ou une image par défaut
+              product.firstImage = images.length > 0 ? images[0].url : 'https://maisonsartre.fr/images/com_hikashop/upload/visuel-produit-manquant.png';
+            });
+          });
+        });
+      }
     });
 
     this.buyerId = this.auth.getUserEnterpriseId();
@@ -56,11 +70,12 @@ export class DashboardComponent implements OnInit {
         });
       });
       this.products.forEach(product => {
-        if(product.EnterpriseId === this.user.EnterpriseId) {
+        if (product.EnterpriseId === this.user.EnterpriseId) {
           this.productsOfCurrentUserEnterprise.push(product);
         }
       })
     });
+
 
 
     this.loadOrders();
@@ -137,11 +152,11 @@ export class DashboardComponent implements OnInit {
   }
 
   loadMoreReceived() {
-    this.displayedReceivedOrders += 10; 
+    this.displayedReceivedOrders += 10;
   }
 
   loadMoreSent() {
-    this.displayedSentOrders += 10; 
+    this.displayedSentOrders += 10;
   }
 
 
