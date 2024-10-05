@@ -3,99 +3,85 @@
 </div>
 
 <div class="page">
-
     <h2>Produits :</h2>
     <div class="container">
         @if(searchedProducts.length > 0) {
-        @for (product of searchedProducts; track product.id) {
-
-        <div class="card">
-            <ng-container>
-                <mat-card class="example-card" routerLink="/product-details/{{product.id}}" [id]="product.id">
-                    <mat-card-header>
-                        <mat-card-title-group>
-                            <mat-card-title [innerHTML]="highlightSearchTerm(product.name)"></mat-card-title>
-                            <mat-card-subtitle>{{ product.price }} €</mat-card-subtitle>
-                            <mat-card-subtitle>Stock : {{ product.stock }}</mat-card-subtitle>
-                            <img mat-card-lg-image [src]="product.firstImage" alt="Image du produit">
-                        </mat-card-title-group>
-                    </mat-card-header>
-                </mat-card>
-            </ng-container>
-        </div>
-
-        }
+            @for (product of searchedProducts; track product.id) {
+                <div class="card">
+                    <ng-container>
+                        <mat-card class="example-card" routerLink="/product-details/{{product.id}}">
+                            <mat-card-header class="mat-mdc-card-header">
+                                <mat-card-title-group>
+                                    <mat-card-title [innerHTML]="highlightSearchTerm(product.name)"></mat-card-title>
+                                    <mat-card-subtitle>{{ product.price | currency:'EUR':'symbol':'1.2-2':'fr' }}</mat-card-subtitle>
+                                    <mat-card-subtitle>Stock : {{ product.stock }}</mat-card-subtitle>
+                                    <img mat-card-lg-image [src]="product.firstImage" alt="Image du produit">
+                                </mat-card-title-group>
+                            </mat-card-header>
+                        </mat-card>
+                    </ng-container>
+                </div>
+            }
         } @else { <p>❌ Aucun produit trouvé</p> }
     </div>
 
     <h2>Entreprises :</h2>
     <div class="container">
         @if(searchedEnterprises.length > 0) {
-        @for (enterprise of searchedEnterprises; track enterprise.id) {
-
-        <div class="card">
-            <ng-container>
-                <mat-card class="example-card">
-                    <mat-card-header>
-                        <mat-card-title-group>
-                            <mat-card-title [innerHTML]="highlightSearchTerm(enterprise.name)"></mat-card-title>
-                            <mat-card-subtitle>{{ enterprise.address }}</mat-card-subtitle>
-                            <mat-card-subtitle>Siret : {{ enterprise.siret }}</mat-card-subtitle>
-                            <img mat-card-lg-image [src]="imageEnterprise.url" alt="Image du produit">
-                        </mat-card-title-group>
-                    </mat-card-header>
-                </mat-card>
-            </ng-container>
-        </div>
-
-        }
+            @for (enterprise of searchedEnterprises; track enterprise.id) {
+                <div class="card">
+                    <ng-container>
+                        <mat-card class="example-card">
+                            <mat-card-header class="mat-mdc-card-header">
+                                <mat-card-title-group>
+                                    <mat-card-title [innerHTML]="highlightSearchTerm(enterprise.name)"></mat-card-title>
+                                    <mat-card-subtitle>{{ enterprise.address }}</mat-card-subtitle>
+                                    <mat-card-subtitle>Siret : {{ enterprise.siret }}</mat-card-subtitle>
+                                    <img mat-card-lg-image [src]="imageEnterprise.url" alt="Image de l'entreprise">
+                                </mat-card-title-group>
+                            </mat-card-header>
+                        </mat-card>
+                    </ng-container>
+                </div>
+            }
         } @else { <p>❌ Aucune entreprise trouvée</p> }
     </div>
 
-    <h2>Product Categories :</h2>
+    <h2>Catégories de Produits :</h2>
     <div class="container">
         @if(searchedProductCategories.length > 0) {
-        @for (productCategory of searchedProductCategories; track productCategory.id) {
-
-        <div class="card">
-            <ng-container>
-                <mat-card class="example-card">
-                    <mat-card-header>
-                        <mat-card-title-group>
-                            <mat-card-title [innerHTML]="highlightSearchTerm(productCategory.title)"></mat-card-title>
-                        </mat-card-title-group>
-                    </mat-card-header>
-                </mat-card>
-            </ng-container>
-        </div>
-
-        }
+            @for (productCategory of searchedProductCategories; track productCategory.id) {
+                <div routerLink="/product-category/{{productCategory.id}}" class="card">
+                    <ng-container>
+                        <mat-card class="example-card">
+                            <mat-card-header class="mat-mdc-card-header">
+                                <mat-card-title-group>
+                                    <mat-card-title [innerHTML]="highlightSearchTerm(productCategory.title)"></mat-card-title>
+                                </mat-card-title-group>
+                            </mat-card-header>
+                        </mat-card>
+                    </ng-container>
+                </div>
+            }
         } @else { <p>❌ Aucune catégorie de produit trouvée</p> }
-
     </div>
 
-    <h2>Entreprise Categories :</h2>
+    <h2>Catégories d'Entreprises :</h2>
     <div class="container">
         @if(searchedEnterpriseCategories.length > 0) {
-        @for (enterpriseCategory of searchedEnterpriseCategories; track enterpriseCategory.id) {
-
-        <div class="card">
-            <ng-container>
-                <mat-card class="example-card">
-                    <mat-card-header>
-                        <mat-card-title-group>
-                            <mat-card-title
-                                [innerHTML]="highlightSearchTerm(enterpriseCategory.title)"></mat-card-title>
-                        </mat-card-title-group>
-                    </mat-card-header>
-                </mat-card>
-            </ng-container>
-        </div>
-
-        }
-        } @else { <p>❌ Aucune catégorie d'entreprise' trouvée</p> }
+            @for (enterpriseCategory of searchedEnterpriseCategories; track enterpriseCategory.id) {
+                <div class="card">
+                    <ng-container>
+                        <mat-card class="example-card">
+                            <mat-card-header class="mat-mdc-card-header">
+                                <mat-card-title-group>
+                                    <mat-card-title [innerHTML]="highlightSearchTerm(enterpriseCategory.title)"></mat-card-title>
+                                </mat-card-title-group>
+                            </mat-card-header>
+                        </mat-card>
+                    </ng-container>
+                </div>
+            }
+        } @else { <p>❌ Aucune catégorie d'entreprise trouvée</p> }
     </div>
-
-
-
 </div>

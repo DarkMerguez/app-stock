@@ -7,11 +7,12 @@ import { ProductsListComponent } from '../products-list/products-list.component'
 import { MatCardModule } from '@angular/material/card';
 import { AuthService } from '../../../services/auth.service';
 import { User } from '../../../utils/interfaces/user';
+import { AsyncPipe, CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-product-category',
   standalone: true,
-  imports: [RouterLink,ProductsListComponent,MatCardModule],
+  imports: [RouterLink,ProductsListComponent,MatCardModule,AsyncPipe,CommonModule],
   templateUrl: './product-category.component.html',
   styleUrl: './product-category.component.css'
 })

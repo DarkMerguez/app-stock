@@ -8,11 +8,12 @@ import { EnterpriseCategories } from '../../../utils/interfaces/enterpriseCatego
 import { Image } from '../../../utils/interfaces/image';
 import { Products } from '../../../utils/interfaces/product';
 import { ProductCategories } from '../../../utils/interfaces/productCategory';
+import { AsyncPipe, CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-search-results',
   standalone: true,
-  imports: [RouterLink, MatCardModule],
+  imports: [RouterLink, MatCardModule, CommonModule, AsyncPipe],
   templateUrl: './search-results.component.html',
   styleUrl: './search-results.component.css'
 })

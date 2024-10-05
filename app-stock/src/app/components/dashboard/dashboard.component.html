@@ -82,7 +82,7 @@
             <mat-card routerLink="/product-details/{{product.id}}" class="favorite-product-mat-card">
                 <mat-card-header>
                     <mat-card-title>{{ product.name }}</mat-card-title>
-                    <mat-card-subtitle>{{ product.price }} €</mat-card-subtitle>
+                    <mat-card-subtitle>{{ product.price | currency:'EUR':'symbol':'1.2-2':'fr' }}</mat-card-subtitle>
                 </mat-card-header>
                 <img mat-card-image [src]="product.firstImage" alt="Image du produit">
                 <mat-card-content>
@@ -100,7 +100,7 @@
 </div>
 }
 
-<h1>Les produits de mon entreprise :</h1>
+<h1 style="margin-left: 5vh; margin-bottom: 5vh;">Les produits de mon entreprise :</h1>
 
 <h1 *ngIf="!user.EnterpriseId">Pas d'entreprise renseignée</h1>
 <p *ngIf="!user.EnterpriseId"><a routerLink="/enterprise">Renseigner votre entreprise pour avoir accès au
@@ -114,7 +114,7 @@
                     <mat-card-header class="smallCard">
                         <mat-card-title-group>
                             <mat-card-title>{{ product.name }}</mat-card-title>
-                            <mat-card-subtitle>{{ product.price }} €</mat-card-subtitle>
+                            <mat-card-subtitle>{{ product.price | currency:'EUR':'symbol':'1.2-2':'fr' }}</mat-card-subtitle>
                             <mat-card-subtitle>Stock : {{ product.stock }}</mat-card-subtitle>
                             <img mat-card-lg-image [src]="product.firstImage" alt="Image du produit">
                         </mat-card-title-group>

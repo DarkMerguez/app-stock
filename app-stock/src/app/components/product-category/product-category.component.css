@@ -6,9 +6,10 @@
 .container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 8vh;
+    gap: 3vh;
     justify-content: center;
     margin: 2vh;
+    margin-bottom: 10vh;
 }
 
 @media screen and (max-width: 1150px) {

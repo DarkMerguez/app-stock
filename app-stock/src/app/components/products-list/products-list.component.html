@@ -8,7 +8,7 @@
           <mat-card-header>
             <mat-card-title-group>
               <mat-card-title>{{ product.name }}</mat-card-title>
-              <mat-card-subtitle>{{ product.price }} €</mat-card-subtitle>
+              <mat-card-subtitle>{{ product.price | currency:'EUR':'symbol':'1.2-2':'fr' }}</mat-card-subtitle>
               <mat-card-subtitle>Stock : {{ product.stock }}</mat-card-subtitle>
               <img mat-card-lg-image [src]="product.firstImage" alt="Image du produit">
             </mat-card-title-group>

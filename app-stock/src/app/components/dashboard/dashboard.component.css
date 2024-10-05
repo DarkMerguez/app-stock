@@ -99,7 +99,7 @@
 .custom-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 2vh;
 }
 
 .custom-card {
@@ -203,10 +203,11 @@ img {
     max-width: 30%;
     display: flex; /* Permet à l'intérieur de la carte de s'étirer */
     flex-direction: column; /* Permet de disposer les éléments en colonne */
+    transition: 0.3s;
 }
 
 .favorite-product-mat-card {
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     transition: transform 0.3s ease;
     cursor: pointer;
@@ -231,6 +232,8 @@ img {
 
 .favorite-product-mat-card:hover {
     transform: translateY(-10px);
+    filter: drop-shadow(6px 6px 10px rgb(73, 85, 130)) invert(0%) contrast(115%);
+    transition: 0.3s;
 }
 
 .mat-card-header {
