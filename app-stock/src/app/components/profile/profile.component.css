@@ -1,5 +1,5 @@
 img {
-  --s: 222px;
+  --s: 200px;
   /* image size */
   --b: 3px;
   /* border thickness */
@@ -23,7 +23,7 @@ img {
   outline-offset: var(--_o);
   background:
     radial-gradient(circle closest-side,
-      #d5dbc5 calc(99% - var(--b)), var(--c) calc(100% - var(--b)) 99%, #0000) var(--_g);
+    #e0edf6 calc(99% - var(--b)), var(--c) calc(100% - var(--b)) 99%, #0000) var(--_g);
   -webkit-mask:
     linear-gradient(#000 0 0) no-repeat calc(1px - var(--_o)) / calc(100%/var(--f) - 2*var(--b) - 2px) 0%,
     radial-gradient(circle closest-side, #000 99%, #0000) var(--_g);
@@ -32,7 +32,7 @@ img {
 }
 
 img:hover {
-  --f: 1.15;
+  --f: 1.1;
   /* hover scale */
 }
 
@@ -43,18 +43,22 @@ img:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 30%;
-  border: none;
-  margin-top: 8vh;
-  margin-bottom: 10vh;
-  border-radius: 2vh;
-  padding: 1vh;
-  background-color: #437f95;
-  color: #e9eafa;
-  font-size: 133%;
-  box-shadow: 0px 0px 5px 3px #023a50;
-  -webkit-box-shadow: 0px 0px 5px 3px #023a50;
-  -moz-box-shadow: 0px 0px 5px 3px #023a50;
+  width: 40%;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #333;
+  font-size: 1.1rem;
+  margin-top: 5vh;
+  margin-bottom: 8vh;
+  transition: 0.3s;
+}
+
+.profileCard:hover {
+  transform: translateY(-3px);
+  filter: drop-shadow(6px 6px 10px rgb(73, 85, 130)) invert(0%) contrast(115%);
+  transition: 0.3s;
 }
 
 .color {
@@ -63,7 +67,19 @@ img:hover {
 }
 
 .align-left {
-  margin-top: 7vh;
+  text-align: left;
+  margin-top: 4vh;
+}
+
+.align-left p {
+  margin: 1rem 0;
+  color: #555;
+}
+
+.align-left .color {
+  font-weight: bold;
+  color: #114257;
+  text-decoration: underline;
 }
 
 #btnAvatar {
@@ -72,9 +88,20 @@ img:hover {
 }
 
 #editInfos {
+  background-color: #114257;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
   position: absolute;
   top: 2.5vh;
   right: 2vh;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#editInfos:hover {
+  background-color: #03657a;
 }
 
 #btnLogout {
@@ -132,96 +159,6 @@ p {
   color: #fff;
 }
 
-
-
-
-
-/* CSS */
-.button-82-pushable {
-  position: relative;
-  border: none;
-  background: transparent;
-  padding: 0;
-  cursor: pointer;
-  outline-offset: 4px;
-  transition: filter 250ms;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
-
-.button-82-shadow {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 4vh;
-  background: hsl(0deg 0% 0% / 0.25);
-  will-change: transform;
-  transform: translateY(2px);
-  transition:
-    transform 600ms cubic-bezier(.3, .7, .4, 1);
-}
-
-.button-82-edge {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 4vh;
-  background: #01161E;
-}
-
-.button-82-front {
-  display: block;
-  position: relative;
-  padding-bottom: 0.75vh;
-  padding-top: 0.75vh;
-  padding-left: 2vh;
-  padding-right: 2vh;
-  border-radius: 4vh;
-  font-size: 0.8rem;
-  color: #e5e8df;
-  background: #033549;
-  will-change: transform;
-  transform: translateY(-4px);
-  transition:
-    transform 600ms cubic-bezier(.3, .7, .4, 1);
-}
-
-.button-82-pushable:hover {
-  filter: brightness(110%);
-  -webkit-filter: brightness(110%);
-}
-
-.button-82-pushable:hover .button-82-front {
-  transform: translateY(-6px);
-  transition:
-    transform 250ms cubic-bezier(.3, .7, .4, 1.5);
-}
-
-.button-82-pushable:active .button-82-front {
-  transform: translateY(-2px);
-  transition: transform 34ms;
-}
-
-.button-82-pushable:hover .button-82-shadow {
-  transform: translateY(4px);
-  transition:
-    transform 250ms cubic-bezier(.3, .7, .4, 1.5);
-}
-
-.button-82-pushable:active .button-82-shadow {
-  transform: translateY(1px);
-  transition: transform 34ms;
-}
-
-.button-82-pushable:focus:not(:focus-visible) {
-  outline: none;
-}
-
 .image-container {
   margin-top: 6vh;
   text-align: center;
@@ -229,16 +166,15 @@ p {
 }
 
 .hover-text {
-  display: none; /* Masquer le texte par défaut */
-  position: absolute; /* Positionner le texte par rapport à l'image */
-  top: 103%;
-  left: 50%;
-  font-size: 50%;
-  transform: translate(-50%, -50%); /* Ajuster le positionnement */
-  color: white; /* Couleur du texte */
-  background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
-  padding: 0.66vh; /* Espacement autour du texte */
-  border-radius: 1vh; /* Coins arrondis pour le texte */
+  display: none;
+  position: absolute;
+  top: 98%;
+  left: 25%;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-size: 0.85rem;
+  padding: 0.5rem;
+  border-radius: 8px;
 }
 
 .image-container:hover .hover-text {
@@ -294,5 +230,5 @@ p {
 
 .title {
   text-align: center;
-  margin-top: 8vh;
+  margin-top: 6.6vh;
 }

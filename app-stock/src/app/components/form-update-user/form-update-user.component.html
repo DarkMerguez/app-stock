@@ -8,28 +8,37 @@
         <!-- Champ d'upload de fichier caché -->
         <input type="file" id="image" accept="image/*" (change)="onFileSelected($event)" style="display: none;">
 
-        <div class="align-left">
+        <div class="form-container">
             <form [formGroup]="updateUserForm" (ngSubmit)="onSubmit()">
-                <p><label for="firstName">Prénom : </label>
-                <input type="text" formControlName="firstName" placeholder="Prénom" /></p>
+                <div class="form-group">
+                    <label for="firstName">Prénom :</label>
+                    <input type="text" formControlName="firstName" placeholder="Prénom">
+                </div>
 
-                <p><label for="lastName">Nom : </label>
-                <input type="text" formControlName="lastName" placeholder="Nom" /></p>
+                <div class="form-group">
+                    <label for="lastName">Nom :</label>
+                    <input type="text" formControlName="lastName" placeholder="Nom">
+                </div>
 
-                <p><label for="email">Email : </label>
-                <input type="email" formControlName="email" placeholder="Email" /></p>
+                <div class="form-group">
+                    <label for="email">Email :</label>
+                    <input type="email" formControlName="email" placeholder="Email">
+                </div>
 
-                <p><label for="password">Mot de passe : </label>
-                <input type="password" formControlName="password" placeholder="Mot de passe" /></p>
+                <div class="form-group">
+                    <label for="password">Mot de passe :</label>
+                    <input type="password" formControlName="password" placeholder="Mot de passe">
+                </div>
 
-                <p style="margin-bottom: 0;"><label for="confirmPassword">Confirmer le mot de passe : </label>
-                <input type="password" formControlName="confirmPassword"/></p>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirmer le mot de passe :</label>
+                    <input type="password" formControlName="confirmPassword">
+                </div>
 
                 <!-- Message d'erreur si les mots de passe ne correspondent pas -->
-                @if(!passwordsMatch) {
-                <div style="color: red; margin-top: 0; padding-top: 0;"> Les mots de passe ne correspondent pas</div>
-                }
-                <p style="margin-top: 4vh;"><button class="update-btn" type="submit" [disabled]="!updateUserForm.valid || !passwordsMatch">Mettre à jour</button></p>
+                <div *ngIf="!passwordsMatch" class="error-text">Les mots de passe ne correspondent pas</div>
+
+                <button class="update-btn" type="submit" [disabled]="!updateUserForm.valid || !passwordsMatch">Mettre à jour</button>
             </form>
         </div>
     </div>

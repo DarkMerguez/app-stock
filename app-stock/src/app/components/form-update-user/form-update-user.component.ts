@@ -6,11 +6,12 @@ import { Image } from '../../../utils/interfaces/image';
 import { User } from '../../../utils/interfaces/user';
 import { Enterprise } from '../../../utils/interfaces/enterprise';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-form-update-user',
   standalone: true,
-  imports: [RouterLink, FormsModule, ReactiveFormsModule],
+  imports: [RouterLink, FormsModule, ReactiveFormsModule,CommonModule],
   templateUrl: './form-update-user.component.html',
   styleUrls: ['./form-update-user.component.css']
 })

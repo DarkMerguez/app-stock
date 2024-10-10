@@ -1,5 +1,5 @@
 <div class="component">
-    <div class="profileCard">
+    <div class="enterpriseCard">
         <div class="image-container">
             <img [src]="imageEnterprise.url" alt="Image de l'entreprise" (click)="triggerFileInput()">
             <div class="hover-text">Modifier l'image</div>
@@ -11,19 +11,19 @@
         <div class="form-container">
             <form *ngIf="enterprise && enterpriseCategories.length > 0" [formGroup]="updateEnterpriseForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
-                    <label for="name">Nom : </label>
+                    <label for="name">Nom :</label>
                     <input id="name" formControlName="name" type="text">
                 </div>
                 <div class="form-group">
-                    <label for="siret">SIRET : </label>
+                    <label for="siret">SIRET :</label>
                     <input id="siret" formControlName="siret" type="text">
                 </div>
                 <div class="form-group">
-                    <label for="address">Adresse : </label>
+                    <label for="address">Adresse :</label>
                     <input id="address" formControlName="address" type="text">
                 </div>
                 <div class="form-group">
-                    <label for="enterpriseCategory">Catégorie d'entreprise : </label>
+                    <label for="enterpriseCategory">Catégorie d'entreprise :</label>
                     <select id="enterpriseCategory" formControlName="enterpriseCategory">
                         <option *ngFor="let category of enterpriseCategories" [value]="category.id">
                             {{ category.title }}
@@ -31,7 +31,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="iban">IBAN : </label>
+                    <label for="iban">IBAN :</label>
                     <input id="iban" formControlName="iban" type="text">
                 </div>
                 <button type="submit" class="update-btn">Mettre à jour</button>
