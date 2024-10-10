@@ -3,9 +3,15 @@
     <div class="footer-section">
       <h4>Navigation</h4>
       <ul>
+        @if (isLoggedIn) {
         <li><a routerLink="/dashboard">Dashboard</a></li>
         <li><a routerLink="/enterprise">Entreprise</a></li>
         <li><a routerLink="/profile">Profil</a></li>
+        } @else {
+        <li><a routerLink="/signin">Dashboard</a></li>
+        <li><a routerLink="/signin">Entreprise</a></li>
+        <li><a routerLink="/signin">Profil</a></li>
+        }
       </ul>
     </div>
 
@@ -24,7 +30,8 @@
         <li><a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
       </ul>
       <h4>Infos utiles</h4>
-      <p><a target="_blank" href="https://www.netpme.fr/wp-content/uploads/2016/10/1455543345CGV.jpg" id="CGU">Consulter nos CGU</a></p>
+      <p><a target="_blank" href="https://www.netpme.fr/wp-content/uploads/2016/10/1455543345CGV.jpg" id="CGU">Consulter
+          nos CGU</a></p>
     </div>
   </div>
 

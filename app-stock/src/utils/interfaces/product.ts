@@ -5,7 +5,7 @@ export interface Product {
     description: string;
     stock: number;
     ProductCategoryId: string;
-    isFavorite: boolean;
+    isFavorite?: boolean;
     EnterpriseId?: number;
     firstImage?: string;
     quantityBought?: number
